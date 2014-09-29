@@ -1,0 +1,77 @@
+<div id="cu_nav">
+	<ul id="cu_nav_domain" class="cu_nav_menu cu_nav_selectable">
+		<li class="selected"><a class="cu_nav_button" href="http://www.chapman.edu">@@include('parts/icon.html', {'n', 'cu_window'})Chapman.edu</a></li>
+		<!-- <li><a class="cu_nav_button" href="http://events.chapman.edu"><%= inline_svg('calendar') %>Events</a></li> -->
+		<li><a class="cu_nav_button" href="http://blogs.chapman.edu"><%= inline_svg('newspaper') %>Blogs.Chapman</a></li>
+		<li><a class="cu_nav_button" href="http://social.chapman.edu"><%= inline_svg('chat') %>Social.Chapman</a></li>
+		<li><a class="cu_nav_button" href="http://inside.chapman.edu"><%= inline_svg('cu_monogram') %>Inside.Chapman</a></li>
+	</ul>
+
+	<ul class="cu_nav_secondary cu_nav_menu cu_nav_selectable" style="display: none;" data-show-domain="blogs.chapman.edu">
+		<li><a class="cu_nav_button" href="/business"><%= inline_svg('cu_business') %>Argyros School of Business and Economics</a></li>
+		<li><a class="cu_nav_button" href="/ces"><%= inline_svg('cu_ces') %>College of Educational Studies</a></li>
+		<li><a class="cu_nav_button" href="/copa"><%= inline_svg('cu_copa') %>College of Performing Arts</a></li>
+		<li><a class="cu_nav_button" href="/crean"><%= inline_svg('cu_crean') %>Crean College of Health and Behavioral Sciences</a></li>
+		<li><a class="cu_nav_button" href="/dodge"><%= inline_svg('cu_dodge') %>Dodge College of Film and Media Arts</a></li>
+		<li><a class="cu_nav_button" href="/scst"><%= inline_svg('cu_scst') %>Schmid College of Science and Technology</a></li>
+		<li><a class="cu_nav_button" href="/law"><%= inline_svg('cu_law') %>Fowler School of Law</a></li>
+		<li><a class="cu_nav_button" href="/wilkinson"><%= inline_svg('cu_wilkinson') %>Wilkinson College of Humanities and Social Sciences</a></li>
+		<li><a class="cu_nav_button" href="/happenings"><%= inline_svg('cu_monogram') %>Happenings</a></li>
+		<li><a class="cu_nav_button" href="/magazine"><%= inline_svg('cu_monogram') %>Chapman Magazine</a></li>
+		<li><a class="cu_nav_button" href="/students"><%= inline_svg('cu_monogram') %>One University Student Blog</a></li>
+		<li><a class="cu_nav_button" href="/alumni"><%= inline_svg('cu_monogram') %>Alumni</a></li>
+		<li class="selected"><a class="cu_nav_button" href="/"><%= inline_svg('cu_monogram') %>Browse all blogs</a></li>
+	</ul>
+
+	<ul class="cu_nav_secondary cu_nav_menu cu_nav_selectable" style="display: none;" data-show-domain="www.chapman.edu">
+		<li><a class="cu_nav_button" href="/admission/admitted-students">Admitted Students</a></li>
+		<li><a class="cu_nav_button" href="/alumni">Alumni</a></li>
+		<li><a class="cu_nav_button" href="/community-business">Community &amp; Businesses</a></li>
+		<li><a class="cu_nav_button" href="/faculty-staff">Faculty &amp; Staff</a></li>
+		<li><a class="cu_nav_button" href="/families">Parents &amp; Families</a></li>
+		<li><a class="cu_nav_button" href="/future-students">Prospective Students</a></li>
+		<li><a class="cu_nav_button" href="/students">Students</a></li>
+		<li class="selected"><a class="cu_nav_button" href="#">Find information for...</a></li>
+	</ul>
+
+	<div id="cu_login_container" class="cu_nav_menu">
+
+		<div id="cu_identity">
+			<!-- <img class="cu_avatar" src="<%= image_path('user_id.png') %>" /> -->
+			<%= inline_svg('user') %>
+			<span class="cu_name">Log In</span>
+		</div>
+
+<!-- 		<div class="cu_dropdown_menu if-logged-in">
+			Welcome back, <span class="cu_first_name"></span>!
+			<br />
+			<a href="http://localhost:3000/users/sign_out">Log out</a> | <a href="#">Settings</a>
+		</div>
+
+		<div class="cu_dropdown_menu if-logged-out">
+			<a href="http://localhost:3000/users/sign_in">Sign-in</a>
+		</div> -->
+
+		<ul class="cu_dropdown_menu">
+			<li><a class="cu_nav_button" href="https://blackboard.chapman.edu/"><%= inline_svg('blackboard') %>Blackboard</a></li>
+			<li><a class="cu_nav_button" href="https://ariel.chapman.edu/WebAdvisor/WebAdvisor"><%= inline_svg('cu_monogram') %>WebAdvisor</a></li>
+			<li><a class="cu_nav_button" href="https://panthermail.chapman.edu/"><%= inline_svg('email') %>PantherMail</a></li>
+			<li><a class="cu_nav_button" href="https://exchange.chapman.edu/"><%= inline_svg('email') %>Staff &amp; Faculty Email</a></li>
+			<li><a class="cu_nav_button" href="https://mywindow.chapman.edu/"><%= inline_svg('cu_window') %>MyWindow</a></li>
+			<li><a class="cu_nav_button" href="https://cas.chapman.edu/login?service=https://orgsync.com/cas/chapman-university"><%= inline_svg('orgsync') %>OrgSync</a></li>
+		</ul>
+
+	</div>
+
+	<div id="cu_search">
+		<gcse:searchbox gname="cu_search" enableAutoComplete="true" autoCompleteMatchType="any" resultSetSize="6"></gcse:searchbox>
+			<div id="cu_search_results">
+				<div id="cu_search_results_cell">
+					<div id="cu_search_results_ui">
+						<gcse:searchresults gname="cu_search" linkTarget="_self" enableOrderBy="true"></gcse:searchresults>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</div>
