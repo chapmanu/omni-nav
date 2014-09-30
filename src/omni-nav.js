@@ -618,7 +618,7 @@ this.jQuery && (function ($) {
 			if (!CU_navbar.nav_visible && (st < this.nav_bar_height || st < CU_navbar.lastScrollTop )) {
 
 				// Ignore if past document height
-				if (st + CU_navbar.window_height >= CU_navbar.document_height) return; 
+				if ((st + CU_navbar.window_height >= CU_navbar.document_height) && CU_navbar.window_height != CU_navbar.document_height) return; 
 
 				CU_navbar.showNavBar();
 			}

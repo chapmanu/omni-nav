@@ -1,12 +1,17 @@
 module.exports = function(grunt) {
 
+	// Configurations
+	var production_assets_url  = '//www2.chapman.edu/omni-nav/'; 
+	var development_assets_url = ''; // Leave blank to use relative URLs
+
+	// Begin Grunt Setup
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
 		uglify: {
 			build: {
-				src: 'src/cu_omni.js',
-				dest: 'dist/cu_omni.min.js'
+				src: 'src/omni-nav.js',
+				dest: 'dist/omni-nav.min.js'
 			}
 		},
 
@@ -16,7 +21,7 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'dist/cu_omni.min.css': 'src/cu_omni.scss'
+					'dist/omni-nav.min.css': 'src/omni-nav.scss'
 				}
 			}
 		},
@@ -24,22 +29,38 @@ module.exports = function(grunt) {
 		copy: {
 			main: {
 			files: [
-				{expand: true, cwd: 'src/', src: 'cu_omni.svg',  dest: 'dist/'}
+				{expand: true, cwd: 'src/', src: 'omni-nav.svg',  dest: 'dist/'}
 		    ]
 		  }
 		},
 
 		includereplace: {
 			readme: {
+				options: {
+					suffix: ';',
+					globals: {
+						base_url: development_assets_url,
+						production_base_url: production_assets_url
+					}
+				},
 				src: 'src/index.html',
 				dest: 'index.html'
+			},
+			dist: {
+				options: {
+					suffix: ';',
+					globals: {
+						base_url: production_assets_url
+					}
+				},
+				src: 'src/omni-nav.html',
+				dest: 'dist/omni-nav.html'
 			}
 		},
 
 		watch: {
 			options: {
 				livereload: true,
-				// files: ['dist/**/*'],
 			},
 			scripts: {
 				files: ['src/*.js'],
@@ -50,11 +71,11 @@ module.exports = function(grunt) {
 				tasks: ['sass']
 			},
 			svg: {
-				files: ['src/cu_omni.svg'],
+				files: ['src/omni-nav.svg'],
 				tasks: ['copy']
 			},
 			html: {
-				files: ['src/index.html', 'src/cu_omni.html'],
+				files: ['src/index.html', 'src/omni-nav.html'],
 				tasks: ['copy', 'includereplace']
 			}
 		},
