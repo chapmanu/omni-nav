@@ -44,7 +44,7 @@ Use **grunt** or **grunt watch** in the terminal to compile assets into the `/di
 
 [Click here to learn how to set up grunt on your machine](http://24ways.org/2013/grunt-is-not-weird-and-hard/)
 
-
+You can then open `/index.html` in your browser and with **grunt watch** and [**live reload**](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) you will see your changes live on your development machine as you save assets in the `/src/` directory. 
 
 ### Deploying
 
