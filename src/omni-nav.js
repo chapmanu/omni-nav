@@ -498,6 +498,7 @@ this.jQuery && (function ($) {
 
 			// Blog login URL
 			$('#cu_login_form').find('form').attr('action', '/wp-login.php');
+			$('#cu_login_form').attr('data-show-domain', 'dev-blogs.chapman.edu');
 
 		},
 
@@ -585,7 +586,7 @@ this.jQuery && (function ($) {
 
 				e.preventDefault();
 				return false;
-				
+
 			} else if ($target.parent('li').hasClass('selected')) {
 				CU_navbar.hideMenu($menu);
 
@@ -622,12 +623,6 @@ this.jQuery && (function ($) {
 
 			// When scrolling down, move nav up (hide)
 			if (CU_navbar.nav_visible && st > CU_navbar.lastScrollTop && st > (this.nav_bar_height * 6)){
-
-				// Keep navbar open if menu expanded
-				// if (CU_navbar.$menus.hasClass('expanded')) return;
-
-				// Keep navbar open if search query present
-				// if (CU_search.gse.getInputQuery().length > 0) return;
 
 				CU_navbar.hideNavBar();
 			}
