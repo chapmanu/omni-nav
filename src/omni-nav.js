@@ -413,54 +413,6 @@ this.jQuery && (function ($) {
 		scrollTimeout : null,
 		nav_visible : true,
 
-		// Replace production URLs with Dev URLs
-		adjustEnvironment: function() {
-
-			if (!dev_urls[window.location.hostname]) return;
-
-			console.log("We are on a DEV server");
-
-
-			// Make a prod_urls array
-			var prod_urls = {};
-			for (var prop in dev_urls) {
-				if (dev_urls.hasOwnProperty(prop)) prod_urls[dev_urls[prop]] = prop;
-			}
-
-
-			CU_navbar.$container.find('#cu_nav_domain').find('a').each(function(index, item) {
-
-				console.log("Checking the link: ");
-				console.log(item);
-
-				var item_href         = item.getAttribute('href');
-				var production_domain = CU_navbar.getBaseDomain(item_href);
-				var staging_domain    = prod_urls[production_domain];
-
-				if (staging_domain) item.setAttribute('href', item_href.replace(production_domain, staging_domain));
-
-
-			});
-
-			CU_navbar.$menus.filter('[data-show-domain]').each(function(index, item) {
-				var staging_domain = prod_urls[item.getAttribute('data-show-domain')];
-				if (staging_domain) item.setAttribute('data-show-domain', staging_domain);
-			});
-
-
-		},
-
-		// Return domain and port for given URL
-		getBaseDomain: function(url) {
-			var url = $.trim(url);
-			if (url.search(/^https?\:\/\//) != -1) {
-				url = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i, "");
-			} else {
-				url = url.match(/^([^\/?#]+)(?:[\/?#]|$)/i, "");
-			}
-			return url[1];
-		},
-
 		initialize: function () {
 
 			// setup
@@ -471,6 +423,7 @@ this.jQuery && (function ($) {
 
 			this.adjustEnvironment();
 			this.selectDomain(window.location);
+			this.initializeCompanionBar();
 
 			// Click action
 			this.$menus.on('click', CU_navbar.menuClick);
@@ -489,6 +442,21 @@ this.jQuery && (function ($) {
 			}, 350, 'mousemove click');
 
 
+			// Resizer
+			if (window.addEventListener) {
+				window.addEventListener('resize', CU_navbar.resizer, false);
+			} else if (window.attachEvent) {
+				window.attachEvent('onresize', CU_navbar.resizer);
+			}
+
+			CU_navbar.resizer();
+
+		},
+
+		initializeCompanionBar: function() {
+			if (!this.$companion_bar.length) return;
+
+			$('html').addClass('cu-companion-bar');
 
 			// Scroll
 			if (window.addEventListener) {
@@ -497,15 +465,48 @@ this.jQuery && (function ($) {
 				window.attachEvent('onscroll', CU_navbar.scroller);
 			}
 
-			// Check for scroll
 			setInterval(function() {
 				if (!CU_navbar.did_scroll) return;
 				CU_navbar.checkNavBar();
 				CU_navbar.did_scroll = false;
 			}, 250);
+		},
 
-			CU_navbar.resizer();
+		// Replace production URLs with Dev URLs
+		adjustEnvironment: function() {
 
+			if (!dev_urls[window.location.hostname]) return;
+
+			// Make a prod_urls array
+			var prod_urls = {};
+			for (var prop in dev_urls) {
+				if (dev_urls.hasOwnProperty(prop)) prod_urls[dev_urls[prop]] = prop;
+			}
+
+			CU_navbar.$container.find('#cu_nav_domain').find('a').each(function(index, item) {
+				var item_href         = item.getAttribute('href');
+				var production_domain = CU_navbar.getBaseDomain(item_href);
+				var staging_domain    = prod_urls[production_domain];
+
+				if (staging_domain) item.setAttribute('href', item_href.replace(production_domain, staging_domain));
+			});
+
+			CU_navbar.$menus.filter('[data-show-domain]').each(function(index, item) {
+				var staging_domain = prod_urls[item.getAttribute('data-show-domain')];
+				if (staging_domain) item.setAttribute('data-show-domain', staging_domain);
+			});
+
+		},
+
+		// Return domain and port for given URL
+		getBaseDomain: function(url) {
+			var url = $.trim(url);
+			if (url.search(/^https?\:\/\//) != -1) {
+				url = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i, "");
+			} else {
+				url = url.match(/^([^\/?#]+)(?:[\/?#]|$)/i, "");
+			}
+			return url[1];
 		},
 
 		scroller: function() {

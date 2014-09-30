@@ -1,10 +1,4 @@
 /***************************************************
-* Make room for our nav bar
-***************************************************/
-html { padding-top: 80px !important; }
-html, body { margin:0; padding: 0;}
-
-/***************************************************
 * Colors and Mixins
 ***************************************************/
 
@@ -46,6 +40,14 @@ $cu-viewport-xl: 1200px;
 @mixin font-stack-for-headings() {
 	font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
 }
+
+/***************************************************
+* Make room for our nav bar
+***************************************************/
+html { padding-top: $cu-nav-height !important; }
+html.cu-companion-bar { padding-top: $cu-nav-height + $cu-companion-height !important;}
+html, body { margin:0; padding: 0;}
+
 
 /***************************************************
 * Universal Nav structure
