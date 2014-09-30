@@ -42,6 +42,23 @@
 			<span class="cu_name">Log In</span>
 		</div>
 
+		<div id="cu_login_form" class="cu_nav_menu cu_dropdown_menu" style="display: none;" data-show-domain="blogs.chapman.edu">
+			<form action="https://blogs.chapman.edu/wp-login.php" method="post">
+
+				<label for="cu_username" style="display:none;">ChapmanU User ID</label>
+				<input name="log" class="username" id="cu_username" type="text" value="ChapmanU User ID" onfocus="if (this.value == 'ChapmanU User ID') {this.value = '';}" onblur="if (this.value == '') {this.value = 'ChapmanU User ID';}" />
+
+				<label for="cu_password" style="display:none;">Password</label>
+				<input name="pwd" class="password" id="cu_password" type="password" value="Password" onfocus="if (this.value == 'Password') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Password';}" />
+
+				<input name="submit" type="submit" id="cu_submit" value="Log In" />
+
+			    <input name="rememberme" class="persist" id="cu_persist" type="checkbox" value="forever" /> 
+			    <label for="cu_persist">Remember Me </label>
+
+			  </form>
+		</div>
+
 		<ul class="cu_dropdown_menu">
 			<li><a class="cu_nav_button" href="https://blackboard.chapman.edu/"><svg viewbox="0 0 512 512"><use xlink:href="//www2.chapman.edu/omni-nav/dist/omni-nav.svg#blackboard" /></svg>Blackboard</a></li>
 			<li><a class="cu_nav_button" href="https://ariel.chapman.edu/WebAdvisor/WebAdvisor"><svg viewbox="0 0 512 512"><use xlink:href="//www2.chapman.edu/omni-nav/dist/omni-nav.svg#cu_monogram" /></svg>WebAdvisor</a></li>

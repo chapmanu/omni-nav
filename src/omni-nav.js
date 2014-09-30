@@ -496,6 +496,9 @@ this.jQuery && (function ($) {
 				if (staging_domain) item.setAttribute('data-show-domain', staging_domain);
 			});
 
+			// Blog login URL
+			$('#cu_login_form').find('form').attr('action', '/wp-login.php');
+
 		},
 
 		// Return domain and port for given URL
@@ -554,6 +557,11 @@ this.jQuery && (function ($) {
 				}
 			});
 
+			// Login
+			$('#cu_login_container').find('.cu_dropdown_menu[data-show-domain]').each(function(index, item) {
+				if (item.getAttribute('data-show-domain').indexOf(domain) >= 0) $(item).show();
+			});
+
 		},
 
 		menuTouch: function(e) {
@@ -563,12 +571,16 @@ this.jQuery && (function ($) {
 		},
 
 		menuClick: function(e) {
+			// Ignore login form clicks
+			if ($(e.target).parents('#cu_login_form').length) return true;
+
 			CU_navbar.menuSelect($(e.target));
 			e.preventDefault();
 			return false;
 		},
 
 		menuSelect: function($target) {
+
 			var $menu = $target.parents('.cu_nav_menu');
 
 			// Show menu if not yet expanded
@@ -581,9 +593,7 @@ this.jQuery && (function ($) {
 			// Rotate Select Element
 			$target.parent('li').addClass('selected').siblings().removeClass('selected');
 
-			console.log("NOW NAVIGATING TO: "+ $target.attr('href'));
-
-			return false;
+			// NAVIGATION IS TRIGGERED FOR: $target.attr('href')
 		},
 
 		hideMenu: function ($menu) {
