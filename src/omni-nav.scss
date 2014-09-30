@@ -116,6 +116,7 @@ html, body { margin:0; padding: 0;}
 
 	div.cu_nav_menu {
 		position: relative;
+		height: $cu-nav-height;
 		z-index: 99090;
 
 		div.cu_dropdown_menu {
