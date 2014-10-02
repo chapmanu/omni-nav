@@ -71,14 +71,33 @@
 	</div>
 
 	<div id="cu_search">
-		<gcse:searchbox gname="cu_search" enableAutoComplete="true" autoCompleteMatchType="any" resultSetSize="6"></gcse:searchbox>
-			<div id="cu_search_results">
-				<div id="cu_search_results_cell">
-					<div id="cu_search_results_ui">
-						<gcse:searchresults gname="cu_search" linkTarget="_self" enableOrderBy="true"></gcse:searchresults>
-					</div>
+
+		<div id="cu_search_box">
+			<form action="//www.chapman.edu/search-results/index.aspx">
+			<table cellspacing="0" cellpadding="0" class="gsc-search-box">
+				<tbody>
+					<tr>
+						<td class="gsc-input">
+							<input id="cu_search_no_js" autocomplete="off" type="text" size="10" class="gsc-input no-js" name="q" title="search" spellcheck="false" style="outline: none;">
+						</td>
+						<td class="gsc-search-button">
+							<input type="button" value="Search" class="gsc-search-button" title="search">
+						</td>
+						<td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</form>
+		</div>
+
+		<div id="cu_search_results">
+			<div id="cu_search_results_cell">
+				<div id="cu_search_results_ui">
+		
 				</div>
 			</div>
+		</div>
 	</div>
 
 </div>

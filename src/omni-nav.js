@@ -15,16 +15,57 @@ this.jQuery && (function ($) {
 		isScrollLocked : false,
 
 		initialize : function() {
-
 			if (!google) {
 				console.log("CU_search cannot initialize because the GSE javascript library has not yet loaded. ");
 				return;
 			}
-
+		
 			// Setup
-			CU_search.gse            = google.search.cse.element.getElement('cu_search');
 			CU_search.$container     = $('#cu_search_results');
 			CU_search.$containerCell = $('#cu_search_results_cell');
+
+			CU_search.enableAjaxSearches();
+
+			// CU_search.resumeHistoryState();
+			// $(window).on('popstate', CU_search.resumeHistoryState);
+
+		},
+
+		/***************************************************
+		* Initializses GCSE elements, and lightbox scripts
+		***************************************************/
+		enableAjaxSearches : function() {
+
+			if (CU_search.gse) return;
+
+			$("#cu_search_box").empty();
+
+			google.search.cse.element.render(
+			{
+				// SEARCH BOX
+				div: 'cu_search_box',
+				tag: 'searchbox',
+				attributes: {
+					// gname: 'two-column',
+					enableAutoComplete: true,
+					autoCompleteMatchType: 'any',
+					resultSetSize: 6,
+					enableHistory: false
+				}
+			},
+			{
+				// RESULTS BOX
+				div: 'cu_search_results_ui',
+				tag: 'searchresults',
+				attributes: {
+					// gname: 'two-column',
+					linkTarget: '_self',
+					enableOrderBy: true
+				}
+			});
+
+			// CU_search.cleanHash();
+			CU_search.gse = google.search.cse.element.getElement('two-column');
 
 			// Show results lightbox on search
 			$("input.gsc-search-button").on('click',function() {
@@ -57,6 +98,29 @@ this.jQuery && (function ($) {
 
 		},
 
+		resumeHistoryState : function() {
+			if (window.location.hash.indexOf('gsc.q') > -1) {
+				console.log("Resuming resutls");
+				CU_search.enableAjaxSearches();
+				CU_search.show();
+			} else {
+				CU_search.hide();
+			}
+		},
+
+		cleanHash : function() {
+			var h = window.location.hash;
+			console.log(h);
+			if (h == '#gsc.tab=0' || h == '#gsc.tab=0&gsc.sort=') {
+
+				var
+				loc = window.location.href,
+				index = loc.indexOf('#');
+
+				if (index > 0) history.replaceState("", document.title, loc.substring(0, index));
+			}
+		},
+
 		// Show the results lightbox when autocomplete is clicked. 
 		bindAutocompleteTasks : function() {
 			if (CU_search.isAutocompleteBound) return;
@@ -81,12 +145,23 @@ this.jQuery && (function ($) {
 			CU_search.$container.fadeIn(80);
 			CU_search.lockScroll();
 			CU_search.visible = true;
+
+			var term = CU_search.gse.getInputQuery();
+
+			$('.gsc-control-cse').find('.more-results').remove();
+			$('.gsc-control-cse').append('<a href="//www.chapman.edu/search-results/index.aspx?q='+encodeURIComponent(term)+'" class="more-results">See more results for "'+term+'"</a>');
+
 		},
 
 		hide : function() {
+			if (!CU_search.visible) return;
+
 			CU_search.$container.fadeOut(40);
 			CU_search.unlockScroll();
 			CU_search.visible = false;
+
+			CU_search.gse.clearAllResults();
+			// CU_search.cleanHash();
 		},
 
 		lockScroll : function() {
@@ -650,26 +725,7 @@ this.jQuery && (function ($) {
 
 	}
 
-	// Insert it before the CSE code snippet so that cse.js can take the script
-	// parameters, like parsetags, callbacks.
-	window.__gcse = {
-		parsetags: 'onload',
-		callback: CU_search.initialize
-	};
 
-
-	// Google Custom Search Script
-	// Must load after window.__gsce is defined
-	(function() {
-	  var cx = '015856566681218627934:2ndbiubovo4';
-	  var gcse = document.createElement('script');
-	  gcse.type = 'text/javascript';
-	  gcse.async = true;
-	  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-	      '//www.google.com/cse/cse.js?cx=' + cx;
-	  var s = document.getElementsByTagName('script')[0];
-	  s.parentNode.insertBefore(gcse, s);
-	})();
 
 	// Define Lazybind
 	$.fn.lazybind = function (event, fn, timeout, abort) {
@@ -697,8 +753,33 @@ this.jQuery && (function ($) {
 		CU_navbar.initialize();
 		// CU_user.initialize();
 
-		
+		// SVG 4 Everybody
 		(function(e,t,n,r,i){function s(t,n){if(n){var r=n.getAttribute("viewBox"),i=e.createDocumentFragment(),s=n.cloneNode(true);if(r){t.setAttribute("viewBox",r)}while(s.childNodes.length){i.appendChild(s.childNodes[0])}t.appendChild(i)}}function o(){var t=this,n=e.createElement("x"),r=t.s;n.innerHTML=t.responseText;t.onload=function(){r.splice(0).map(function(e){s(e[0],n.querySelector("#"+e[1].replace(/(\W)/g,"\\$1")))})};t.onload()}function u(){var i;while(i=t[0]){var a=i.parentNode,f=i.getAttribute("xlink:href").split("#"),l=f[0],c=f[1];a.removeChild(i);if(l.length){var h=r[l]=r[l]||new XMLHttpRequest;if(!h.s){h.s=[];h.open("GET",l);h.onload=o;h.send()}h.s.push([a,c]);if(h.readyState===4){h.onload()}}else{s(a,e.getElementById(c))}}n(u)}if(i){u()}})(document,document.getElementsByTagName("use"),window.requestAnimationFrame||window.setTimeout,{},/Trident\/[567]\b/.test(navigator.userAgent))
+
+
+
+		// Insert it before the CSE code snippet so that cse.js can take the script
+		// parameters, like parsetags, callbacks.
+		window.__gcse = {
+			parsetags: 'explicit',
+			callback: CU_search.initialize
+		};
+
+
+		// Google Custom Search Script
+		// Must load after window.__gsce is defined
+		(function() {
+		  var cx = '015856566681218627934:2ndbiubovo4';
+		  var gcse = document.createElement('script');
+		  gcse.type = 'text/javascript';
+		  gcse.async = true;
+		  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+		      '//www.google.com/cse/cse.js?cx=' + cx;
+		  var s = document.getElementsByTagName('script')[0];
+		  s.parentNode.insertBefore(gcse, s);
+		})();
+
+
 	});
 
 })(jQuery);

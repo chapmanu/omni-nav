@@ -1,9 +1,5 @@
 module.exports = function(grunt) {
 
-	// Configurations
-	var production_assets_url  = '//www2.chapman.edu/omni-nav/'; 
-	var development_assets_url = ''; // Leave blank to use relative URLs
-
 	// Begin Grunt Setup
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -39,23 +35,32 @@ module.exports = function(grunt) {
 				options: {
 					suffix: ';',
 					globals: {
-						base_url: development_assets_url,
-						production_base_url: production_assets_url,
+						base_url: 'dist/',
 						timestamp: Math.round(new Date().getTime() / 1000)
 					}
 				},
 				src: 'src/index.html',
 				dest: 'index.html'
 			},
-			dist: {
+			dist_blogs: {
 				options: {
 					suffix: ';',
 					globals: {
-						base_url: production_assets_url
+						base_url: '/wp-content/plugins/cu-wp-customization/omni-nav/'
 					}
 				},
 				src: 'src/omni-nav.html',
-				dest: 'dist/omni-nav.html'
+				dest: 'dist/html/blogs.chapman.edu/omni-nav.html'
+			},
+			dist_inside: {
+				options: {
+					suffix: ';',
+					globals: {
+						base_url: '/assets/'
+					}
+				},
+				src: 'src/omni-nav.html',
+				dest: 'dist/html/inside.chapman.edu/omni-nav.html'
 			}
 		},
 
