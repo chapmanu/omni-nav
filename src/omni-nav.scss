@@ -50,6 +50,41 @@ html, body { margin:0; padding: 0;}
 
 
 /***************************************************
+* Transitions
+***************************************************/
+
+
+#cu_nav.use-transitions {
+	-webkit-transition: top 0.15s 0s ease-out;
+	   -moz-transition: top 0.15s 0s ease-out;
+	     -o-transition: top 0.15s 0s ease-out;
+	        transition: top 0.15s 0s ease-out;
+
+
+	div.dropdown_menu {
+		-webkit-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
+		   -moz-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
+		     -o-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
+		        transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
+	}
+
+	a.cu_nav_button {
+		-webkit-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
+		   -moz-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
+		     -o-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
+		        transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
+	}
+}
+
+#cu_companion_bar {
+	-webkit-transition: top 0.15s 0s ease-out;
+	   -moz-transition: top 0.15s 0s ease-out;
+	     -o-transition: top 0.15s 0s ease-out;
+	        transition: top 0.15s 0s ease-out;
+}
+
+
+/***************************************************
 * Universal Nav structure
 ***************************************************/
 
@@ -70,13 +105,6 @@ html, body { margin:0; padding: 0;}
 	border-bottom: 1px solid $cu-nav-border;
 
 	* { box-sizing: border-box; }
-
-	////////////////
-	// Animation
-	-webkit-transition: top 0.15s 0s ease-out;
-	   -moz-transition: top 0.15s 0s ease-out;
-	     -o-transition: top 0.15s 0s ease-out;
-	        transition: top 0.15s 0s ease-out;
 
 	ul.cu_nav_menu {
 		@include reset-box-model();
@@ -123,13 +151,6 @@ html, body { margin:0; padding: 0;}
 			max-height: 0px;
 			padding: 0 20px;
 			overflow: hidden;
-
-			////////////////
-			// Animation
-			-webkit-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
-			   -moz-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
-			     -o-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
-			        transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
 		}
 
 
@@ -209,14 +230,6 @@ a.cu_nav_button {
 			fill: $chapman-red;
 		}
 	}
-
-
-	////////////////
-	// Animations
-	-webkit-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
-	   -moz-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
-	     -o-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
-	        transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
 
 }
 
@@ -764,14 +777,6 @@ a.cu_nav_button {
 	top: $cu-nav-height;
 	width: 100%;
 	z-index: 99000;
-
-	////////////////
-	// Animations
-	-webkit-transition: top 0.15s 0s ease-out;
-	   -moz-transition: top 0.15s 0s ease-out;
-	     -o-transition: top 0.15s 0s ease-out;
-	        transition: top 0.15s 0s ease-out;
-
 
 	&.nav-down {
 		top: $cu-nav-height;

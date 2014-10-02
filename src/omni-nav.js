@@ -425,6 +425,8 @@ this.jQuery && (function ($) {
 			this.selectDomain(window.location);
 			this.initializeCompanionBar();
 
+			this.$container.addClass('use-transitions');
+
 			// Click action
 			this.$menus.on('click', CU_navbar.menuClick);
 
