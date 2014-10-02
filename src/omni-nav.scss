@@ -41,6 +41,13 @@ $cu-viewport-xl: 1200px;
 	font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
 }
 
+@mixin wordpress-admin-bar-spacing() {
+	.logged-in.admin-bar & { margin-top:32px; }
+	@media screen and (max-width: 782px) {
+		.logged-in.admin-bar & { margin-top:46px; }
+	}
+}
+
 /***************************************************
 * Make room for our nav bar
 ***************************************************/
@@ -91,13 +98,12 @@ html, body { margin:0; padding: 0;}
 #cu_nav {
 	@include reset-box-model();
 	@include font-stack-for-headings();
+	@include wordpress-admin-bar-spacing();
 
 	width: 100%;
 	height: $cu-nav-height;
 	position: fixed;
 	top: 0;
-
-	.logged-in.admin-bar & { margin-top:32px; }
 
 	z-index: 99100;
 
@@ -406,12 +412,16 @@ a.cu_nav_button {
 
 // Search Autocomplete Suggestion box
 .gssb_c[style] {
+	@include wordpress-admin-bar-spacing();
+	
 	position: fixed !important;
 	top: ($cu-nav-height - 10px) !important;
 	z-index: 99200;
 }
 
 #cu_search_results {
+	@include wordpress-admin-bar-spacing();
+
 	display:none;
 	width: 100%;
 	height: 100%;
@@ -430,6 +440,8 @@ a.cu_nav_button {
 		height: 100%;
 
 		#cu_search_results_ui {
+			@include wordpress-admin-bar-spacing();
+
 			position: fixed;
 			overflow: scroll;
 			top: $cu-nav-height;
@@ -764,6 +776,7 @@ a.cu_nav_button {
 
 #cu_companion_bar {
 	@include font-stack-for-headings();
+	@include wordpress-admin-bar-spacing();
 
 	background: rgba(150,150,150,1);
 	color: #DDD;
@@ -777,6 +790,8 @@ a.cu_nav_button {
 	top: $cu-nav-height;
 	width: 100%;
 	z-index: 99000;
+
+
 
 	&.nav-down {
 		top: $cu-nav-height;
