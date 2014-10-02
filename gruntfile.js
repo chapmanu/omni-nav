@@ -40,7 +40,8 @@ module.exports = function(grunt) {
 					suffix: ';',
 					globals: {
 						base_url: development_assets_url,
-						production_base_url: production_assets_url
+						production_base_url: production_assets_url,
+						timestamp: Math.round(new Date().getTime() / 1000)
 					}
 				},
 				src: 'src/index.html',
@@ -64,11 +65,11 @@ module.exports = function(grunt) {
 			},
 			scripts: {
 				files: ['src/*.js'],
-				tasks: ['uglify']
+				tasks: ['uglify', 'includereplace']
 			},
 			css: {
 				files: ['src/*.scss'],
-				tasks: ['sass']
+				tasks: ['sass', 'includereplace']
 			},
 			svg: {
 				files: ['src/omni-nav.svg'],

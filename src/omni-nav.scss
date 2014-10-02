@@ -83,7 +83,7 @@ html, body { margin:0; padding: 0;}
 		position: relative;
 		z-index: 99090;
 		float: left;
-		height: $cu-nav-height;
+		min-height: $cu-nav-height;
 
 		&.expanded {
 			padding-top: $cu-nav-height;
@@ -116,7 +116,7 @@ html, body { margin:0; padding: 0;}
 
 	div.cu_nav_menu {
 		position: relative;
-		height: $cu-nav-height;
+		min-height: $cu-nav-height;
 		z-index: 99090;
 
 		div.cu_dropdown_menu {
@@ -716,6 +716,8 @@ a.cu_nav_button {
 	.cu_nav_secondary {
 		max-width: 45px;
 		overflow: hidden;
+
+		font-size: 11px;
 		
 		li.selected a { width: 45px; color: #FFFFFF; }
 

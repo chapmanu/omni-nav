@@ -428,9 +428,6 @@ this.jQuery && (function ($) {
 			// Click action
 			this.$menus.on('click', CU_navbar.menuClick);
 
-			// Tap action
-			this.$menus.on('touchstart', CU_navbar.menuTouch);
-
 			// Mouse Hover FX
 			this.$menus.lazybind('mouseenter', function (e) {
 				CU_navbar.showMenu($(e.target).parents('.cu_nav_menu'));
@@ -565,50 +562,46 @@ this.jQuery && (function ($) {
 
 		},
 
-		menuTouch: function(e) {
-			CU_navbar.menuSelect($(e.target), e);
-		},
-
 		menuClick: function(e) {
-			// Ignore login form clicks
-			if ($(e.target).parents('#cu_login_form').length) return true;
-
-			CU_navbar.menuSelect($(e.target), e);
+			CU_navbar.menuSelect(e);
 		},
 
-		menuSelect: function($target, e) {
+		menuSelect: function(e) {
 
-			var $menu = $target.parents('.cu_nav_menu');
+			var $target = $(e.target);
+			var $menu = ($target.hasClass('cu_nav_menu')) ? $target : $target.parents('.cu_nav_menu');
+
+			// Ignore login form clicks
+			if ($target.parents('#cu_login_form').length) return true;
 
 			// Show menu if not yet expanded
 			if (!$menu.hasClass('expanded')) {
-				CU_navbar.showMenu($menu);
 
+				CU_navbar.showMenu($menu);
 				e.preventDefault();
 				return false;
 
 			} else if ($target.parent('li').hasClass('selected')) {
+
 				CU_navbar.hideMenu($menu);
 
-				if (e.type != 'click') {
-					e.preventDefault();
-					return false;
-				}
-			
 			} else {
-				CU_navbar.hideMenu($menu);
 
-				// Rotate Select Element
-				$target.parent('li').addClass('selected').siblings().removeClass('selected');
+				CU_navbar.hideMenu($menu);
+				$target.parent('li').addClass('selected').siblings().removeClass('selected'); // Rotate Select Element
+
+				return true;
 			}
 
 		},
 
 		hideMenu: function ($menu) {
+			CU_navbar.menu_is_open = false;
 			$menu.removeClass('expanded');
 		},
 
 		showMenu: function ($menu) {
+			CU_navbar.menu_is_open = true;
 			$menu.siblings().removeClass('expanded');
 			$menu.addClass('expanded');
 		},
