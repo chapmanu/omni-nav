@@ -148,7 +148,6 @@ html, body { margin:0; padding: 0;}
 	}
 
 	div.cu_nav_menu {
-		position: relative;
 		min-height: $cu-nav-height;
 		z-index: 99090;
 
@@ -272,11 +271,14 @@ a.cu_nav_button {
 #cu_search {
 	@include reset-box-model();
 
+	position: absolute;
+	top:0;
+	right: 40px;
+
 	width: 120px;
 	padding: 8px 0;
-	float: right;
 
-	margin-right: -180px;
+	// margin-right: -180px;
 
 	.gsc-search-box {
 		margin: 0;
@@ -512,7 +514,10 @@ a.cu_nav_button {
 
 #cu_login_container {
 	@include reset-box-model();
-	float: right;
+
+	position: absolute;
+	top: 0;
+	right:0;
 	
 	#cu_identity {
 		@include reset-box-model();
@@ -529,7 +534,8 @@ a.cu_nav_button {
 
 		.cu_name { display: none; }
 
-		svg {
+		svg,
+		img {
 			width: 20px;
 			height: 20px;
 			margin-right: 8px;
@@ -719,6 +725,7 @@ a.cu_nav_button {
 	#cu_login_container #cu_identity .cu_name { display: inline-block; }
 
 	#cu_search {
+		right: 220px;
 		width: 270px;
 
 		.gsc-control-cse {
@@ -802,6 +809,17 @@ a.cu_nav_button {
 		}
 	}
 }
+
+
+/***************************************************
+* User Area
+***************************************************/
+#wp-admin-bar-top-secondary { display: none;}
+
+#cu_nav #cu_logged_in .avatar { border-radius: 50%; float: left; width:48px; margin-right:10px; height:auto; }
+#cu_nav #cu_logged_in .label { font-size:12px; line-height: 12px; margin:0; opacity:0.5; }
+#cu_nav #cu_logged_in .label:after { content: ","; }
+#cu_nav #cu_logged_in .cu_display_name { font-size:16px; font-weight: bold; line-height: 16px; margin:0; color: #353430; }
 
 
 /***************************************************

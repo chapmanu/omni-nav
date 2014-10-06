@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 				options: {
 					suffix: ';',
 					globals: {
-						base_url: 'dist/',
+						base_url: 'dist/omni-nav.svg',
 						timestamp: Math.round(new Date().getTime() / 1000)
 					}
 				},
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 				options: {
 					suffix: ';',
 					globals: {
-						base_url: '/wp-content/plugins/cu-wp-customization/omni-nav/'
+						base_url: '/wp-content/plugins/cu-wp-customization/omni-nav/omni-nav.svg'
 					}
 				},
 				src: 'src/omni-nav.html',
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 				options: {
 					suffix: ';',
 					globals: {
-						base_url: '/assets/'
+						base_url: 'asset_path(\'/assets/omni-nav.svg\')'
 					}
 				},
 				src: 'src/omni-nav.html',

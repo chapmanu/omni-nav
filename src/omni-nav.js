@@ -4,11 +4,11 @@ if (!window.jQuery) console.log("jQuery is not loaded and so the Universal Nav b
 this.jQuery && (function ($) {
 
 	var dev_urls = {
-		'wwwtest.chapman.edu'        : 'www.chapman.edu',
-		'dev-blogs.chapman.edu'      : 'blogs.chapman.edu',
-		'socialdev.chapman.edu'      : 'social.chapman.edu',
-		'insdv-dev-wb01.chapman.edu' : 'inside.chapman.edu',
-		'localhost'                  : '206.211.143.174'
+		'wwwtest.chapman.edu'          : 'www.chapman.edu',
+		'dev-blogs.chapman.edu'        : 'blogs.chapman.edu',
+		'socialdev.chapman.edu'        : 'social.chapman.edu',
+		'socialdev.chapman.edu/inside' : 'inside.chapman.edu',
+		'localhost'                    : '206.211.143.174'
 	}
 
 	var CU_search = {
@@ -673,6 +673,16 @@ this.jQuery && (function ($) {
 		},
 
 		hideMenu: function ($menu) {
+			// Do nothing if there is a form being filled out
+			if ($menu.find(':focus').length > 0) {
+				console.log("We found a form in focus");
+				return;	
+			} else {
+				console.log("No form in focus");
+			}
+
+			console.log($menu.find(':focus'));
+
 			CU_navbar.menu_is_open = false;
 			$menu.removeClass('expanded');
 		},
