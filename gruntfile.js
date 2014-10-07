@@ -60,7 +60,17 @@ module.exports = function(grunt) {
 					}
 				},
 				src: 'src/omni-nav.html',
-				dest: 'dist/html/inside.chapman.edu/omni-nav.html'
+				dest: 'dist/html/inside.chapman.edu/omni-nav-NEEDS-REPLACEMENTS.html'
+			},
+			dist_www: {
+				options: {
+					suffix: ';',
+					globals: {
+						base_url: '/_files/img/omni-nav.svg'
+					}
+				},
+				src: 'src/omni-nav.html',
+				dest: 'dist/html/www.chapman.edu/omni-nav.html'
 			}
 		},
 
