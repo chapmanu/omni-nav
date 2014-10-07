@@ -5,8 +5,8 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js" type="text/javascript"></script>
 
-	<link rel="stylesheet" type="text/css" href="dist/omni-nav.min.css?ver=1412636049">
-	<script type="text/javascript" src="dist/omni-nav.min.js?ver=1412636049"></script>
+	<link rel="stylesheet" type="text/css" href="dist/omni-nav.min.css?ver=1412701797">
+	<script type="text/javascript" src="dist/omni-nav.min.js?ver=1412701797"></script>
 
 	<script type="text/javascript" src="//use.typekit.net/nqy1aog.js"></script>
 	<script>try{Typekit.load();}catch(e){}</script>
@@ -65,27 +65,26 @@
 
 		<p>This page demonstrates how the OmniBar functions, and provides some useful information about what is needed to implement it on a website.</p>
 
-		<a href="http://www.google.com">TEST LINK</a>
-
 		<h2>Instructions to add to a site</h2>
-		<p>Link to the following in the <b>&lang; head &rang;</b> of the page: </p>
+		<p>First, publish all of the assets in the `/dist/` folder to your web server. </p>
+		<p>Then link to the following in the <b>&lang; head &rang;</b> of the page: </p>
 
 		<blockquote>
 			<ul>
-				<li>@@production_base_url;dist/omni-nav.min.js (7kb)</li>
-				<li>@@production_base_url;dist/omni-nav.min.css (13kb)</li>
+				<li>omni-nav.min.js (7kb)</li>
+				<li>omni-nav.min.css (13kb)</li>
 			</ul>
 		</blockquote>
 
-		<p>Use a server-side include* to pull in this HTML file right before the closing <b>&lang; body &rang;</b> tag:</p>
+		<p>Use a server-side include* to add this HTML right before the closing <b>&lang; body &rang;</b> tag, or in the header of your page. It doesn't matter where.</p>
 
 		<blockquote>
 			<ul>
-				<li>@@production_base_url;dist/omni-nav.html (5kb)</li>
+				<li>omni-nav.html (5kb)</li>
 			</ul>
 		</blockquote>
 
-		<p class="small"><em>* It is highly recommended to use server-side caching when including this file in order to increase performance.  If the file is unreachable, the server should be configured to serve the cached asset indefinitely. </em></p>
+		<!-- <p class="small"><em>* It is highly recommended to use server-side caching when including this file in order to increase performance.  If the file is unreachable, the server should be configured to serve the cached asset indefinitely. </em></p> -->
 
 
 
@@ -104,11 +103,7 @@
 			</ul>
 		</blockquote>
 
-		<p>Make sure to run grunt to compile your assets, then make sure to deploy to this asset server:</p>
-
-		<blockquote>
-			<p>@@production_base_url;</p>
-		</blockquote>
+		<p>Make sure to run grunt to compile your assets before publishing.</p>
 
 
 		<br /><br /><br /><br /><br /><br />
