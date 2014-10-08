@@ -31,9 +31,12 @@ $cu-viewport-xl: 1200px;
 
 @mixin reset-box-model($display: block) {
 	display: $display;
-	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	box-sizing: border-box; 
 }
 
 @mixin font-stack-for-headings() {
@@ -109,7 +112,11 @@ html, body { margin:0; padding: 0;}
 	background-color: $cu-nav-background;
 	border-bottom: 1px solid $cu-nav-border;
 
-	* { box-sizing: border-box; }
+	* {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
 
 	ul.cu_nav_menu {
 		@include reset-box-model();
@@ -592,9 +599,8 @@ a.cu_nav_button {
 			font-size:12px; 
 			border:1px solid #D8D6D0; 
 			border-radius: 2px; 
-			-moz-box-sizing: border-box; 
-			box-sizing: border-box; 
 			box-shadow: none;
+			box-sizing: border-box;
 			color:#9a9996;
 			margin: 4px 0px; 
 		}
