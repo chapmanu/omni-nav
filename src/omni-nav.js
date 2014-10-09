@@ -650,7 +650,7 @@ this.jQuery && (function ($) {
 						}
 
 						// Currently selected items
-						if (path.indexOf(item_path) >= 0) {
+						if (item_path != '/' && path.indexOf(item_path) >= 0) {
 							$(item).addClass('selected').siblings().removeClass('selected');
 						}
 					});
