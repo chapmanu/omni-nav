@@ -501,8 +501,6 @@ this.jQuery && (function ($) {
 			this.setupSecondaryNav(window.location);
 			this.initializeCompanionBar();
 
-			this.$container.addClass('use-transitions');
-
 			// Click action
 			this.$menus.on('click', CU_navbar.menuClick);
 
@@ -525,6 +523,10 @@ this.jQuery && (function ($) {
 			}
 
 			CU_navbar.resizer();
+
+			setTimeout(function() {
+				CU_navbar.$container.addClass('use-transitions');
+			}, 250);
 
 		},
 
