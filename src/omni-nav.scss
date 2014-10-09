@@ -139,6 +139,9 @@ html, body { margin:0; padding: 0;}
 				position: absolute;
 				top: 0;
 			}
+
+			&.hidden-unless-default { display: none; }
+			&.hidden-unless-default.selected { display: block; }
 		}
 
 		&#cu_nav_domain {

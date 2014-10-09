@@ -1,7 +1,6 @@
 <div id="cu_nav">
 	<ul id="cu_nav_domain" class="cu_nav_menu cu_nav_selectable">
 		<li class="selected"><a class="cu_nav_button" href="http://www.chapman.edu">@@include('svg.html', {"n": "cu_window"});Chapman.edu</a></li>
-		<!-- <li><a class="cu_nav_button" href="http://events.chapman.edu">@@include('svg.html', {"n": "calendar"});Events</a></li> -->
 		<li><a class="cu_nav_button" href="http://blogs.chapman.edu">@@include('svg.html', {"n": "newspaper"});Blogs.Chapman</a></li>
 		<li><a class="cu_nav_button" href="http://social.chapman.edu">@@include('svg.html', {"n": "chat"});Social.Chapman</a></li>
 		<li><a class="cu_nav_button" href="http://inside.chapman.edu">@@include('svg.html', {"n": "cu_monogram"});Inside.Chapman</a></li>
@@ -24,6 +23,25 @@
 	</ul>
 
 	<ul class="cu_nav_secondary cu_nav_menu cu_nav_selectable" style="display: none;" data-show-domain="www.chapman.edu">
+		<li data-hide-path="/law"><a class="cu_nav_button" href="/admission/admitted-students">Admitted Students</a></li>
+		<li data-hide-path="/law"><a class="cu_nav_button" href="/alumni">Alumni</a></li>
+		<li data-hide-path="/law"><a class="cu_nav_button" href="/community-business">Community &amp; Businesses</a></li>
+		<li data-hide-path="/law"><a class="cu_nav_button" href="/faculty-staff">Faculty &amp; Staff</a></li>
+		<li data-hide-path="/law"><a class="cu_nav_button" href="/families">Parents &amp; Families</a></li>
+		<li data-hide-path="/law"><a class="cu_nav_button" href="/future-students">Prospective Students</a></li>
+		<li data-hide-path="/law"><a class="cu_nav_button" href="/students">Students</a></li>
+		
+		<li data-show-path="/law"><a class="cu_nav_button" href="/law/admission">Future Law Students</a></li>
+		<li data-show-path="/law"><a class="cu_nav_button" href="/law/admission/newly-admitted">New Students</a></li>
+		<li data-show-path="/law"><a class="cu_nav_button" href="/law/student-resources">Current Students</a></li>
+		<li data-show-path="/law"><a class="cu_nav_button" href="/law/law-faculty">Faculty &amp; Staff</a></li>
+		<li data-show-path="/law"><a class="cu_nav_button" href="/law/alumni">Alumni</a></li>
+		<li data-show-path="/law"><a class="cu_nav_button" href="/law/employers">Employers</a></li>
+
+		<li class="selected hidden-unless-default"><a class="cu_nav_button" href="#">Find information for...</a></li>
+	</ul>
+
+	<ul class="cu_nav_secondary cu_nav_menu cu_nav_selectable" style="display: none;" data-show-domain="www.chapman.edu" data-show-path="">
 		<li><a class="cu_nav_button" href="/admission/admitted-students">Admitted Students</a></li>
 		<li><a class="cu_nav_button" href="/alumni">Alumni</a></li>
 		<li><a class="cu_nav_button" href="/community-business">Community &amp; Businesses</a></li>
