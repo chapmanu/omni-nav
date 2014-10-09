@@ -661,7 +661,8 @@ this.jQuery && (function ($) {
 		},
 
 		menuClick: function(e) {
-			CU_navbar.menuSelect(e);
+			var modifierKey = (e.metaKey || e.ctrlKey);
+			if (!modifierKey) CU_navbar.menuSelect(e);
 		},
 
 		menuSelect: function(e) {
