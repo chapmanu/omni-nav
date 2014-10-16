@@ -19,7 +19,7 @@ this.jQuery && (function ($) {
 				console.log("CU_search cannot initialize because the GSE javascript library has not yet loaded. ");
 				return;
 			}
-		
+
 			// Setup
 			CU_search.$container     = $('#cu_search_results');
 			CU_search.$containerCell = $('#cu_search_results_cell');
@@ -71,8 +71,8 @@ this.jQuery && (function ($) {
 			$("input.gsc-search-button").on('click',function() {
 				if (CU_search.gse.getInputQuery().length <= 0){
 					$('.gsc-input').focus();
-					return;	
-				} 
+					return;
+				}
 				CU_search.show();
 			});
 
@@ -88,7 +88,7 @@ this.jQuery && (function ($) {
 
 				// GCS scrolls the window on pagination... Let's hotfix that!
 				var scrollPosition = jQuery('html').data('scroll-position');
-				window.scrollTo(scrollPosition[0], scrollPosition[1]); 
+				window.scrollTo(scrollPosition[0], scrollPosition[1]);
 			});
 
 			// Close lightbox on esc key
@@ -121,7 +121,7 @@ this.jQuery && (function ($) {
 			}
 		},
 
-		// Show the results lightbox when autocomplete is clicked. 
+		// Show the results lightbox when autocomplete is clicked.
 		bindAutocompleteTasks : function() {
 			if (CU_search.isAutocompleteBound) return;
 
@@ -230,7 +230,7 @@ this.jQuery && (function ($) {
 		},
 
 		/***************************************************
-		* Checks with the server for the logged in status of the user. 
+		* Checks with the server for the logged in status of the user.
 		***************************************************/
 		checkStatus : function() {
 			$.ajax( "http://localhost:3000/users/status" )
@@ -272,7 +272,7 @@ this.jQuery && (function ($) {
 		},
 
 		/***************************************************
-		* Writes current user data to a cookie in the browser. 
+		* Writes current user data to a cookie in the browser.
 		***************************************************/
 		saveData : function() {
 
@@ -289,7 +289,7 @@ this.jQuery && (function ($) {
 			CU_user.userinfo = undefined;
 			CU_user.docCookies.removeItem(CU_user.cookie_name);
 
-			// Ajax to the server to log this person out. 
+			// Ajax to the server to log this person out.
 		},
 
 		/***************************************************
@@ -307,13 +307,13 @@ this.jQuery && (function ($) {
 		* Show logged in
 		***************************************************/
 		displayLoggedIn : function() {
-			
 
-			// Set UI display info	
+
+			// Set UI display info
 			$('.cu_name').html(CU_user.userinfo.display_name);
 			$('.cu_first_name').html(CU_user.userinfo.first_name);
 
-			// Set Avatar 
+			// Set Avatar
 			$(CU_user.login_container).find(".avatar").attr('src', CU_user.userinfo.avatar);
 
 			CU_navbar.$container.removeClass("login-pending");
@@ -359,7 +359,7 @@ this.jQuery && (function ($) {
 		},
 
 		/***************************************************
-		* Log the user out. 
+		* Log the user out.
 		***************************************************/
 		doLogout : function() {
 			// cookie and display
@@ -370,7 +370,7 @@ this.jQuery && (function ($) {
 		},
 
 		/***************************************************
-		* Check the credentials and attempt to log the user in. 
+		* Check the credentials and attempt to log the user in.
 		***************************************************/
 		doLogin : function() {
 
@@ -388,13 +388,13 @@ this.jQuery && (function ($) {
 			var request = $.ajax({
 				url: form_action,
 				type: "POST",
-				data: { 
+				data: {
 					username : user_name,
 					password : user_pass
 				},
 				dataType: "json"
 			});
-			
+
 			// ON SUCCESS
 			request.done(function( data ) {
 
@@ -413,7 +413,7 @@ this.jQuery && (function ($) {
 				user_pass = '';
 				$(CU_user.login_form).find(".password").val('');
 			});
-			
+
 			// ON FAILURE
 			request.fail(function( jqXHR, textStatus ) {
 
@@ -497,8 +497,8 @@ this.jQuery && (function ($) {
 			this.$companion_bar = $('#cu_companion_bar');
 
 			this.adjustEnvironment();
-			this.selectDomain(window.location);
-			this.setupSecondaryNav(window.location);
+			this.selectDomain(CU_navbar.getCurrentDomain(), window.location.pathname);
+			this.setupSecondaryNav(CU_navbar.getCurrentDomain(), window.location.pathname);
 			this.initializeCompanionBar();
 
 			// Click action
@@ -599,11 +599,12 @@ this.jQuery && (function ($) {
 			CU_navbar.document_height = $(document).height();
 		},
 
-		// Change the domain picker to the specified domain
-		selectDomain: function(url) {
+		getCurrentDomain: function() {
+			return (window.location.hostname == 'chapman.edu') ? 'wwww.chapman.edu' : window.location.hostname;
+		},
 
-			var domain = url.hostname;
-			var path = url.pathname;
+		// Change the domain picker to the specified domain
+		selectDomain: function(domain, path) {
 
 			// Set domain picker
 			$("#cu_nav_domain").find('.cu_nav_button').each(function(index, item) {
@@ -614,8 +615,6 @@ this.jQuery && (function ($) {
 				}
 			});
 
-
-
 			// Login
 			$('#cu_login_container').find('.cu_dropdown_menu[data-show-domain]').each(function(index, item) {
 				if (item.getAttribute('data-show-domain').indexOf(domain) >= 0) $(item).show();
@@ -623,10 +622,7 @@ this.jQuery && (function ($) {
 
 		},
 
-		setupSecondaryNav: function(url) {
-
-			var domain = url.hostname;
-			var path = url.pathname;
+		setupSecondaryNav: function(domain, path) {
 
 			// Set secondary nav
 			$('.cu_nav_secondary').each(function(index, item) {
@@ -700,7 +696,7 @@ this.jQuery && (function ($) {
 			// Do nothing if there is a form being filled out
 			if ($menu.find(':focus').length > 0) {
 				console.log("We found a form in focus");
-				return;	
+				return;
 			} else {
 				console.log("No form in focus");
 			}
@@ -720,7 +716,7 @@ this.jQuery && (function ($) {
 		checkNavBar: function() {
 
 			var st = $(window).scrollTop();
-				
+
 			// Minimum distance to trigger a change
 			if (Math.abs(CU_navbar.lastScrollTop - st) <= 5) return;
 
@@ -735,7 +731,7 @@ this.jQuery && (function ($) {
 			if (!CU_navbar.nav_visible && (st < this.nav_bar_height || st < CU_navbar.lastScrollTop )) {
 
 				// Ignore if past document height
-				if ((st + CU_navbar.window_height >= CU_navbar.document_height) && CU_navbar.window_height != CU_navbar.document_height) return; 
+				if ((st + CU_navbar.window_height >= CU_navbar.document_height) && CU_navbar.window_height != CU_navbar.document_height) return;
 
 				CU_navbar.showNavBar();
 			}
