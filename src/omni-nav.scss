@@ -34,9 +34,9 @@ $cu-viewport-xl: 1200px;
 	margin: 0;
 	padding: 0;
 
-	-webkit-box-sizing: border-box; 
-	-moz-box-sizing: border-box; 
-	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 @mixin font-stack-for-headings() {
@@ -149,7 +149,7 @@ html, body { margin:0; padding: 0;}
 		}
 
 		&.cu_nav_secondary {
-			width: $cu-secondary-width; 
+			width: $cu-secondary-width;
 			li {
 				width: $cu-secondary-width;
 				&.selected { border-left: 1px solid $cu-nav-border; }
@@ -188,7 +188,7 @@ a.cu_nav_button {
 
 	transition: color 0.1s ease-out;
 
-	&:link, 
+	&:link,
 	&:visited { color: $cu-nav-text; }
 
 	svg {
@@ -322,7 +322,7 @@ a.cu_nav_button {
 
 	// The description at the top: "About 3,760 results (0.42 seconds)"
 	.gsc-result-info {
-		font-size: 12px; 
+		font-size: 12px;
 		color: #AAAAAA;
 	}
 
@@ -351,7 +351,7 @@ a.cu_nav_button {
 	.gs-visibleUrl {
 		color: #AAAAAA;
 		font-size: 12px;
-		line-height: 16px; 
+		line-height: 16px;
 		margin: 4px 0;
 	}
 
@@ -359,13 +359,13 @@ a.cu_nav_button {
 	.gs-snippet {
 		color: #666666;
 		font-size: 12px;
-		line-height: 16px; 
+		line-height: 16px;
 	}
 
 	// Custom hacky more results link
 	.more-results {
 		display: block;
-		padding: 14px; 
+		padding: 14px;
 		margin: 0 auto;
 		background: $page-bg-color;
 		border-radius: 3px;
@@ -383,7 +383,7 @@ a.cu_nav_button {
 
 	// Misc. Appearance tweaks
 	.gsc-clear-button { display: none; }
-	.gsc-selected-option-container { min-width: 80px !important; cursor: pointer; }
+	.gsc-selected-option-container { min-width: 95px !important; cursor: pointer; }
 	.gsc-option-menu-item { padding: 0 15px; }
 	.gsc-above-wrapper-area { padding-top:0; margin-bottom: 15px; }
 	.gsc-control-cse { padding: 18px 23px 15px 20px; }
@@ -409,10 +409,10 @@ a.cu_nav_button {
 
 			.gsc-cursor-page {
 				display: inline-block;
-				padding: 8px 10px; 
+				padding: 8px 10px;
 				background: $page-bg-color;
 
-				text-decoration: none; 
+				text-decoration: none;
 
 				border-radius: 3px;
 
@@ -459,7 +459,7 @@ a.cu_nav_button {
 // Search Autocomplete Suggestion box
 .gssb_c[style] {
 	@include wordpress-admin-bar-spacing();
-	
+
 	position: fixed !important;
 	top: ($cu-nav-height - 10px) !important;
 	z-index: 99200;
@@ -528,10 +528,10 @@ a.cu_nav_button {
 	position: absolute;
 	top: 0;
 	right:0;
-	
+
 	#cu_identity {
 		@include reset-box-model();
-		
+
 		display: block;
 		cursor: pointer;
 
@@ -596,16 +596,16 @@ a.cu_nav_button {
 
 		#cu_username,
 		#cu_password {
-			width:100%; 
-			padding:7px; 
+			width:100%;
+			padding:7px;
 			font-family:"RooneySans","proxima-nova-soft", "futura-pt", Arial, Verdana, "Sans Serif";
-			font-size:12px; 
-			border:1px solid #D8D6D0; 
-			border-radius: 2px; 
+			font-size:12px;
+			border:1px solid #D8D6D0;
+			border-radius: 2px;
 			box-shadow: none;
 			box-sizing: border-box;
 			color:#9a9996;
-			margin: 4px 0px; 
+			margin: 4px 0px;
 		}
 
 		#cu_username:focus,
@@ -619,13 +619,13 @@ a.cu_nav_button {
 			cursor: pointer;
 			 -webkit-box-shadow: none;
 			box-shadow: none;
-			box-sizing: border-box; 
+			box-sizing: border-box;
 			outline: 0;
 			-webkit-appearance:none;
 			display: inline-block;
 			line-height: 0;
 			height: 14px;
-			margin: -1px 3px 0 0; 
+			margin: -1px 3px 0 0;
 			padding: 0!important;
 			text-align: center;
 			vertical-align: middle;
@@ -781,7 +781,7 @@ a.cu_nav_button {
 			li { width:100% !important; }
 		}
 		&.expanded li a {
-			
+
 			width: 100% !important;
 		}
 	}
@@ -793,12 +793,12 @@ a.cu_nav_button {
 		overflow: hidden;
 
 		font-size: 11px;
-		
+
 		li.selected a { width: 45px; color: #FFFFFF; }
 
 		li a,
 		&.expanded li.selected a { width: $cu-domain-width; color: $cu-nav-text; }
-		
+
 
 		&.expanded {
 			overflow: visible;
@@ -813,7 +813,7 @@ a.cu_nav_button {
 			li { width:100% !important; }
 		}
 		&.expanded li a {
-			
+
 			width: 100% !important;
 		}
 	}
