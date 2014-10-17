@@ -138,6 +138,12 @@ this.jQuery && (function ($) {
 		},
 
 		show : function() {
+
+			var term = CU_search.gse.getInputQuery();
+
+			$('.gsc-control-cse').find('.more-results').remove();
+			$('.gsc-control-cse').append('<a href="//www.chapman.edu/search-results/index.aspx?q='+encodeURIComponent(term)+'" class="more-results">See more results for "'+term+'"</a>');
+
 			if (CU_search.visible) return;
 
 			$('.gsc-input').blur();
@@ -145,11 +151,6 @@ this.jQuery && (function ($) {
 			CU_search.$container.fadeIn(80);
 			CU_search.lockScroll();
 			CU_search.visible = true;
-
-			var term = CU_search.gse.getInputQuery();
-
-			$('.gsc-control-cse').find('.more-results').remove();
-			$('.gsc-control-cse').append('<a href="//www.chapman.edu/search-results/index.aspx?q='+encodeURIComponent(term)+'" class="more-results">See more results for "'+term+'"</a>');
 
 		},
 
