@@ -1,6 +1,9 @@
 // This code will not run if jQuery is not loaded
 if (!window.jQuery) console.log("jQuery is not loaded and so the Universal Nav bar cannot initialize!");
 
+// Make object available globally
+var CU_navbar;
+
 this.jQuery && (function ($) {
 
 	var dev_urls = {
@@ -100,7 +103,6 @@ this.jQuery && (function ($) {
 
 		resumeHistoryState : function() {
 			if (window.location.hash.indexOf('gsc.q') > -1) {
-				console.log("Resuming resutls");
 				CU_search.enableAjaxSearches();
 				CU_search.show();
 			} else {
@@ -110,7 +112,6 @@ this.jQuery && (function ($) {
 
 		cleanHash : function() {
 			var h = window.location.hash;
-			console.log(h);
 			if (h == '#gsc.tab=0' || h == '#gsc.tab=0&gsc.sort=') {
 
 				var
@@ -241,17 +242,17 @@ this.jQuery && (function ($) {
 				if (!data.user_name) {
 					CU_user.removeData();
 					CU_user.updateDisplay();
-					console.log("User not logged in. Killing user.");
+					// console.log("User not logged in. Killing user.");
 
 				} else if (JSON.stringify(data) !== JSON.stringify(CU_user.userinfo)) {
 					CU_user.userinfo = data;
 					CU_user.saveData();
 					CU_user.updateDisplay();
 
-					console.log("Cookie data differed. Updating from server!");
+					// console.log("Cookie data differed. Updating from server!");
 
 				} else {
-					console.log("No change. Doing nothing.");
+					// console.log("No change. Doing nothing.");
 				}
 
 			});
@@ -484,10 +485,12 @@ this.jQuery && (function ($) {
 		} // end docCookies
 	};
 
-	var CU_navbar = {
+	// CU_navbar is made available to the global scope
+	CU_navbar = {
 
 		scrollTimeout : null,
 		nav_visible : true,
+		watchers_running : false,
 
 		initialize: function () {
 
@@ -495,7 +498,6 @@ this.jQuery && (function ($) {
 			this.$container = $('#cu_nav');
 			this.$menus = this.$container.find('.cu_nav_menu');
 			this.nav_bar_height = this.$container.outerHeight();
-			this.$companion_bar = $('#cu_companion_bar');
 
 			this.adjustEnvironment();
 			this.selectDomain(CU_navbar.getCurrentDomain(), window.location.pathname);
@@ -515,15 +517,7 @@ this.jQuery && (function ($) {
 				CU_navbar.hideMenu($(e.target).parents('.cu_nav_menu'));
 			}, 350, 'mousemove click');
 
-
-			// Resizer
-			if (window.addEventListener) {
-				window.addEventListener('resize', CU_navbar.resizer, false);
-			} else if (window.attachEvent) {
-				window.attachEvent('onresize', CU_navbar.resizer);
-			}
-
-			CU_navbar.resizer();
+			CU_navbar.initializeWatchers();
 
 			setTimeout(function() {
 				CU_navbar.$container.addClass('use-transitions');
@@ -532,9 +526,21 @@ this.jQuery && (function ($) {
 		},
 
 		initializeCompanionBar: function() {
-			if (!this.$companion_bar.length) return;
 
+			CU_navbar.$companion_bar = $('#cu_companion_bar');
 			$('html').addClass('cu-companion-bar');
+
+		},
+
+		initializeWatchers: function() {
+			if (CU_navbar.watchers_running) return;
+
+			// Resizer
+			if (window.addEventListener) {
+				window.addEventListener('resize', CU_navbar.resizer, false);
+			} else if (window.attachEvent) {
+				window.attachEvent('onresize', CU_navbar.resizer);
+			}
 
 			// Scroll
 			if (window.addEventListener) {
@@ -548,6 +554,10 @@ this.jQuery && (function ($) {
 				CU_navbar.checkNavBar();
 				CU_navbar.did_scroll = false;
 			}, 250);
+
+			CU_navbar.resizer();
+
+			CU_navbar.watchers_running = true;
 		},
 
 		// Replace production URLs with Dev URLs
@@ -696,13 +706,8 @@ this.jQuery && (function ($) {
 		hideMenu: function ($menu) {
 			// Do nothing if there is a form being filled out
 			if ($menu.find(':focus').length > 0) {
-				console.log("We found a form in focus");
 				return;
-			} else {
-				console.log("No form in focus");
 			}
-
-			console.log($menu.find(':focus'));
 
 			CU_navbar.menu_is_open = false;
 			$menu.removeClass('expanded');
@@ -715,6 +720,9 @@ this.jQuery && (function ($) {
 		},
 
 		checkNavBar: function() {
+
+			// Only run this if we have a companion bar
+			if (CU_navbar.$companion_bar.length == 0) return;
 
 			var st = $(window).scrollTop();
 
@@ -741,16 +749,12 @@ this.jQuery && (function ($) {
 		},
 
 		showNavBar: function() {
-			// CU_navbar.$container.removeClass('nav-up').addClass('nav-down');
 			CU_navbar.$companion_bar.removeClass('nav-up').addClass('nav-down');
-
 			CU_navbar.nav_visible = true;
 		},
 
 		hideNavBar: function() {
-			// CU_navbar.$container.removeClass('nav-down').addClass('nav-up');
 			CU_navbar.$companion_bar.removeClass('nav-down').addClass('nav-up');
-
 			CU_navbar.nav_visible = false;
 		}
 
