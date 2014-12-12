@@ -16,7 +16,7 @@ $cu-companion-height:      30px;
 
 $cu-domain-width:         175px;
 $cu-login-width:          220px;
-$cu-secondary-width:      430px;
+$cu-secondary-width:      435px;
 $cu-search-results-width: 560px;
 
 $cu-button-padding: ($cu-nav-height / 3.5);
@@ -152,7 +152,7 @@ html, body { margin:0; padding: 0;}
 			width: $cu-secondary-width;
 			li {
 				width: $cu-secondary-width;
-				&.selected { border-left: 1px solid $cu-nav-border; }
+				&.selected { border-left: 1px solid $cu-nav-border; border-right: 1px solid $cu-nav-border; }
 			}
 		}
 	}
@@ -271,6 +271,37 @@ a.cu_nav_button {
 #cu_nav_domain.cu_nav_selectable.expanded .selected > a.cu_nav_button {
 	background-image: none;
 	svg * { display: block; }
+}
+
+
+/***************************************************
+* Assistive Arrows
+***************************************************/
+.cu_nav_secondary {
+	position: relative;
+
+	&:before {
+
+		position: absolute;
+		top: 15px;
+		right: 10px;
+		z-index: 10;
+
+
+		display: block;
+		content: "";
+		width: 15px;
+		height: 15px;
+
+		//
+
+		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><polygon fill='#666' points='37.667,155.597 256.161,373.067 475,155.597 '/></svg>");
+
+		background-size: contain;
+		background-repeat: no-repeat;
+
+
+	}
 }
 
 
@@ -794,6 +825,8 @@ a.cu_nav_button {
 
 		font-size: 11px;
 		line-height: 18px;
+
+		&:before { display: none; }
 
 		li.selected a.cu_nav_button {
 			width: 45px; color: #FFFFFF;
