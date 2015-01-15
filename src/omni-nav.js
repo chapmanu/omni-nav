@@ -528,10 +528,11 @@ this.jQuery && (function ($) {
 		initializeCompanionBar: function() {
 			CU_navbar.$companion_bar = $('#cu_companion_bar');
 
-			if (CU_navbar.$companion_bar.length)
+			if (CU_navbar.$companion_bar.length) {
 				$('html').addClass('cu-companion-bar');
-			else
+			} else {
 				$('html').removeClass('cu-companion-bar');
+			}
 		},
 
 		initializeWatchers: function() {
