@@ -587,10 +587,6 @@ this.jQuery && (function ($) {
 				if (staging_domain) item.setAttribute('data-show-domain', staging_domain);
 			});
 
-			// Blog login URL
-			$('#cu_login_form').find('form').attr('action', '/wp-login.php');
-			$('#cu_login_form').attr('data-show-domain', 'dev-blogs.chapman.edu');
-
 		},
 
 		// Return domain and port for given URL
