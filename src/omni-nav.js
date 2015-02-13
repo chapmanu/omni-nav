@@ -760,6 +760,70 @@ this.jQuery && (function ($) {
 	}
 
 
+	var linkAnalytics = {
+
+		initialize : function() {
+			$('#cu_nav').on('click', '.cu_nav_button', linkAnalytics.trackAction);
+		}, // end initialize
+
+		trackAction : function(e) {
+
+			/***************************************************
+			* Event attributes:
+			*
+			* Category (required), Action (required), Label (optional), value (optional)
+			*
+			* More information: https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+			***************************************************/
+
+			// Figure out what section we are in
+			if ($(e.currentTarget).parents('#cu_nav_domain').length) {
+				var action = "Domain Dropdown";
+			} else if ($(e.currentTarget).parents('.cu_nav_secondary').length) {
+				var action = "Secondary Dropdown";
+			} else if ($(e.currentTarget).parents('#cu_login_container').length) {
+				var action = "Login Dropdown";
+			} else {
+				var action = "Unknown";
+			}
+
+			var href_url 	= $(e.currentTarget).attr('href') || false;
+			var modifierKey = (e.metaKey || e.ctrlKey);
+
+			var ga_category = 'Omni Nav Interaction';
+			var ga_action 	= action;
+			var ga_label 	= $(e.currentTarget).text() ||'Click';
+
+			// Check for Google Universal Analytics
+			if (typeof(ga) !== 'undefined') {
+
+				// Send event to Google Analytics
+				ga('send', 'event', ga_category, ga_action, ga_label);
+
+			// Check for ga.js
+			} else if (typeof(_gaq) !== 'undefined') {
+
+				// Send event to Google Analytics
+				_gaq.push(['_trackEvent', ga_category, ga_action, ga_label]);
+
+				// Navigate browser to the URL
+				if (href_url && !modifierKey) {
+					setTimeout(function() {
+						window.location.href = href_url;
+					}, 250);
+
+					e.preventDefault();
+					return false;
+				}
+
+			} else {
+				console.log("Google Analytics is not running, so no Google Analytics tracking data could be sent.")
+			}
+
+		} // end trackAction()
+	} // end linkAnalytics
+
+
 
 	// Define Lazybind
 	$.fn.lazybind = function (event, fn, timeout, abort) {
@@ -786,6 +850,7 @@ this.jQuery && (function ($) {
 	$(document).ready(function () {
 		CU_navbar.initialize();
 		// CU_user.initialize();
+		linkAnalytics.initialize();
 
 		// SVG 4 Everybody
 		(function(e,t,n,r,i){function s(t,n){if(n){var r=n.getAttribute("viewBox"),i=e.createDocumentFragment(),s=n.cloneNode(true);if(r){t.setAttribute("viewBox",r)}while(s.childNodes.length){i.appendChild(s.childNodes[0])}t.appendChild(i)}}function o(){var t=this,n=e.createElement("x"),r=t.s;n.innerHTML=t.responseText;t.onload=function(){r.splice(0).map(function(e){s(e[0],n.querySelector("#"+e[1].replace(/(\W)/g,"\\$1")))})};t.onload()}function u(){var i;while(i=t[0]){var a=i.parentNode,f=i.getAttribute("xlink:href").split("#"),l=f[0],c=f[1];a.removeChild(i);if(l.length){var h=r[l]=r[l]||new XMLHttpRequest;if(!h.s){h.s=[];h.open("GET",l);h.onload=o;h.send()}h.s.push([a,c]);if(h.readyState===4){h.onload()}}else{s(a,e.getElementById(c))}}n(u)}if(i){u()}})(document,document.getElementsByTagName("use"),window.requestAnimationFrame||window.setTimeout,{},/Trident\/[567]\b/.test(navigator.userAgent))
