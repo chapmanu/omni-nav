@@ -8,6 +8,7 @@ this.jQuery && (function ($) {
 
 	var dev_urls = {
 		'wwwtest.chapman.edu'          : 'www.chapman.edu',
+		'eventsdev.chapman.edu'        : 'events.chapman.edu',
 		'dev-blogs.chapman.edu'        : 'blogs.chapman.edu',
 		'socialdev.chapman.edu'        : 'social.chapman.edu',
 		'socialdev.chapman.edu/inside' : 'inside.chapman.edu',
