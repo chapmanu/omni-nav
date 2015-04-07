@@ -531,6 +531,7 @@ this.jQuery && (function ($) {
 
 			if (CU_navbar.$companion_bar.length) {
 				$('html').addClass('cu-companion-bar');
+				CU_navbar.autohide_companion_bar = CU_navbar.$companion_bar.hasClass('autohide');
 			} else {
 				$('html').removeClass('cu-companion-bar');
 			}
@@ -723,6 +724,9 @@ this.jQuery && (function ($) {
 
 			// Only run this if we have a companion bar
 			if (CU_navbar.$companion_bar.length == 0) return;
+
+			// Only autohide if enabled
+			if (!CU_navbar.autohide_companion_bar) return;
 
 			var st = $(window).scrollTop();
 
