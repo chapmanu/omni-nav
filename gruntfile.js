@@ -17,7 +17,9 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'dist/omni-nav.min.css': 'src/omni-nav.scss'
+					'dist/icomoon.min.css': 'src/icomoon.scss',
+					'dist/omni-nav.min.css': 'src/omni-nav.scss',
+					'dist/off-canvas-nav.min.css': 'src/off-canvas-nav.scss'
 				}
 			}
 		},
@@ -25,7 +27,19 @@ module.exports = function(grunt) {
 		copy: {
 			main: {
 			files: [
-				{expand: true, cwd: 'src/', src: 'omni-nav.svg',  dest: 'dist/'}
+				{
+					expand: true,
+					cwd: 'src/',
+					src: 'omni-nav.svg',
+					dest: 'dist/'
+				}
+				// {
+    //                 expand: true,
+    //                 dot: true,
+    //                 cwd: 'fonts/',
+    //                 src: ['icomoon/*.*'],
+    //                 dest: 'dist/fonts/'
+    //             }
 		    ]
 		  }
 		},

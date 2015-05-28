@@ -829,6 +829,46 @@ this.jQuery && (function ($) {
 	} // end linkAnalytics
 
 
+	var CU_off_canvas_nav = {
+
+		initialize : function() {
+
+			CU_off_canvas_nav.syncLinkWidths();
+
+			$('#js-cu-off-canvas-nav-trigger, #js-cu-close-off-canvas-nav, #js-cu-off-canvas-overlay').on('click', function(event) {
+				event.preventDefault();
+				$('#js-cu-off-canvas-nav-container').toggleClass('open');
+				$('#js-cu-off-canvas-overlay').toggleClass('active');
+			});
+
+			$('#js-cu-off-canvas-nav-container .toggle').on('click', function() {
+				$(this).parent().toggleClass('open'); // Targets li
+				$(this).parent().find('ul').slideToggle();
+			});
+
+			$('#js-level-2-link').on('click', function() {
+				$('#js-cu-off-canvas-nav-container').removeClass('shifted');
+			});
+
+			$('#js-level-1-link').on('click', function() {
+				$('#js-cu-off-canvas-nav-container').addClass('shifted');
+			});
+
+			$(window).on('resize', function() {
+				CU_off_canvas_nav.syncLinkWidths();
+			});
+
+		},
+
+		syncLinkWidths: function() {
+
+			var width = $('#js-cu-off-canvas-nav > ul').width();
+			$('#js-cu-off-canvas-nav > ul > li > a').css('width', width);
+
+		}
+
+	} // end cu_off_canvas_nav
+
 
 	// Define Lazybind
 	$.fn.lazybind = function (event, fn, timeout, abort) {
@@ -856,6 +896,7 @@ this.jQuery && (function ($) {
 		CU_navbar.initialize();
 		// CU_user.initialize();
 		linkAnalytics.initialize();
+		CU_off_canvas_nav.initialize();
 
 		// SVG 4 Everybody
 		(function(e,t,n,r,i){function s(t,n){if(n){var r=n.getAttribute("viewBox"),i=e.createDocumentFragment(),s=n.cloneNode(true);if(r){t.setAttribute("viewBox",r)}while(s.childNodes.length){i.appendChild(s.childNodes[0])}t.appendChild(i)}}function o(){var t=this,n=e.createElement("x"),r=t.s;n.innerHTML=t.responseText;t.onload=function(){r.splice(0).map(function(e){s(e[0],n.querySelector("#"+e[1].replace(/(\W)/g,"\\$1")))})};t.onload()}function u(){var i;while(i=t[0]){var a=i.parentNode,f=i.getAttribute("xlink:href").split("#"),l=f[0],c=f[1];a.removeChild(i);if(l.length){var h=r[l]=r[l]||new XMLHttpRequest;if(!h.s){h.s=[];h.open("GET",l);h.onload=o;h.send()}h.s.push([a,c]);if(h.readyState===4){h.onload()}}else{s(a,e.getElementById(c))}}n(u)}if(i){u()}})(document,document.getElementsByTagName("use"),window.requestAnimationFrame||window.setTimeout,{},/Trident\/[567]\b/.test(navigator.userAgent))

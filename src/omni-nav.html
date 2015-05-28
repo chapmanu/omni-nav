@@ -1,6 +1,6 @@
 <div id="cu_nav">
 	<ul id="cu_nav_domain" class="cu_nav_menu cu_nav_selectable">
-		<li class="selected"><a class="cu_nav_button" href="http://www.chapman.edu">@@include('svg.html', {"n": "cu_window"});Chapman.edu</a></li>
+		<li class="selected"><a id="js-cu-off-canvas-nav-trigger" class="cu_nav_button" href="http://www.chapman.edu">@@include('svg.html', {"n": "cu_window"});Chapman.edu</a></li>
 		<li><a class="cu_nav_button" href="https://events.chapman.edu">@@include('svg.html', {"n": "calendar"});Events.Chapman</a></li>
 		<li><a class="cu_nav_button" href="https://blogs.chapman.edu">@@include('svg.html', {"n": "newspaper"});Blogs.Chapman</a></li>
 		<li><a class="cu_nav_button" href="https://social.chapman.edu">@@include('svg.html', {"n": "chat"});Social.Chapman</a></li>
@@ -105,5 +105,85 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Off Canvas Nav -->
+
+	<div id="js-cu-off-canvas-overlay" class="cu-off-canvas-overlay"></div>
+
+	<div id="js-cu-off-canvas-nav-container" class="cu-off-canvas-nav-container">
+	    
+	    <div class="cu-off-canvas-header">
+	        <img src="/img/off-canvas-header-default.png" alt="Argyros School of Business and Economics">
+	        <span id="js-cu-close-off-canvas-nav" class="close">X</span>
+	        <div class="cu-off-canvas-links clearfix">
+	            <span id="js-main-menu" class="main-menu">Main Menu</span>
+	        </div>
+	    </div>
+
+	    <div id="js-cu-off-canvas-nav" class="cu-off-canvas-nav clearfix">
+	        
+	        <ul class="level-1">
+
+	            <li>
+	                <a class="has-icon" href="#" title="The University">@@include('svg.html', {"n": "cu_window"});The University</a>
+	                <span class="toggle"><span>+</span></span>
+	                <ul>
+	                    <li><a href="#" title="Academics">Academics</a></li>
+	                    <li><a href="#" title="Admission">Admission</a></li>
+	                    <li><a href="#" title="Arts">Arts</a></li>
+	                    <li><a href="#" title="Athletics">Athletics</a></li>
+	                    <li><a href="#" title="Research">Research</a></li>
+	                </ul>
+	            </li>
+	            <li>
+	                <a class="has-icon" href="#" title="Find information for...">@@include('svg.html', {"n": "user"});Find information for...</a>
+	                <span class="toggle"><span>+</span></span>
+	                <ul>
+	                    <li><a href="#" title="Prospective Students">Prospective Students</a></li>
+	                    <li><a href="#" title="Current Students">Current Students</a></li>
+	                    <li><a href="#" title="Alumni">Alumni</a></li>
+	                    <li><a href="#" title="Faculty &amp; Staff">Faculty &amp; Staff</a></li>
+	                    <li><a href="#" title="Parents &amp; Families">Parents &amp; Families</a></li>
+	                </ul>
+	            </li>
+	            <li>
+	                <a class="has-icon icon icon-graduation" href="#" title="Degrees &amp; Programs">Degrees &amp; Programs</a>
+	            </li>
+	            <li>
+	                <a class="has-icon icon icon-library2" href="#" title="Schools &amp; Colleges">Schools &amp; Colleges</a>
+	                <span class="toggle"><span>+</span></span>
+	                <ul>
+	                    <li><a href="#" title="Argyros School of Business &amp; Economics">Argyros School of Business &amp; Economics</a></li>
+	                    <li><a href="#" title="College of Educational Studies">College of Educational Studies</a></li>
+	                    <li><a href="#" title="Crean College of Health &amp; Behavioral Sciences">Crean College of Health &amp; Behavioral Sciences</a></li>
+	                    <li><a href="#" title="College of Performing Arts">College of Performing Arts</a></li>
+	                    <li><a href="#" title="Dodge College of Film &amp; Media Arts">Dodge College of Film &amp; Media Arts</a></li>
+	                </ul>
+	            </li>
+	            <li>
+	                <a class="has-icon" href="#" title="Events">@@include('svg.html', {"n": "calendar"});Events</a>
+	            </li>
+	            <li>
+	                <a class="has-icon" href="#" title="Blogs">@@include('svg.html', {"n": "newspaper"});Blogs</a>
+	                <span class="toggle"><span>+</span></span>
+	                <ul>
+	                    <li><a href="#" title="More Links">More Links</a></li>
+	                    <li><a href="#" title="Go Here">Go Here</a></li>
+	                </ul>
+	            </li>
+	            <li>
+	                <a class="has-icon" href="#" title="Inside Chapman">@@include('svg.html', {"n": "cu_monogram"});Inside Chapman</a>
+	            </li>
+	            <li>
+	                <a class="has-icon" href="#" title="Social">@@include('svg.html', {"n": "chat"});Social</a>
+	            </li>
+
+	        </ul>
+
+	    </div>
+
+	</div>
+
+	<!-- End Off Canvas Nav -->
 
 </div>
