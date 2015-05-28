@@ -191,12 +191,8 @@ $wilkinson-secondary: #007299;
 
 	a {
 		color: $grey2;
-		text-decoration: none;
 		font-weight: normal; /* Fallback */
 		font-weight: 400;
-		&:hover, &:focus {
-			text-decoration: none;
-		}
 	}
 
 	> ul {
@@ -348,6 +344,13 @@ $wilkinson-secondary: #007299;
 	ul, ol {
 		margin: 0;
 		padding: 0;
+	}
+
+	a {
+		text-decoration: none;
+		&:hover, &:focus {
+			text-decoration: none;
+		}
 	}
 
 }

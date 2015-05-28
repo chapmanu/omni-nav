@@ -34,12 +34,12 @@ module.exports = function(grunt) {
 					dest: 'dist/'
 				}
 				// {
-    //                 expand: true,
-    //                 dot: true,
-    //                 cwd: 'fonts/',
-    //                 src: ['icomoon/*.*'],
-    //                 dest: 'dist/fonts/'
-    //             }
+				// 	expand: true,
+				// 	dot: true,
+				// 	cwd: 'fonts/',
+				// 	src: ['icomoon/*.*'],
+				// 	dest: 'dist/fonts/'
+				// }
 		    ]
 		  }
 		},
@@ -55,6 +55,17 @@ module.exports = function(grunt) {
 				},
 				src: 'src/index.html',
 				dest: 'index.html'
+			},
+			readme2: {
+				options: {
+					suffix: ';',
+					globals: {
+						base_url: 'dist/omni-nav.svg',
+						timestamp: Math.round(new Date().getTime() / 1000)
+					}
+				},
+				src: 'src/index-level.html',
+				dest: 'index-level.html'
 			},
 			dist_blogs: {
 				options: {
