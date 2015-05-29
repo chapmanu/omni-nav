@@ -37,6 +37,8 @@ this.jQuery && (function ($) {
 				$('#cu_search').toggleClass('open');
 			});
 
+			$('input.gsc-input').attr('placeholder', 'Search');
+
 		},
 
 		/***************************************************
