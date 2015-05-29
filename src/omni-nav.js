@@ -33,6 +33,10 @@ this.jQuery && (function ($) {
 			// CU_search.resumeHistoryState();
 			// $(window).on('popstate', CU_search.resumeHistoryState);
 
+			$('#js-cu-search-open-trigger, #js-cu-search-close-trigger').on('click', function() {
+				$('#cu_search').toggleClass('open');
+			});
+
 		},
 
 		/***************************************************
@@ -67,6 +71,9 @@ this.jQuery && (function ($) {
 					enableOrderBy: true
 				}
 			});
+
+			// Appends close button because the search plugin removes it if it's in the template
+			$('#cu_search_box').append('<div id="js-cu-search-close-trigger" class="cu-search-close-trigger">X<span>Close</span></div>');
 
 			// CU_search.cleanHash();
 			CU_search.gse = google.search.cse.element.getElement('two-column');

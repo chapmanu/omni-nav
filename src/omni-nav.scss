@@ -238,20 +238,26 @@ a.cu_nav_button {
 
 #cu_search {
 	@include reset-box-model();
-
+	display: none;
 	position: absolute;
-	top:0;
-	right: 40px;
-
-	width: 120px;
-	padding: $cu-button-padding 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: $cu-button-padding;
+	z-index: 99997;
+	background-color: #D9D9D9;
 
 	// margin-right: -180px;
+
+	&.open {
+		display: block;
+	}
 
 	.gsc-search-box {
 		margin: 0;
 		position: relative;
-		width:100%;
+		width: 100%;
 		z-index: 99100;
 	}
 
@@ -259,24 +265,29 @@ a.cu_nav_button {
 	input.gsc-input[style] {
 		@include reset-box-model();
 
-		width:99%;
+		width: 100%;
 		font-size: 14px;
-		padding: 4px 30px 4px 12px;
-		border: 1px solid #D9D9D9;
-		border-radius: 3px;
+		padding: 6px 0 3px;
+		border-bottom: 1px solid #ADADAA;
 		background-image: none !important;
-		background-color: #F7F7F7;
-
+		background-color: transparent;
         transition: background-color 0.5s ease-out;
+        position: relative;
+        top: -5px;
+        color: #666;
+        line-height: 1;
+        font-size: 16px;
+        font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
 
 		&:focus,
 		&:hover {
-			background-color: #FFFFFF;
 	        transition: background-color 0.1s ease-out;
 		}
 	}
 
-	td.gsc-input { padding-right : 12px; }
+	td.gsc-input {
+		padding: 0 30px;
+	}
 
 	// The description at the top: "About 3,760 results (0.42 seconds)"
 	.gsc-result-info {
@@ -387,7 +398,15 @@ a.cu_nav_button {
 	}
 
 	// The search icon itself
-	td.gsc-search-button { display: block; width: 1%; position: absolute; margin-left: -46px; }
+	td.gsc-search-button {
+		display: block;
+		width: 30px;
+		height: 26px;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
 	input.gsc-search-button {
 		display: block;
 		border: none;
@@ -401,9 +420,7 @@ a.cu_nav_button {
 		margin-left: 2px;
 
 		cursor: pointer;
-		opacity: 0.5;
 
-		&:hover { opacity: 0.6; }
 		&:focus { outline: none; }
 
 		background-size: 25px;
@@ -665,22 +682,8 @@ a.cu_nav_button {
 * Things get bigger
 ***************************************************/
 
-@media only screen and (min-width: $cu-viewport-xs) {
-	#cu_search { width: 180px; }
-}
-
-@media only screen and (min-width: $cu-viewport-s) {
-	#cu_search { width: 270px; }
-}
-
-
-@media only screen and (min-width: $cu-viewport-m) {
-	#cu_search { width: 180px; }
-}
-
 @media only screen and (min-width: $cu-viewport-ml) {
 	#cu_search {
-		width: 270px;
 
 		.gsc-control-cse {
 
@@ -698,23 +701,15 @@ a.cu_nav_button {
 
 @media only screen and (min-width: $cu-viewport-l) {
 
-	// Show login username
-	#cu_search {
-		width: 200px;
-		margin-right: -115px;
-	}
-
 	#cu_login_container #cu_identity {
 		padding-right: 30px;
 	}
 
 	#cu_login_container #cu_identity .cu_name {
-		display: inline-block;
+		// display: inline-block;
 	}
 
 	#cu_search {
-		right: 220px;
-		width: 270px;
 
 		.gsc-control-cse {
 			// RIGHT ALIGNED
@@ -725,10 +720,6 @@ a.cu_nav_button {
 		}
 	}
 
-}
-
-@media only screen and (min-width: $cu-viewport-xl) {
-	#cu_search { width: 400px; }
 }
 
 
@@ -803,6 +794,44 @@ a.cu_nav_button {
 
 	img, svg {
 		padding: 13px 0 13px 16px;
+	}
+
+}
+
+.cu-search-open-trigger {
+	padding: $cu-button-padding;
+	position: absolute;
+	right: 40px;
+	top: 0;
+	z-index: 99996;
+	
+	span {
+		text-indent: -9999px;
+		display: block;
+		width: 30px;
+		min-width: 30px;
+		height: 22px;
+		cursor: pointer;
+		background-size: 25px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
+	}
+
+}
+
+.cu-search-close-trigger {
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: $cu-button-padding ($cu-button-padding + 4px);
+	line-height: 25px;
+	font-size: 12px;
+	z-index: 99997;
+
+	span {
+		display: none;
 	}
 
 }
