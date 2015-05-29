@@ -11,7 +11,7 @@ $cu-nav-border:       #D6D5CF;
 $cu-nav-background:   #FFFFFF;
 $cu-nav-border-color: #CCCCCC;
 
-$cu-nav-height:            45px;
+$cu-nav-height:            55px;
 $cu-companion-height:      30px;
 
 $cu-domain-width:         175px;
@@ -116,6 +116,7 @@ html, body { margin:0; padding: 0;}
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
+		-webkit-font-smoothing: antialiased;
 	}
 
 	ul.cu_nav_menu {
@@ -144,17 +145,6 @@ html, body { margin:0; padding: 0;}
 			&.hidden-unless-default.selected { display: block; }
 		}
 
-		&#cu_nav_domain {
-			width: $cu-domain-width;
-		}
-
-		&.cu_nav_secondary {
-			width: $cu-secondary-width;
-			li {
-				width: $cu-secondary-width;
-				&.selected { border-left: 1px solid $cu-nav-border; border-right: 1px solid $cu-nav-border; }
-			}
-		}
 	}
 
 	div.cu_nav_menu {
@@ -220,15 +210,9 @@ a.cu_nav_button {
 		opacity: 1;
 		padding: $cu-button-padding;
 		border-bottom: 1px solid #D6D5CF;
-	}
-
-	////////////////
-	// Active state
-	.cu_nav_selectable .selected > & {
-		background: #FFFFFF;
-		svg * &#cu_nav_domain {
-			fill: $chapman-red;
-		}
+		font-size: 14px;
+		font-weight: normal;
+		font-weight: 400;
 	}
 
 	////////////////
@@ -248,63 +232,6 @@ a.cu_nav_button {
 }
 
 
-
-
-/***************************************************
-* DOMAIN PICKER
-***************************************************/
-
-// FX: CU Window on active always
-#cu_nav_domain.cu_nav_selectable .selected > a.cu_nav_button {
-	background-color: #FFFFFF;
-	background-repeat: no-repeat;
-	background-position: 13px 13px;
-	background-size: 20px;
-
-	// The CU Window
-	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMjkuNDg4cHgiIGhlaWdodD0iMjkuNTg0cHgiIHZpZXdCb3g9IjAgMCAyOS40ODggMjkuNTg0IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyOS40ODggMjkuNTg0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwb2x5Z29uIGZpbGw9IiM4QjIzMzIiIHBvaW50cz0iMTMuNjg4LDE1LjI4MSAwLDI4Ljk2NSAwLDE1LjI4MSAJIi8+DQoJPHBvbHlnb24gZmlsbD0iIzhCMjMzMiIgcG9pbnRzPSIwLDE0LjQwNCAwLDAuNzE3IDEzLjY4OCwxNC40MDQgCSIvPg0KCTxwb2x5Z29uIGZpbGw9IiM4QjIzMzIiIHBvaW50cz0iMjguODY5LDAuMSAxNS4xODMsMTMuNzgzIDE1LjE4MywwLjEgCSIvPg0KCTxwb2x5Z29uIGZpbGw9IiM4QjIzMzIiIHBvaW50cz0iMTQuMzA3LDEzLjc4MyAwLjYyLDAuMSAxNC4zMDcsMC4xIAkiLz4NCgk8cG9seWdvbiBmaWxsPSIjOEIyMzMyIiBwb2ludHM9IjE1LjgwMywxNC40MDQgMjkuNDg4LDAuNzE3IDI5LjQ4OCwxNC40MDQgCSIvPg0KCTxwb2x5Z29uIGZpbGw9IiM4QjIzMzIiIHBvaW50cz0iMjkuNDg4LDE1LjI4MSAyOS40ODgsMjguOTY1IDE1LjgwMywxNS4yODEgCSIvPg0KCTxwb2x5Z29uIGZpbGw9IiM4QjIzMzIiIHBvaW50cz0iMTQuMzA3LDE1Ljg5OCAwLjYyLDI5LjU4NCAxNC4zMDcsMjkuNTg0IAkiLz4NCgk8cG9seWdvbiBmaWxsPSIjOEIyMzMyIiBwb2ludHM9IjE1LjE4MywxNS44OTggMTUuMTgzLDI5LjU4NCAyOC44NjcsMjkuNTg0IAkiLz4NCjwvZz4NCjwvc3ZnPg0K);
-
-	svg * { display: none; }
-}
-
-// Put the regular icon back on hover
-#cu_nav_domain.cu_nav_selectable.expanded .selected > a.cu_nav_button {
-	background-image: none;
-	svg * { display: block; }
-}
-
-
-/***************************************************
-* Assistive Arrows
-***************************************************/
-.cu_nav_secondary {
-	position: relative;
-
-	&:before {
-
-		position: absolute;
-		top: 15px;
-		right: 10px;
-		z-index: 10;
-
-
-		display: block;
-		content: "";
-		width: 15px;
-		height: 15px;
-
-		//
-
-		background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><polygon fill='#666' points='37.667,155.597 256.161,373.067 475,155.597 '/></svg>");
-
-		background-size: contain;
-		background-repeat: no-repeat;
-
-
-	}
-}
-
-
 /***************************************************
 * SEARCH
 ***************************************************/
@@ -317,7 +244,7 @@ a.cu_nav_button {
 	right: 40px;
 
 	width: 120px;
-	padding: 8px 0;
+	padding: $cu-button-padding 0;
 
 	// margin-right: -180px;
 
@@ -573,15 +500,29 @@ a.cu_nav_button {
 
 		padding: $cu-button-padding;
 
-		.cu_name { display: none; }
+		.circle-border {
+			display: inline-block;
+			border: 1px solid #CCC;
+			border-radius: 22px;
+			width: 22px;
+			height: 22px;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.cu_name {
+			display: none;
+		}
 
 		svg,
 		img {
 			width: 20px;
 			height: 20px;
-			margin-right: 8px;
 			background-size: contain;
 			vertical-align: middle;
+			position: absolute;
+			top: 2px;
+			left: 0;
 
 			* {
 				transition: fill 0.1s ease-out;
@@ -598,7 +539,6 @@ a.cu_nav_button {
 		border-radius: 50%;
 
 	}
-
 
 	#cu_login_form {
 		clear: both;
@@ -691,7 +631,6 @@ a.cu_nav_button {
 
 	}
 
-
 	.cu_dropdown_menu {
 		@include reset-box-model();
 		display: block;
@@ -760,9 +699,18 @@ a.cu_nav_button {
 @media only screen and (min-width: $cu-viewport-l) {
 
 	// Show login username
-	#cu_search { width: 200px; margin-right: -115px; }
-	#cu_login_container #cu_identity          { padding-right: 30px; }
-	#cu_login_container #cu_identity .cu_name { display: inline-block; }
+	#cu_search {
+		width: 200px;
+		margin-right: -115px;
+	}
+
+	#cu_login_container #cu_identity {
+		padding-right: 30px;
+	}
+
+	#cu_login_container #cu_identity .cu_name {
+		display: inline-block;
+	}
 
 	#cu_search {
 		right: 220px;
@@ -777,102 +725,10 @@ a.cu_nav_button {
 		}
 	}
 
-
-
 }
+
 @media only screen and (min-width: $cu-viewport-xl) {
 	#cu_search { width: 400px; }
-}
-
-
-// The minification of Menus
-
-@media only screen and (max-width: $cu-viewport-l) {
-
-	#cu_nav_domain {
-		max-width: 45px;
-		overflow: hidden;
-
-		li.selected a { width: 45px; color: #FFFFFF; }
-
-
-		li a,
-		&.expanded li.selected a { width: $cu-domain-width; color: $cu-nav-text; }
-
-		&.expanded {
-			overflow: visible;
-			max-width: 999px;
-			width:100% !important;
-
-			position: absolute !important;
-			top:0;
-			left:0;
-			z-index: 99500 !important;
-
-			li { width:100% !important; }
-		}
-		&.expanded li a {
-
-			width: 100% !important;
-		}
-	}
-}
-
-@media only screen and (max-width: $cu-viewport-m) {
-	.cu_nav_secondary {
-		max-width: 45px;
-		overflow: hidden;
-
-		font-size: 11px;
-		line-height: 18px;
-
-		&:before { display: none; }
-
-		li.selected a.cu_nav_button {
-			width: 45px; color: #FFFFFF;
-
-			// Menu icon
-			opacity: 0.7;
-			text-indent: -9999px;
-			background-color: #FFFFFF;
-			background-repeat: no-repeat;
-			background-position: 13px 13px;
-			background-size: 20px;
-			background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjAuNCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cGF0aCBkPSJNNDQ4LDM4NEg2NGMtMzUuMiwwLTY0LDI4LjgtNjQsNjRzMjguOCw2NCw2NCw2NGgzODRjMzUuMTk5LDAsNjQtMjguOCw2NC02NFM0ODMuMTk5LDM4NCw0NDgsMzg0eiBNNDQ4LDE5Mkg2NAoJYy0zNS4yLDAtNjQsMjguOC02NCw2NHMyOC44LDY0LDY0LDY0aDM4NGMzNS4xOTksMCw2NC0yOC44LDY0LTY0UzQ4My4xOTksMTkyLDQ0OCwxOTJ6IE02NCwxMjhoMzg0YzM1LjE5OSwwLDY0LTI4LjgsNjQtNjQKCVM0ODMuMTk5LDAsNDQ4LDBINjRDMjguOCwwLDAsMjguOCwwLDY0UzI4LjgsMTI4LDY0LDEyOHoiLz4KPC9zdmc+Cg==);
-
-			svg * { display: none; }
-		}
-
-		li a,
-		&.expanded li.selected a.cu_nav_button {
-			width: $cu-domain-width;
-			color: $cu-nav-text;
-		}
-
-		&.expanded li.selected a.cu_nav_button {
-			text-indent: 35px;
-			opacity: 1;
-			svg { display: none; }
-		}
-
-
-		&.expanded {
-			overflow: visible;
-			max-width: 999px;
-			width:100% !important;
-
-			position: absolute !important;
-			top:0;
-			left:0;
-			z-index: 99500 !important;
-
-			li { width:100% !important; }
-		}
-		&.expanded li a {
-
-			width: 100% !important;
-		}
-	}
 }
 
 
@@ -916,6 +772,37 @@ a.cu_nav_button {
 
 	&.nav-up {
 		top: $cu-nav-height - $cu-companion-height;
+	}
+
+}
+
+/***************************************************
+* NEW NAV ELEMENTS - added by sharissis
+***************************************************/
+
+.cu-off-canvas-nav-trigger, .cu-logo {
+	display: block;
+	float: left;
+
+	img, svg {
+		display: block;
+	}
+
+}
+
+.cu-off-canvas-nav-trigger {
+	padding: ($cu-button-padding + 3px) $cu-button-padding;
+
+	img, svg {
+		cursor: pointer;
+	}
+
+}
+
+.cu-logo {
+
+	img, svg {
+		padding: 13px 0 13px 16px;
 	}
 
 }
