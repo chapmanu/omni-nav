@@ -17,9 +17,7 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'dist/icomoon.min.css': 'src/icomoon.scss',
-					'dist/omni-nav.min.css': 'src/omni-nav.scss',
-					'dist/off-canvas-nav.min.css': 'src/off-canvas-nav.scss'
+					'dist/main-omni-nav.min.css': 'src/main-omni-nav.scss'
 				}
 			}
 		},
