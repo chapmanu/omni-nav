@@ -10,6 +10,7 @@
 
 	li {
 		border-top: 1px solid darken($cu-light-grey, 10%);
+		list-style: none;
 	}
 
 	a {
@@ -141,8 +142,8 @@
 .cu-off-canvas-nav-container {
 	position: fixed;
 	top: 0;
-	left: -85%;
-	width: 85%;
+	left: -($cu-off-canvas-nav-mobile-width);
+	width: $cu-off-canvas-nav-mobile-width;
 	height: 100%;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -153,10 +154,12 @@
 	&.open {
 		left: 0;
 
-		@include bp(m) {
-			left: -85%;
-			@include transition(all, 0s, ease-in-out);
-		}
+		// Use if off canvas nav is hidden on desktop
+		// @include bp(m) {
+		// 	left: -($cu-off-canvas-nav-desktop-width);
+		// 	width: $cu-off-canvas-nav-desktop-width;
+		// 	@include transition(all, 0s, ease-in-out);
+		// }
 
 	}
 
@@ -170,6 +173,11 @@
 		&:hover, &:focus {
 			text-decoration: none;
 		}
+	}
+
+	@include bp(m) {
+		left: -($cu-off-canvas-nav-desktop-width);
+		width: $cu-off-canvas-nav-desktop-width;
 	}
 
 }
@@ -192,15 +200,17 @@
 		visibility: visible;
 		opacity: 0.5;
 
-		@include bp(m) {
-			display: none;
-		}
+		// Use if off canvas nav is hidden on desktop
+		// @include bp(m) {
+		// 	display: none;
+		// }
 
 	}
 
-	@include bp(m) {
-		display: none;
-	}
+	// Use if off canvas nav is hidden on desktop
+	// @include bp(m) {
+	// 	display: none;
+	// }
 
 }
 
