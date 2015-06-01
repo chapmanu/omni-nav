@@ -554,11 +554,13 @@ this.jQuery && (function ($) {
 				window.attachEvent('onscroll', CU_navbar.scroller);
 			}
 
-			setInterval(function() {
-				if (!CU_navbar.did_scroll) return;
-				CU_navbar.checkNavBar();
-				CU_navbar.did_scroll = false;
-			}, 250);
+			if (CU_navbar.autohide_companion_bar) {
+				setInterval(function() {
+					if (!CU_navbar.did_scroll) return;
+					CU_navbar.checkNavBar();
+					CU_navbar.did_scroll = false;
+				}, 250);
+			}
 
 			CU_navbar.resizer();
 
