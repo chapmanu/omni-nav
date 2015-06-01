@@ -30,9 +30,6 @@ this.jQuery && (function ($) {
 
 			CU_search.enableAjaxSearches();
 
-			// CU_search.resumeHistoryState();
-			// $(window).on('popstate', CU_search.resumeHistoryState);
-
 		},
 
 		/***************************************************
@@ -100,15 +97,6 @@ this.jQuery && (function ($) {
 				if (e.which == 27) CU_search.hide();
 			});
 
-		},
-
-		resumeHistoryState : function() {
-			if (window.location.hash.indexOf('gsc.q') > -1) {
-				CU_search.enableAjaxSearches();
-				CU_search.show();
-			} else {
-				CU_search.hide();
-			}
 		},
 
 		cleanHash : function() {
