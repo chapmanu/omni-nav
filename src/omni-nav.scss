@@ -100,7 +100,7 @@ html, body { margin:0; padding: 0;}
 #cu_nav {
 	@include reset-box-model();
 	@include font-stack-for-headings();
-	@include wordpress-admin-bar-spacing();
+	// @include wordpress-admin-bar-spacing();
 
 	width: 100%;
 	height: $cu-nav-height;
@@ -290,6 +290,11 @@ a.cu_nav_button {
 		&:hover {
 	        transition: background-color 0.1s ease-out;
 		}
+
+		@include bp(m) {
+			padding: 3px 0;
+		}
+
 	}
 
 	td.gsc-input {
@@ -367,10 +372,10 @@ a.cu_nav_button {
 	.gsc-webResult { margin-bottom: 7px; }
 
 	// Thumbnail sizes
-	@media only screen and (min-width:480px) {
-		.gs-web-image-box, .gs-promotion-image-box { width: 85px; }
-		.gs-web-image-box img.gs-image { max-width: 80px; }
-	}
+	// @media only screen and (min-width:480px) {
+	// 	.gs-web-image-box, .gs-promotion-image-box { width: 85px; }
+	// 	.gs-web-image-box img.gs-image { max-width: 80px; }
+	// }
 
 	// The pagination block
 	.gsc-cursor-box {
@@ -436,11 +441,18 @@ a.cu_nav_button {
 		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
 	}
 
+	@include bp(m) {
+		background-color: transparent;
+		display: block;
+		width: 460px;
+		left: 230px;
+	}
+
 }
 
 // Search Autocomplete Suggestion box
 .gssb_c[style] {
-	@include wordpress-admin-bar-spacing();
+	// @include wordpress-admin-bar-spacing();
 
 	position: fixed !important;
 	top: ($cu-nav-height - 10px) !important;
@@ -448,7 +460,7 @@ a.cu_nav_button {
 }
 
 #cu_search_results {
-	@include wordpress-admin-bar-spacing();
+	// @include wordpress-admin-bar-spacing();
 
 	display:none;
 	width: 100%;
@@ -468,7 +480,7 @@ a.cu_nav_button {
 		height: 100%;
 
 		#cu_search_results_ui {
-			@include wordpress-admin-bar-spacing();
+			// @include wordpress-admin-bar-spacing();
 
 			position: fixed;
 			overflow: scroll;
@@ -689,45 +701,45 @@ a.cu_nav_button {
 * Things get bigger
 ***************************************************/
 
-@media only screen and (min-width: $cu-viewport-ml) {
-	#cu_search {
+// @media only screen and (min-width: $cu-viewport-ml) {
+// 	#cu_search {
 
-		.gsc-control-cse {
+// 		.gsc-control-cse {
 
-			width: $cu-search-results-width;
+// 			width: $cu-search-results-width;
 
-			// CENTER ALIGNED
-			left: 50%;
-			right: auto;
-			margin-left: -($cu-search-results-width / 2);
-		}
-	}
+// 			// CENTER ALIGNED
+// 			left: 50%;
+// 			right: auto;
+// 			margin-left: -($cu-search-results-width / 2);
+// 		}
+// 	}
 
-}
+// }
 
 
-@media only screen and (min-width: $cu-viewport-l) {
+// @media only screen and (min-width: $cu-viewport-l) {
 
-	#cu_login_container #cu_identity {
-		padding-right: 30px;
-	}
+// 	#cu_login_container #cu_identity {
+// 		padding-right: 30px;
+// 	}
 
-	#cu_login_container #cu_identity .cu_name {
-		// display: inline-block;
-	}
+// 	#cu_login_container #cu_identity .cu_name {
+// 		// display: inline-block;
+// 	}
 
-	#cu_search {
+// 	#cu_search {
 
-		.gsc-control-cse {
-			// RIGHT ALIGNED
-			float: right !important;
-			right: 105px !important;
-			left: auto !important;
-			margin-left: auto !important;
-		}
-	}
+// 		.gsc-control-cse {
+// 			// RIGHT ALIGNED
+// 			float: right !important;
+// 			right: 105px !important;
+// 			left: auto !important;
+// 			margin-left: auto !important;
+// 		}
+// 	}
 
-}
+// }
 
 
 /***************************************************
@@ -747,7 +759,7 @@ a.cu_nav_button {
 
 #cu_companion_bar {
 	@include font-stack-for-headings();
-	@include wordpress-admin-bar-spacing();
+	// @include wordpress-admin-bar-spacing();
 
 	background: rgba(150,150,150,1);
 	color: #DDD;
@@ -800,7 +812,7 @@ a.cu_nav_button {
 .cu-logo {
 
 	img, svg {
-		padding: 13px 0 13px 16px;
+		margin: 13px 0 13px 16px;
 	}
 
 }
@@ -825,6 +837,10 @@ a.cu_nav_button {
 		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
 	}
 
+	@include bp(m) {
+		display: none;
+	}
+
 }
 
 .cu-search-close-trigger {
@@ -838,6 +854,10 @@ a.cu_nav_button {
 	z-index: 99997;
 
 	span {
+		display: none;
+	}
+
+	@include bp(m) {
 		display: none;
 	}
 
