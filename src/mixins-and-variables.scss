@@ -183,3 +183,8 @@ $wilkinson-secondary: #007299;
 
 $cu-off-canvas-nav-mobile-width: 85%;
 $cu-off-canvas-nav-desktop-width: 400px;
+
+// Helper Classes
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }

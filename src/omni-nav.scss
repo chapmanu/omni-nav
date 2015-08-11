@@ -11,7 +11,7 @@ $cu-nav-border:       #D6D5CF;
 $cu-nav-background:   #FFFFFF;
 $cu-nav-border-color: #CCCCCC;
 
-$cu-nav-height:            55px;
+$cu-nav-height:            64px;
 $cu-companion-height:      30px;
 
 $cu-domain-width:         175px;
@@ -19,7 +19,7 @@ $cu-login-width:          220px;
 $cu-secondary-width:      435px;
 $cu-search-results-width: 560px;
 
-$cu-button-padding: ($cu-nav-height / 3.5);
+$cu-button-padding: ($cu-nav-height / 3);
 
 // Viewport sizes
 $cu-viewport-xs:  400px;
@@ -244,7 +244,7 @@ a.cu_nav_button {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	padding: $cu-button-padding;
+	padding: 15px;
 	z-index: 99997;
 	background-color: #D9D9D9;
 
@@ -252,6 +252,40 @@ a.cu_nav_button {
 
 	&.open {
 		display: block;
+	}
+
+	.search-type {
+		display: none;
+		outline: 0;
+		border: none;
+		background-color: $cu-light-grey;
+		background-image: url(/img/select-arrow.png); // change on dev
+		background-repeat: no-repeat;
+		background-position: center right;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		font-size: 13px;
+		padding: 0 34px 0 10px;
+		height: 34px;
+		line-height: 34px;
+		cursor: pointer;
+		@include vendorize(border-radius, 4px 0px 0px 4px);
+		@include vendorize(box-shadow, none);
+
+		@include bp(m) {
+			display: block;
+			width: 35%;
+			float: left;
+		}
+
+	}
+
+	#cu_search_box {
+		@include bp(m) {
+			width: 65%;
+			float: right;
+		}
 	}
 
 	.gsc-search-box {
@@ -262,7 +296,7 @@ a.cu_nav_button {
 	}
 
 	// The query input box
-	input.gsc-input[style] {
+	input.gsc-input {
 		@include reset-box-model();
 
 		width: 100%;
@@ -273,12 +307,10 @@ a.cu_nav_button {
 		background-color: transparent;
         transition: background-color 0.5s ease-out;
         position: relative;
-        top: -5px;
         color: #666;
         line-height: 16px;
         font-size: 16px;
         font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
-        
         
         &::-webkit-input-placeholder {
         	line-height: 16px;
@@ -293,12 +325,24 @@ a.cu_nav_button {
 
 		@include bp(m) {
 			padding: 3px 0;
+			height: 34px;
+			padding: 5px 10px;
+			color: $black;
+			font-weight: bold;
+			border: 1px solid $cu-light-grey;
+			@include vendorize(border-radius, 0px 4px 4px 0px);
 		}
 
 	}
 
 	td.gsc-input {
+		width: 100%;
 		padding: 0 30px;
+
+		@include bp(m) {
+			padding: 0;
+		}
+
 	}
 
 	// The description at the top: "About 3,760 results (0.42 seconds)"
@@ -413,10 +457,15 @@ a.cu_nav_button {
 	td.gsc-search-button {
 		display: block;
 		width: 30px;
-		height: 26px;
+		height: 34px;
 		position: absolute;
-		top: 0;
 		left: 0;
+
+		@include bp(m) {
+			left: auto;
+			right: 0;
+		}
+
 	}
 
 	input.gsc-search-button {
@@ -424,14 +473,12 @@ a.cu_nav_button {
 		border: none;
 		background: none;
 		text-indent: -9999px;
-
 		width: 30px;
 		min-width: 30px;
-		height: 26px;
+		height: 34px;
 		padding: 0;
-		margin-left: 2px;
-
 		cursor: pointer;
+		margin-left: 0;
 
 		&:focus { outline: none; }
 
@@ -444,24 +491,27 @@ a.cu_nav_button {
 	@include bp(m) {
 		background-color: transparent;
 		display: block;
-		width: 460px;
+		width: 510px;
 		left: 230px;
+		padding: 15px 30px;
 	}
 
 }
 
 // Search Autocomplete Suggestion box
 .gssb_c[style] {
+	position: fixed !important;
+	top: 44px !important;
+	z-index: 99200;
 	// @include wordpress-admin-bar-spacing();
 
-	position: fixed !important;
-	top: ($cu-nav-height - 10px) !important;
-	z-index: 99200;
+	@include bp(m) {
+		top: 48px !important;
+	}
+
 }
 
 #cu_search_results {
-	// @include wordpress-admin-bar-spacing();
-
 	display:none;
 	width: 100%;
 	height: 100%;
@@ -471,6 +521,7 @@ a.cu_nav_button {
 	position: fixed;
 	top: $cu-nav-height;
 	left: 0;
+	// @include wordpress-admin-bar-spacing();
 
 	#cu_search_results_cell {
 		display:table-cell;
@@ -480,19 +531,17 @@ a.cu_nav_button {
 		height: 100%;
 
 		#cu_search_results_ui {
-			// @include wordpress-admin-bar-spacing();
-
 			position: fixed;
 			overflow: scroll;
 			top: $cu-nav-height;
 			width: 100%;
 			max-height: 100%;
 			z-index: 99081;
-
 			// CENTER ALIGNED
 			left: 50%;
 			right:auto;
 			margin-left: -50%;
+			// @include wordpress-admin-bar-spacing();
 
 			.gsc-control-cse {
 				position: relative;
@@ -609,10 +658,10 @@ a.cu_nav_button {
 			font-size:12px;
 			border:1px solid #D8D6D0;
 			border-radius: 2px;
-			box-shadow: none;
 			box-sizing: border-box;
 			color:#9a9996;
 			margin: 4px 0px;
+			@include vendorize(box-shadow, none);
 		}
 
 		#cu_username:focus,
@@ -624,8 +673,6 @@ a.cu_nav_button {
 			border-style:solid;
 			border-width: 1px;
 			cursor: pointer;
-			 -webkit-box-shadow: none;
-			box-shadow: none;
 			box-sizing: border-box;
 			outline: 0;
 			-webkit-appearance:none;
@@ -638,6 +685,7 @@ a.cu_nav_button {
 			vertical-align: middle;
 			width: 14px;
 			min-width: 14px;
+			@include vendorize(box-shadow, none);
 		}
 
 		.persist label {
@@ -647,8 +695,7 @@ a.cu_nav_button {
 		input.persist {
 			border-color: #D8D6D0;
 			color: #a82439;
-			-webkit-box-shadow: none;
-			box-shadow: none;
+			@include vendorize(box-shadow, none);
 		}
 
 		input.persist[type="radio"]:checked:before, input.persist[type="checkbox"]:checked:before {
@@ -812,7 +859,7 @@ a.cu_nav_button {
 .cu-logo {
 
 	img, svg {
-		margin: 13px 0 13px 16px;
+		margin: 18px 0 18px 12px;
 	}
 
 }
@@ -848,8 +895,8 @@ a.cu_nav_button {
 	position: absolute;
 	top: 0;
 	right: 0;
-	padding: $cu-button-padding ($cu-button-padding + 4px);
-	line-height: 25px;
+	padding: $cu-button-padding;
+	line-height: 22px;
 	font-size: 12px;
 	z-index: 99997;
 
