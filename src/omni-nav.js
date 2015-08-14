@@ -17,6 +17,7 @@ this.jQuery && (function ($) {
 
 	var CU_search = {
 		isScrollLocked : false,
+		searchRefinement : 'All', // All by default
 
 		initialize : function() {
 			if (!google) {
@@ -74,11 +75,17 @@ this.jQuery && (function ($) {
 				}
 			});
 
+			CU_search.gse = google.search.cse.element.getElement('two-column');
+
+			$('#search-type').on('change', function(){
+				CU_search.searchRefinement = $(this).val();
+				// var options =  { 'defaultToRefinement:' : CU_search.searchRefinement };
+			});
+
 			// Appends close button because the search plugin removes it if it's in the template
 			$('#cu_search_box').append('<div id="js-cu-search-close-trigger" class="cu-search-close-trigger">X<span>Close</span></div>');
 
 			// CU_search.cleanHash();
-			CU_search.gse = google.search.cse.element.getElement('two-column');
 
 			// Show results lightbox on search
 			$("input.gsc-search-button").on('click',function() {
@@ -155,13 +162,21 @@ this.jQuery && (function ($) {
 			$('.gsc-control-cse').find('.more-results').remove();
 			$('.gsc-control-cse').append('<a href="//www.chapman.edu/search-results/index.aspx?q='+encodeURIComponent(term)+'" class="more-results">See more results for "'+term+'"</a>');
 
-			if (CU_search.visible) return;
-
 			$('.gsc-input').blur();
 			CU_search.$containerCell.css('height',$(window).height()+"px").css('width',$(window).width()+"px");
-			CU_search.$container.fadeIn(80);
+			// if (CU_search.visible) return;
 			CU_search.lockScroll();
 			CU_search.visible = true;
+
+			// Trigger a click on the corresponding tab from the dropdown selection
+			setTimeout(function() {
+				$('.gsc-tabsArea .gsc-tabHeader').each(function() {
+					if ($(this).text() == CU_search.searchRefinement) {
+						$(this).trigger('click');
+					}
+				});
+				CU_search.$container.fadeIn(100);
+			}, 500);
 
 		},
 
@@ -910,15 +925,12 @@ this.jQuery && (function ($) {
 		// SVG 4 Everybody
 		(function(e,t,n,r,i){function s(t,n){if(n){var r=n.getAttribute("viewBox"),i=e.createDocumentFragment(),s=n.cloneNode(true);if(r){t.setAttribute("viewBox",r)}while(s.childNodes.length){i.appendChild(s.childNodes[0])}t.appendChild(i)}}function o(){var t=this,n=e.createElement("x"),r=t.s;n.innerHTML=t.responseText;t.onload=function(){r.splice(0).map(function(e){s(e[0],n.querySelector("#"+e[1].replace(/(\W)/g,"\\$1")))})};t.onload()}function u(){var i;while(i=t[0]){var a=i.parentNode,f=i.getAttribute("xlink:href").split("#"),l=f[0],c=f[1];a.removeChild(i);if(l.length){var h=r[l]=r[l]||new XMLHttpRequest;if(!h.s){h.s=[];h.open("GET",l);h.onload=o;h.send()}h.s.push([a,c]);if(h.readyState===4){h.onload()}}else{s(a,e.getElementById(c))}}n(u)}if(i){u()}})(document,document.getElementsByTagName("use"),window.requestAnimationFrame||window.setTimeout,{},/Trident\/[567]\b/.test(navigator.userAgent))
 
-
-
 		// Insert it before the CSE code snippet so that cse.js can take the script
 		// parameters, like parsetags, callbacks.
 		window.__gcse = {
 			parsetags: 'explicit',
 			callback: CU_search.initialize
 		};
-
 
 		// Google Custom Search Script
 		// Must load after window.__gsce is defined
@@ -932,7 +944,6 @@ this.jQuery && (function ($) {
 		  var s = document.getElementsByTagName('script')[0];
 		  s.parentNode.insertBefore(gcse, s);
 		})();
-
 
 	});
 

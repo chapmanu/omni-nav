@@ -259,7 +259,8 @@ a.cu_nav_button {
 		outline: 0;
 		border: none;
 		background-color: $cu-light-grey;
-		background-image: url(/img/select-arrow.png); // change on dev
+		// background-image: url('/img/select-arrow.png');
+		background-image: url('[system-asset]/_files/img/select-arrow.png[/system-asset]');
 		background-repeat: no-repeat;
 		background-position: center right;
 		-webkit-appearance: none;
