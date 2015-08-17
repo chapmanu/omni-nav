@@ -493,8 +493,13 @@ a.cu_nav_button {
 		background-color: transparent;
 		display: block;
 		width: 510px;
-		left: 230px;
+		left: 50%;
+		margin-left: -160px;
 		padding: 15px 30px;
+	}
+
+	@include bp(l) {
+		margin-left: -255px;
 	}
 
 }
@@ -557,6 +562,17 @@ a.cu_nav_button {
 				background: linear-gradient(to bottom,  rgba(0,0,0,0.08) 0%, rgba(0,0,0,0) 100%);
 				z-index: 99082;
 			}
+
+			@include bp(m) {
+				width: 495px;
+				left: 50%;
+				margin-left: -151px;
+			}
+
+			@include bp(l) {
+				margin-left: -247px;
+			}
+
 		}
 	}
 }
