@@ -1,3 +1,7 @@
+body.no-scroll {
+	overflow: hidden;
+}
+
 .cu-off-canvas-nav {
 	width: 200%;
 	position: relative;
@@ -65,6 +69,7 @@
 					&:before {
 						color: $cu-red;
 					}
+
 					svg {
 						fill: $cu-red;
 					}
@@ -101,6 +106,19 @@
 
 				&:before {
 					margin-right: 10px;
+				}
+
+				&:hover {
+					color: $grey;
+
+					&:before {
+						color: $cu-red;
+					}
+
+					svg {
+						fill: $cu-red;
+					}
+
 				}
 
 				svg {
@@ -279,11 +297,11 @@
 
 		}
 
-		.level-1-link {
+		.level-1-link, .level-2-link {
 			right: 0;
 		}
 
-		.level-2-link, .main-menu {
+		.main-menu {
 			left: 0;
 		}
 

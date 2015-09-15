@@ -254,6 +254,10 @@ a.cu_nav_button {
 		display: block;
 	}
 
+	select::-ms-expand {
+	    display: none;
+	}
+
 	.search-type {
 		display: none;
 		outline: 0;
@@ -273,6 +277,11 @@ a.cu_nav_button {
 		cursor: pointer;
 		@include vendorize(border-radius, 4px 0px 0px 4px);
 		@include vendorize(box-shadow, none);
+		@include transition(background-color, 0.125s, ease-in-out);
+
+		&:hover {
+			background-color: #DDD;
+		}
 
 		@include bp(m) {
 			display: block;
@@ -538,10 +547,10 @@ a.cu_nav_button {
 
 		#cu_search_results_ui {
 			position: fixed;
-			overflow: scroll;
+			overflow-y: scroll;
 			top: $cu-nav-height;
 			width: 100%;
-			max-height: 100%;
+			max-height: 90%;
 			z-index: 99081;
 			// CENTER ALIGNED
 			left: 50%;
@@ -551,7 +560,7 @@ a.cu_nav_button {
 
 			.gsc-control-cse {
 				position: relative;
-				margin-bottom: $cu-nav-height + 15px;
+				// margin-bottom: $cu-nav-height + 15px;
 			}
 
 			&:before {

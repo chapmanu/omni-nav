@@ -74,11 +74,11 @@
 }
 
 @mixin transition($sel: all, $time: 1s, $ease: linear) {
-	-webkit-transition: $sel $time $time;
-	-moz-transition: $sel $time $time;
-	-o-transition: $sel $time $time;
-	-ms-transition: $sel $time $time;
-	transition: $sel $time $time;
+	-webkit-transition: $sel $time $ease;
+	-moz-transition: $sel $time $ease;
+	-o-transition: $sel $time $ease;
+	-ms-transition: $sel $time $ease;
+	transition: $sel $time $ease;
 }
 
 //---------- Variables ----------//

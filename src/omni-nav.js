@@ -522,6 +522,7 @@ this.jQuery && (function ($) {
 			// setup
 			this.$container = $('#cu_nav');
 			this.$menus = this.$container.find('.cu_nav_menu');
+			this.$menuTrigger = this.$container.find('.circle-border');
 			this.nav_bar_height = this.$container.outerHeight();
 
 			this.adjustEnvironment();
@@ -530,15 +531,15 @@ this.jQuery && (function ($) {
 			this.initializeCompanionBar();
 
 			// Click action
-			this.$menus.on('click', CU_navbar.menuClick);
+			this.$menuTrigger.on('click', CU_navbar.menuClick);
 
 			// Mouse Hover FX
-			this.$menus.lazybind('mouseenter', function (e) {
+			this.$menuTrigger.lazybind('mouseenter', function (e) {
 				CU_navbar.showMenu($(e.target).parents('.cu_nav_menu'));
 			}, 150, 'mouseleave');
 
 			// Mouse Hover FX
-			this.$menus.lazybind('mouseleave', function (e) {
+			this.$menuTrigger.lazybind('mouseleave', function (e) {
 				CU_navbar.hideMenu($(e.target).parents('.cu_nav_menu'));
 			}, 350, 'mousemove click');
 
@@ -863,6 +864,7 @@ this.jQuery && (function ($) {
 				event.preventDefault();
 				$('#js-cu-off-canvas-nav-container').toggleClass('open');
 				$('#js-cu-off-canvas-overlay').toggleClass('active');
+				$('body').toggleClass('no-scroll');
 			});
 
 			$('#js-cu-off-canvas-nav-container .toggle').on('click', function() {
