@@ -173,10 +173,11 @@ this.jQuery && (function ($) {
 				$('.gsc-tabsArea .gsc-tabHeader').each(function() {
 					if ($(this).text() == CU_search.searchRefinement) {
 						$(this).trigger('click');
+						console.log($(this));
 					}
 				});
-				CU_search.$container.fadeIn(100);
-			}, 500);
+				CU_search.$container.fadeIn(200);
+			}, 1000);
 
 		},
 

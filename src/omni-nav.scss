@@ -885,7 +885,12 @@ a.cu_nav_button {
 .cu-logo {
 
 	img, svg {
-		margin: 18px 0 18px 12px;
+		margin: 18px 0;
+
+		@include bp(m) {
+			margin: 18px 0 18px 12px;
+		}
+
 	}
 
 }
