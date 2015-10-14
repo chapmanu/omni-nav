@@ -24,6 +24,16 @@ this.jQuery && (function ($) {
 				console.log("CU_search cannot initialize because the GSE javascript library has not yet loaded. ");
 				return;
 			}
+			
+			// If IE, add class to html
+			if (navigator.userAgent.toLowerCase().indexOf('msie') != -1) {
+				$('html').addClass('ie');
+			}
+
+			// If IE, add additional class to html
+			if (navigator.userAgent.toLowerCase().indexOf('msie 9') != -1) {
+				$('html').addClass('ie9');
+			}
 
 			// Setup
 			CU_search.$container     = $('#cu_search_results');

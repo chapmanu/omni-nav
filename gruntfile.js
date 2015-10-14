@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
 		uglify: {
 			build: {
-				src: 'src/omni-nav.js',
+				src: 'src/js/omni-nav.js',
 				dest: 'dist/omni-nav.min.js'
 			}
 		},
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'dist/main-omni-nav.min.css': 'src/main-omni-nav.scss'
+					'dist/omni-nav.min.css': 'src/sass/omni-nav.scss'
 				}
 			}
 		},
@@ -102,11 +102,11 @@ module.exports = function(grunt) {
 				livereload: true,
 			},
 			scripts: {
-				files: ['src/*.js'],
+				files: ['src/**/*.js'],
 				tasks: ['uglify', 'includereplace']
 			},
 			css: {
-				files: ['src/*.scss'],
+				files: ['src/**/*.scss'],
 				tasks: ['sass', 'includereplace']
 			},
 			svg: {
@@ -114,7 +114,7 @@ module.exports = function(grunt) {
 				tasks: ['copy']
 			},
 			html: {
-				files: ['src/index.html', 'src/omni-nav.html'],
+				files: ['src/index.html', 'src/omni-nav.html', 'src/index-level.html', 'src/omni-nav-level.html'],
 				tasks: ['copy', 'includereplace']
 			}
 		},
