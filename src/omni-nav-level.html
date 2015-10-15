@@ -1,50 +1,19 @@
 <div id="cu_nav">
-	<ul id="cu_nav_domain" class="cu_nav_menu cu_nav_selectable">
-		<li class="selected"><a id="js-cu-off-canvas-nav-trigger" class="cu_nav_button" href="http://www.chapman.edu">@@include('svg.html', {"n": "cu_window"});Chapman.edu</a></li>
-		<li><a class="cu_nav_button" href="https://events.chapman.edu">@@include('svg.html', {"n": "calendar"});Events.Chapman</a></li>
-		<li><a class="cu_nav_button" href="https://blogs.chapman.edu">@@include('svg.html', {"n": "newspaper"});Blogs.Chapman</a></li>
-		<li><a class="cu_nav_button" href="https://social.chapman.edu">@@include('svg.html', {"n": "chat"});Social.Chapman</a></li>
-		<li><a class="cu_nav_button" href="https://inside.chapman.edu">@@include('svg.html', {"n": "cu_monogram"});Inside.Chapman</a></li>
-	</ul>
+	
+	<a id="js-cu-off-canvas-nav-trigger" href="#" class="cu-off-canvas-nav-trigger" title="Menu">
+		<img src="img/mobile-header-menu.png" alt="Menu">
+	</a>
 
-	<ul class="cu_nav_secondary cu_nav_menu cu_nav_selectable" style="display: none;" data-show-domain="blogs.chapman.edu">
-		<li><a class="cu_nav_button" href="/business">@@include('svg.html', {"n": "cu_business"});Argyros School of Business and Economics</a></li>
-		<li><a class="cu_nav_button" href="/ces">@@include('svg.html', {"n": "cu_ces"});College of Educational Studies</a></li>
-		<li><a class="cu_nav_button" href="/copa">@@include('svg.html', {"n": "cu_copa"});College of Performing Arts</a></li>
-		<li><a class="cu_nav_button" href="/crean">@@include('svg.html', {"n": "cu_crean"});Crean College of Health and Behavioral Sciences</a></li>
-		<li><a class="cu_nav_button" href="/dodge">@@include('svg.html', {"n": "cu_dodge"});Dodge College of Film and Media Arts</a></li>
-		<li><a class="cu_nav_button" href="/scst">@@include('svg.html', {"n": "cu_scst"});Schmid College of Science and Technology</a></li>
-		<li><a class="cu_nav_button" href="/law">@@include('svg.html', {"n": "cu_law"});Fowler School of Law</a></li>
-		<li><a class="cu_nav_button" href="/wilkinson">@@include('svg.html', {"n": "cu_wilkinson"});Wilkinson College of Humanities and Social Sciences</a></li>
-		<li><a class="cu_nav_button" href="/happenings">@@include('svg.html', {"n": "cu_monogram"});Happenings</a></li>
-		<li><a class="cu_nav_button" href="/magazine">@@include('svg.html', {"n": "cu_monogram"});Chapman Magazine</a></li>
-		<li><a class="cu_nav_button" href="/students">@@include('svg.html', {"n": "cu_monogram"});One University Student Blog</a></li>
-		<li><a class="cu_nav_button" href="/alumni">@@include('svg.html', {"n": "cu_monogram"});Alumni</a></li>
-		<li class="selected"><a class="cu_nav_button" href="/">@@include('svg.html', {"n": "cu_monogram"});Browse all blogs</a></li>
-	</ul>
-
-	<ul class="cu_nav_secondary cu_nav_menu cu_nav_selectable" style="display: none;" data-show-domain="www.chapman.edu">
-		<li data-hide-path="/law"><a class="cu_nav_button" href="/future-students">Prospective Students</a></li>
-		<li data-hide-path="/law"><a class="cu_nav_button" href="/students">Current Students</a></li>
-		<li data-hide-path="/law"><a class="cu_nav_button" href="/alumni">Alumni</a></li>
-		<li data-hide-path="/law"><a class="cu_nav_button" href="/faculty-staff">Faculty &amp; Staff</a></li>
-		<li data-hide-path="/law"><a class="cu_nav_button" href="/families">Parents &amp; Families</a></li>
-
-		<li data-show-path="/law"><a class="cu_nav_button" href="/law/admission">Future Law Students</a></li>
-		<li data-show-path="/law"><a class="cu_nav_button" href="/law/admission/newly-admitted">New Students</a></li>
-		<li data-show-path="/law"><a class="cu_nav_button" href="/law/student-resources">Current Students</a></li>
-		<li data-show-path="/law"><a class="cu_nav_button" href="/law/law-faculty">Faculty &amp; Staff</a></li>
-		<li data-show-path="/law"><a class="cu_nav_button" href="/law/alumni">Alumni</a></li>
-		<li data-show-path="/law"><a class="cu_nav_button" href="/law/employers">Employers</a></li>
-
-		<li class="selected hidden-unless-default"><a class="cu_nav_button" href="#">Find information for...</a></li>
-	</ul>
+	<a class="cu-logo" href="http://www.chapman.edu" title="Chapman.edu">
+		<img src="img/off-canvas-header-default.png" alt="Chapman.edu">
+	</a>
 
 	<div id="cu_login_container" class="cu_nav_menu">
 
 		<div id="cu_identity">
-			<!-- <img class="cu_avatar" src="<%= image_path('user_id.png') %>" /> -->
-			@@include('svg.html', {"n": "user"});
+			<span class="circle-border">
+				@@include('svg.html', {"n": "user"});
+			</span>
 			<span class="cu_name">Log In</span>
 		</div>
 
@@ -65,36 +34,56 @@
 			  </form>
 		</div>
 
-		<ul class="cu_dropdown_menu">
+		<!-- <ul class="cu_dropdown_menu">
 			<li><a class="cu_nav_button" href="https://blackboard.chapman.edu/">@@include('svg.html', {"n": "blackboard"});Blackboard</a></li>
 			<li><a class="cu_nav_button" href="https://ariel.chapman.edu/WebAdvisor/WebAdvisor">@@include('svg.html', {"n": "cu_monogram"});WebAdvisor</a></li>
 			<li><a class="cu_nav_button" href="http://panthermail.chapman.edu/">@@include('svg.html', {"n": "email"});PantherMail</a></li>
 			<li><a class="cu_nav_button" href="https://exchange.chapman.edu/">@@include('svg.html', {"n": "email"});Staff &amp; Faculty Email</a></li>
 			<li><a class="cu_nav_button" href="https://mywindow.chapman.edu/">@@include('svg.html', {"n": "cu_window"});MyWindow</a></li>
 			<li><a class="cu_nav_button" href="https://cas.chapman.edu/login?service=https://orgsync.com/cas/chapman-university">@@include('svg.html', {"n": "orgsync"});OrgSync</a></li>
+		</ul> -->
+
+		<ul class="cu_dropdown_menu">
+			<li><a class="cu_nav_button" href="https://blackboard.chapman.edu/">@@include('svg.html', {"n": "blackboard"});Blackboard</a></li>
+			<li><a class="cu_nav_button" href="https://ariel.chapman.edu/WebAdvisor/WebAdvisor">@@include('svg.html', {"n": "cu_monogram"});WebAdvisor</a></li>
+			<li><a class="cu_nav_button" href="https://exchange.chapman.edu/">@@include('svg.html', {"n": "email"});Staff &amp; Faculty Email</a></li>
+			<li><a class="cu_nav_button" href="http://panthermail.chapman.edu/">@@include('svg.html', {"n": "email"});PantherMail</a></li>
+			<li><a class="cu_nav_button" href="https://my.chapman.edu/">@@include('svg.html', {"n": "cu_window"});MyChapman</a></li>
+			<li><a class="cu_nav_button" href="https://mywindow.chapman.edu/">@@include('svg.html', {"n": "cu_window"});</svg>MyWindow</a></li>
 		</ul>
 
 	</div>
 
-	<div id="cu_search">
+	<div id="js-cu-search-open-trigger" class="cu-search-open-trigger"><span>Search</span></div>
+
+	<div id="cu_search" class="clearfix">
+
+		<select class="search-type" name="search-type" id="search-type">
+			<option value="All">All</option>
+			<option value="Blog Stories">Blog Stories</option>
+			<option value="Faculty Directory">Faculty Directory</option>
+			<option value="Events">Events</option>
+		</select>
 
 		<div id="cu_search_box">
+
 			<form action="//www.chapman.edu/search-results/index.aspx">
-			<table cellspacing="0" cellpadding="0" class="gsc-search-box">
-				<tbody>
-					<tr>
-						<td class="gsc-input">
-							<input id="cu_search_no_js" autocomplete="off" type="text" size="10" class="gsc-input no-js" name="q" title="search" spellcheck="false" style="outline: none;">
-						</td>
-						<td class="gsc-search-button">
-							<input type="button" value="Search" class="gsc-search-button" title="search">
-						</td>
-						<td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+				<table cellspacing="0" cellpadding="0" class="gsc-search-box">
+					<tbody>
+						<tr>
+							<td class="gsc-input">
+								<input id="cu_search_no_js" autocomplete="off" type="text" size="10" class="gsc-input no-js" name="q" title="search" spellcheck="false" style="outline: none;" placeholder="Search">
+							</td>
+							<td class="gsc-search-button">
+								<input type="button" value="Search" class="gsc-search-button" title="search">
+							</td>
+							<td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;dfasdfsdf</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</form>
+
 		</div>
 
 		<div id="cu_search_results">
