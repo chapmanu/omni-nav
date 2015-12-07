@@ -547,12 +547,12 @@ this.jQuery && (function ($) {
 			// Mouse Hover FX
 			this.$menuTrigger.lazybind('mouseenter', function (e) {
 				CU_navbar.showMenu($(e.target).parents('.cu_nav_menu'));
-			}, 150, 'mouseleave');
+			}, 100, 'mouseleave');
 
 			// Mouse Hover FX
 			this.$menuTrigger.lazybind('mouseleave', function (e) {
 				CU_navbar.hideMenu($(e.target).parents('.cu_nav_menu'));
-			}, 350, 'mousemove click');
+			}, 100, 'mousemove click');
 
 			CU_navbar.initializeWatchers();
 

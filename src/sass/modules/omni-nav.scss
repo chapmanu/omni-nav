@@ -369,7 +369,7 @@ a.cu_nav_button {
 
 	// The spelling suggestions
 	.gs-spelling {
-		a { color: #407892; }
+		a { color: $chapman-link-hover; }
 	}
 
 	// The main title for each result
@@ -383,8 +383,8 @@ a.cu_nav_button {
 		&:hover { text-decoration: underline; }
 
 		a:visited {
-			color: #407892;
-			b { color: darken(#407892, 3%); }
+			color: $chapman-link-hover;
+			b { color: darken($chapman-link-hover, 3%); }
 		}
 	}
 
@@ -756,7 +756,7 @@ a.cu_nav_button {
 		li { @include reset-box-model(); }
 
 		.cu_nav_menu.expanded & {
-			padding:10px;
+			padding: 10px;
 		}
 
 		// Default
@@ -880,6 +880,8 @@ a.cu_nav_button {
 }
 
 .cu-off-canvas-nav-trigger {
+	outline: none;
+	border: 0;
 	padding: ($cu-button-padding + 3px) $cu-button-padding;
 
 	img, svg {
