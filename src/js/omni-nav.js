@@ -533,7 +533,7 @@ this.jQuery && (function ($) {
 			// setup
 			this.$container = $('#cu_nav');
 			this.$menus = this.$container.find('.cu_nav_menu');
-			this.$menuTrigger = this.$container.find('.circle-border');
+			this.$menuTrigger = this.$container.find('.cu_nav_menu');
 			this.nav_bar_height = this.$container.outerHeight();
 
 			this.adjustEnvironment();
@@ -542,7 +542,7 @@ this.jQuery && (function ($) {
 			this.initializeCompanionBar();
 
 			// Click action
-			this.$menuTrigger.on('click', CU_navbar.menuClick);
+			// this.$menuTrigger.on('click', CU_navbar.menuClick);
 
 			// Mouse Hover FX
 			this.$menuTrigger.lazybind('mouseenter', function (e) {
