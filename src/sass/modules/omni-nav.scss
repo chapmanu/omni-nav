@@ -327,6 +327,7 @@ a.cu_nav_button {
         line-height: 16px;
         font-size: 16px;
         font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
+        @include vendorize(appearance, none);
         
         &::-webkit-input-placeholder {
         	line-height: 16px;
