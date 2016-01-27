@@ -359,7 +359,34 @@ this.jQuery && (function ($) {
 		} // end trackAction()
 	} // end linkAnalytics
 
+	// Search-as-you-type functionality
+	var globalSearch = {
+		currentSearchTerm: '',
 
+		initialize: function() {
+			$('#cu_search_no_js').on('keyup', function() {
+				if(jQuery.trim($(this).val()) != globalSearch.currentSearchTerm) {
+					globalSearch.currentSearchTerm = jQuery.trim($(this).val());
+					var baseSearchUrl = $('#cu_search_box form').prop('action');
+
+					if(globalSearch.currentSearchTerm != '') {
+						var searchUrl = baseSearchUrl +
+							'?query=' +
+							encodeURIComponent($(this).val());
+
+						$('#cu_search_result .result_container').
+							load(searchUrl + ' #search-results .search-result', function() {
+								$('#cu_search_result').show();
+								$('#cu_search_result .all_results_link').
+									prop('href', searchUrl);
+							});
+					} else {
+						$('#cu_search_result').hide();
+					}
+				}
+			});
+		}
+	}
 
 	// Define Lazybind
 	$.fn.lazybind = function (event, fn, timeout, abort) {
@@ -387,6 +414,7 @@ this.jQuery && (function ($) {
 		CU_navbar.initialize();
 		// CU_user.initialize();
 		linkAnalytics.initialize();
+		globalSearch.initialize();
 
 		// SVG 4 Everybody
 		(function(e,t,n,r,i){function s(t,n){if(n){var r=n.getAttribute("viewBox"),i=e.createDocumentFragment(),s=n.cloneNode(true);if(r){t.setAttribute("viewBox",r)}while(s.childNodes.length){i.appendChild(s.childNodes[0])}t.appendChild(i)}}function o(){var t=this,n=e.createElement("x"),r=t.s;n.innerHTML=t.responseText;t.onload=function(){r.splice(0).map(function(e){s(e[0],n.querySelector("#"+e[1].replace(/(\W)/g,"\\$1")))})};t.onload()}function u(){var i;while(i=t[0]){var a=i.parentNode,f=i.getAttribute("xlink:href").split("#"),l=f[0],c=f[1];a.removeChild(i);if(l.length){var h=r[l]=r[l]||new XMLHttpRequest;if(!h.s){h.s=[];h.open("GET",l);h.onload=o;h.send()}h.s.push([a,c]);if(h.readyState===4){h.onload()}}else{s(a,e.getElementById(c))}}n(u)}if(i){u()}})(document,document.getElementsByTagName("use"),window.requestAnimationFrame||window.setTimeout,{},/Trident\/[567]\b/.test(navigator.userAgent))
