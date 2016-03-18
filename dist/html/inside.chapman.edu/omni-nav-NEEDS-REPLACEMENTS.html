@@ -78,30 +78,21 @@
 	<div id="cu_search">
 
 		<div id="cu_search_box">
-			<form action="//www.chapman.edu/search-results/index.aspx">
-			<table cellspacing="0" cellpadding="0" class="gsc-search-box">
-				<tbody>
-					<tr>
-						<td class="gsc-input">
-							<input id="cu_search_no_js" autocomplete="off" type="text" size="10" class="gsc-input no-js" name="q" title="search" spellcheck="false" style="outline: none;">
-						</td>
-						<td class="gsc-search-button">
-							<input type="button" value="Search" class="gsc-search-button" title="search">
-						</td>
-						<td class="gsc-clear-button"><div class="gsc-clear-button" title="clear results">&nbsp;</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<form id="search" data-autocomplete-endpoint="http://search.localchapman.edu:3000/queries" action="http://search.localchapman.edu:3000/queries" method="post">
+				<table cellspacing="0" cellpadding="0" class="elastic-search-box">
+					<tbody>
+						<tr>
+							<td class="elastic-input">
+								<input placeholder="Search..." type="search" autocomplete="off" name="query[phrase]" id="query_phrase" class="elastic-input" style="outline: none;">
+							</td>
+							<td class="elastic-search-button">
+								<input type="button" value="Search" class="elastic-search-button" title="search">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<ul class="elastic-results"></ul>
 			</form>
-		</div>
-
-		<div id="cu_search_results">
-			<div id="cu_search_results_cell">
-				<div id="cu_search_results_ui">
-
-				</div>
-			</div>
 		</div>
 	</div>
 

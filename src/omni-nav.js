@@ -15,168 +15,74 @@ this.jQuery && (function ($) {
 		'localhost'                    : '206.211.143.174'
 	}
 
-	var CU_search = {
-		isScrollLocked : false,
+	var CU_search = {};
 
-		initialize : function() {
-			if (!google) {
-				console.log("CU_search cannot initialize because the GSE javascript library has not yet loaded. ");
-				return;
+	CU_search.initialize = function(id) {
+		var $el = $(id);
+
+		this.id          = id;
+		this.form        = $el;
+		this.endpoint    = $el.data('autocomplete-endpoint')
+		this.input       = $el.find('input.elastic-input');
+		this.submit_btn  = $el.find('input.elastic-search-button');
+		this.suggestions = $el.children('ul.elastic-results');
+		this.focusIndex  = -1;
+		this.listen();
+	}
+
+	CU_search.listen = function() {
+		this.input.on('keyup', function(e) {
+			this.focusIndex = -1;
+			CU_search.getSuggestions($(this).val());
+		});
+
+		$(document).on('keydown', function(e) {
+			if(this.input.is(":focus")) {
+				if(e.which == 13) CU_search.submit();
 			}
+		});
 
-			// Setup
-			CU_search.$container     = $('#cu_search_results');
-			CU_search.$containerCell = $('#cu_search_results_cell');
+		$(document).on('mouseenter', this.id + ' ul li', function() {
+			CU_search.focusIndex = $(this).index();
+			CU_search.unfocusAll();
+			CU_search.focus(Search.getSuggestionAt(CU_search.focusIndex));
+		});
 
-			CU_search.enableAjaxSearches();
+		$(document).on('click', this.id + ' ul li', function() {
+			CU_search.submit();
+		});
+	}
 
-		},
-
-		/***************************************************
-		* Initializses GCSE elements, and lightbox scripts
-		***************************************************/
-		enableAjaxSearches : function() {
-
-			if (CU_search.gse) return;
-
-			$("#cu_search_box").empty();
-
-			google.search.cse.element.render(
-			{
-				// SEARCH BOX
-				div: 'cu_search_box',
-				tag: 'searchbox',
-				attributes: {
-					// gname: 'two-column',
-					enableAutoComplete: true,
-					autoCompleteMatchType: 'any',
-					resultSetSize: 6,
-					enableHistory: false
-				}
-			},
-			{
-				// RESULTS BOX
-				div: 'cu_search_results_ui',
-				tag: 'searchresults',
-				attributes: {
-					// gname: 'two-column',
-					linkTarget: '_self',
-					enableOrderBy: true
-				}
+	CU_search.getSuggestions = function(q) {
+		$.get(this.endpoint, {q: q}, function(data) {
+			CU_search.suggestions.empty();
+			$.each(data, function(i, suggestion) {
+				CU_search.suggestions.append('<li>' + suggestion + '</li>');
 			});
+		});
+	}
 
-			// CU_search.cleanHash();
-			CU_search.gse = google.search.cse.element.getElement('two-column');
+	CU_search.getSuggestionAt = function(index) {
+		return this.suggestions.children().eq(index);
+	}
 
-			// Show results lightbox on search
-			$("input.gsc-search-button").on('click',function() {
-				if (CU_search.gse.getInputQuery().length <= 0){
-					$('.gsc-input').focus();
-					return;
-				}
-				CU_search.show();
-			});
-
-			// Show results lightbox on search
-			$(".gsc-input").on('keyup', function(e) {
-				if(e.keyCode == 13) CU_search.show();
-				CU_search.bindAutocompleteTasks();
-			});
-
-			// Close lightbox on click
-			CU_search.$container.click(function(e) {
-				if (!$(e.target).parents('.gsc-control-cse').length && !$(e.target).hasClass('gsc-control-cse')) CU_search.hide();
-
-				// GCS scrolls the window on pagination... Let's hotfix that!
-				var scrollPosition = jQuery('html').data('scroll-position');
-				window.scrollTo(scrollPosition[0], scrollPosition[1]);
-			});
-
-			// Close lightbox on esc key
-			$('body').keyup(function(e) {
-				if (e.which == 27) CU_search.hide();
-			});
-
-		},
-
-		cleanHash : function() {
-			var h = window.location.hash;
-			if (h == '#gsc.tab=0' || h == '#gsc.tab=0&gsc.sort=') {
-
-				var
-				loc = window.location.href,
-				index = loc.indexOf('#');
-
-				if (index > 0) history.replaceState("", document.title, loc.substring(0, index));
-			}
-		},
-
-		// Show the results lightbox when autocomplete is clicked.
-		bindAutocompleteTasks : function() {
-			if (CU_search.isAutocompleteBound) return;
-
-			setTimeout(function() {
-				// Do not bind if nothing to bind
-				if (!$(".gsc-completion-container").length) return;
-
-				$(".gsc-completion-container").on('click', function() {
-					CU_search.show();
-				});
-				CU_search.isAutocompleteBound = true;
-			}, 100); // Waits for autocomplete to add to DOM
-
-		},
-
-		show : function() {
-
-			var term = CU_search.gse.getInputQuery();
-
-			$('.gsc-control-cse').find('.more-results').remove();
-			$('.gsc-control-cse').append('<a href="//www.chapman.edu/search-results/index.aspx?q='+encodeURIComponent(term)+'" class="more-results">See more results for "'+term+'"</a>');
-
-			if (CU_search.visible) return;
-
-			$('.gsc-input').blur();
-			CU_search.$containerCell.css('height',$(window).height()+"px").css('width',$(window).width()+"px");
-			CU_search.$container.fadeIn(80);
-			CU_search.lockScroll();
-			CU_search.visible = true;
-
-		},
-
-		hide : function() {
-			if (!CU_search.visible) return;
-
-			CU_search.$container.fadeOut(40);
-			CU_search.unlockScroll();
-			CU_search.visible = false;
-
-			CU_search.gse.clearAllResults();
-			// CU_search.cleanHash();
-		},
-
-		lockScroll : function() {
-			// lock scroll position, but retain settings for later
-			var scrollPosition = [
-				self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
-				self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
-			];
-			var html = jQuery('html'); // it would make more sense to apply this to body, but IE7 won't have that
-			html.data('scroll-position', scrollPosition);
-			html.data('previous-overflow', html.css('overflow'));
-			html.css('overflow', 'hidden');
-			window.scrollTo(scrollPosition[0], scrollPosition[1]);
-			this.isScrollLocked = true;
-		}, // end lockScroll
-
-		unlockScroll : function() {
-			if (!this.isScrollLocked) return false;
-
-			var html = jQuery('html');
-			var scrollPosition = html.data('scroll-position');
-			html.css('overflow', 'visible');
-			window.scrollTo(scrollPosition[0], scrollPosition[1]);
+	CU_search.submit = function() {
+		if(this.focusIndex >= 0) {
+			this.input.val(this.getSuggestionAt(this.focusIndex).text());
 		}
+		this.form.submit();
+	}
+
+	CU_search.unfocusAll = function() {
+		this.suggestions.children().removeClass('suggestion-focused');
+	}
+
+	CU_search.suggestionCount = function() {
+		return this.suggestions.children().length;
+	}
+
+	CU_search.focus = function($suggestion) {
+		$suggestion.addClass('suggestion-focused');
 	}
 
 	// CU_navbar is made available to the global scope
@@ -549,36 +455,12 @@ this.jQuery && (function ($) {
 
 	$(document).ready(function () {
 		CU_navbar.initialize();
-		// CU_user.initialize();
+		CU_search.initialize("#search");
+		//CU_user.initialize();
 		linkAnalytics.initialize();
 
 		// SVG 4 Everybody
-		(function(e,t,n,r,i){function s(t,n){if(n){var r=n.getAttribute("viewBox"),i=e.createDocumentFragment(),s=n.cloneNode(true);if(r){t.setAttribute("viewBox",r)}while(s.childNodes.length){i.appendChild(s.childNodes[0])}t.appendChild(i)}}function o(){var t=this,n=e.createElement("x"),r=t.s;n.innerHTML=t.responseText;t.onload=function(){r.splice(0).map(function(e){s(e[0],n.querySelector("#"+e[1].replace(/(\W)/g,"\\$1")))})};t.onload()}function u(){var i;while(i=t[0]){var a=i.parentNode,f=i.getAttribute("xlink:href").split("#"),l=f[0],c=f[1];a.removeChild(i);if(l.length){var h=r[l]=r[l]||new XMLHttpRequest;if(!h.s){h.s=[];h.open("GET",l);h.onload=o;h.send()}h.s.push([a,c]);if(h.readyState===4){h.onload()}}else{s(a,e.getElementById(c))}}n(u)}if(i){u()}})(document,document.getElementsByTagName("use"),window.requestAnimationFrame||window.setTimeout,{},/Trident\/[567]\b/.test(navigator.userAgent))
-
-
-
-		// Insert it before the CSE code snippet so that cse.js can take the script
-		// parameters, like parsetags, callbacks.
-		window.__gcse = {
-			parsetags: 'explicit',
-			callback: CU_search.initialize
-		};
-
-
-		// Google Custom Search Script
-		// Must load after window.__gsce is defined
-		(function() {
-		  var cx = '015856566681218627934:2ndbiubovo4';
-		  var gcse = document.createElement('script');
-		  gcse.type = 'text/javascript';
-		  gcse.async = true;
-		  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-		      '//www.google.com/cse/cse.js?cx=' + cx;
-		  var s = document.getElementsByTagName('script')[0];
-		  s.parentNode.insertBefore(gcse, s);
-		})();
-
-
+		(function(e,t,n,r,i){function s(t,n){if(n){var r=n.getAttribute("viewBox"),i=e.createDocumentFragment(),s=n.cloneNode(true);if(r){t.setAttribute("viewBox",r)}while(s.childNodes.length){i.appendChild(s.childNodes[0])}t.appendChild(i)}}function o(){var t=this,n=e.createElement("x"),r=t.s;n.innerHTML=t.responseText;t.onload=function(){r.splice(0).map(function(e){s(e[0],n.querySelector("#"+e[1].replace(/(\W)/g,"\\$1")))})};t.onload()}function u(){var i;while(i=t[0]){var a=i.parentNode,f=i.getAttribute("xlink:href").split("#"),l=f[0],c=f[1];a.removeChild(i);if(l.length){var h=r[l]=r[l]||new XMLHttpRequest;if(!h.s){h.s=[];h.open("GET",l);h.onload=o;h.send()}h.s.push([a,c]);if(h.readyState===4){h.onload()}}else{s(a,e.getElementById(c))}}n(u)}if(i){u()}})(document,document.getElementsByTagName("use"),window.requestAnimationFrame||window.setTimeout,{},/Trident\/[567]\b/.test(navigator.userAgent));
 	});
 
 })(jQuery);
