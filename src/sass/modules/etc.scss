@@ -1,0 +1,16 @@
+body.no-scroll {
+	overflow: hidden;
+}
+
+.mainNav {
+	display: none;
+	
+	&.mainNavLaw {
+		display: block;
+	}
+
+	@include bp(m) {
+		display: block;
+	}
+
+}
