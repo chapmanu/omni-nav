@@ -45,10 +45,10 @@
 
 		<ul class="cu_dropdown_menu">
 			<li><a class="cu_nav_button" href="https://blackboard.chapman.edu/">@@include('svg.html', {"n": "blackboard"});Blackboard</a></li>
-			<li><a class="cu_nav_button" href="https://ariel.chapman.edu/WebAdvisor/WebAdvisor">@@include('svg.html', {"n": "cu_monogram"});WebAdvisor</a></li>
+			<!-- <li><a class="cu_nav_button" href="https://ariel.chapman.edu/WebAdvisor/WebAdvisor">@@include('svg.html', {"n": "cu_monogram"});WebAdvisor</a></li> -->
+			<li><a class="cu_nav_button" href="https://my.chapman.edu/">@@include('svg.html', {"n": "cu_window"});MyChapman</a></li>
 			<li><a class="cu_nav_button" href="https://exchange.chapman.edu/">@@include('svg.html', {"n": "email"});Staff &amp; Faculty Email</a></li>
 			<li><a class="cu_nav_button" href="http://panthermail.chapman.edu/">@@include('svg.html', {"n": "email"});PantherMail</a></li>
-			<li><a class="cu_nav_button" href="https://my.chapman.edu/">@@include('svg.html', {"n": "cu_window"});MyChapman</a></li>
 			<li><a class="cu_nav_button" href="https://mywindow.chapman.edu/">@@include('svg.html', {"n": "cu_window"});</svg>MyWindow</a></li>
 		</ul>
 
@@ -102,7 +102,9 @@
 	<div id="js-cu-off-canvas-nav-container" class="cu-off-canvas-nav-container">
 	    
 	    <div class="cu-off-canvas-header">
-	        <img src="/img/off-canvas-header-default.png" alt="Argyros School of Business and Economics">
+	    	<a href="#" title="School/College title goes here">
+	        	<img src="/img/off-canvas-header-wilkinson.png" alt="School/College title goes here">
+	        </a>
 	        <span id="js-cu-close-off-canvas-nav" class="close">X</span>
 	        <div class="cu-off-canvas-links clearfix">
                 <span id="js-main-menu" class="main-menu">Main Menu</span>
@@ -116,14 +118,15 @@
 	        <ul class="level-1">
 
 	            <li>
-	                <a class="has-icon" href="#" title="The University">@@include('svg.html', {"n": "cu_window"});The University</a>
+	                <a class="has-icon the-university" href="#" title="The University">@@include('svg.html', {"n": "cu_window"});The University</a>
 	                <span class="toggle"><span>+</span></span>
 	                <ul>
+	                	<li><a href="#" title="About">About</a></li>
 	                    <li><a href="#" title="Academics">Academics</a></li>
 	                    <li><a href="#" title="Admission">Admission</a></li>
 	                    <li><a href="#" title="Arts">Arts</a></li>
-	                    <li><a href="#" title="Athletics">Athletics</a></li>
 	                    <li><a href="#" title="Research">Research</a></li>
+	                    <li><a href="#" title="Support">Support</a></li>
 	                </ul>
 	            </li>
 	            <li>
@@ -158,8 +161,78 @@
 	                <a class="has-icon" href="#" title="Blogs">@@include('svg.html', {"n": "newspaper"});Blogs</a>
 	                <span class="toggle"><span>+</span></span>
 	                <ul>
-	                    <li><a href="#" title="More Links">More Links</a></li>
-	                    <li><a href="#" title="Go Here">Go Here</a></li>
+	                    <li>
+                            <a href="https://blogs.chapman.edu/business/" title="Argyros School of Business &amp; Economics">Argyros School of Business &amp; Economics</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/collections" title="Art Collections at Chapman University">Art Collections at Chapman University</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/alumni/" title="Chapman Alumni">Chapman Alumni</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/magazine/" title="Chapman Magazine">Chapman Magazine</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/ces/" title="College of Educational Studies">College of Educational Studies</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/copa/" title="College of Performing Arts">College of Performing Arts</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/crean/" title="Crean College of Health and Behavioral Sciences">Crean College of Health and Behavioral Sciences</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/dodge/" title="Dodge College of Film and Media Arts">Dodge College of Film and Media Arts</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/law/" title="Fowler School of Law">Fowler School of Law</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/happenings/" title="Happenings">Happenings</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/academics" title="Higher Ed and Technology: Academics at Chapman">Higher Ed and Technology: Academics at Chapman</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/holocaust-education" title="Holocaust Education">Holocaust Education</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/huell-howser-archives" title="Huell Howser Archives at Chapman University">Huell Howser Archives at Chapman University</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/information-systems" title="Information Systems &amp; Technology">Information Systems &amp; Technology</a>
+                        </li>
+                        <li>
+                            <a href="http://blogs.chapman.edu/library" title="Leatherby Libraries">Leatherby Libraries</a>
+                        </li>
+                        <li>
+                            <a href="https://neighborsofchapman.com" title="Neighbors of Chapman">Neighbors of Chapman</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/students/" title="One University">One University</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/press-room" title="Press Room">Press Room</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/scst/" title="Schmid College of Science and Technology">Schmid College of Science and Technology</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/pharmacy/" title="School of Pharmacy">School of Pharmacy</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/smc" title="Strategic Marketing and Communications">Strategic Marketing and Communications</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/sustainability" title="Sustainability">Sustainability</a>
+                        </li>
+                        <li>
+                            <a href="http://blogs.chapman.edu/tpi" title="Thompson Policy Institute">Thompson Policy Institute</a>
+                        </li>
+                        <li>
+                            <a href="https://blogs.chapman.edu/wilkinson/" title="Wilkinson College of Arts, Humanities, and Social Sciences">Wilkinson College of Arts, Humanities, and Social Sciences</a>
+                        </li>
 	                </ul>
 	            </li>
 	            <li>

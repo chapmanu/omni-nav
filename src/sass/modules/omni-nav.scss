@@ -895,6 +895,8 @@ a.cu_nav_button {
 
 	img, svg {
 		margin: 18px 0;
+		max-height: 29px;
+		max-width: 155px;
 
 		@include bp(m) {
 			margin: 18px 0 18px 12px;

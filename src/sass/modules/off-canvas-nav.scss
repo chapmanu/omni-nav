@@ -15,6 +15,7 @@ body.no-scroll {
 	li {
 		border-top: 1px solid darken($cu-light-grey, 10%);
 		list-style: none;
+		margin: 0;
 	}
 
 	a {
@@ -55,6 +56,10 @@ body.no-scroll {
 			> ul {
 				display: none;
 
+				&:empty {
+					display: none;
+				}
+
 				> li {
 					background-color: lighten($cu-light-grey, 5%);
 					
@@ -75,6 +80,10 @@ body.no-scroll {
 			}
 
 			&.open {
+
+				&:empty {
+					display: none;
+				}
 
 				> a {
 					color: $grey;
@@ -111,8 +120,14 @@ body.no-scroll {
 					text-indent: -28px;
 				}
 
+				&.the-university {
+					pointer-events: none;
+				}
+
 				&:before, svg {
-					vertical-align: top;
+					// vertical-align: top;
+					position: relative;
+					top: 2px;
 					@include transition(all, 0.175s, ease-in-out);
 				}
 
@@ -254,8 +269,27 @@ body.no-scroll {
 	background-color: $cu-light-grey;
 	padding: 1.5em 1.25em 0.5em;
 
+	.sc-logo {
+		display: block;
+
+		.shifted & {
+			display: none;
+		}
+
+	}
+
+	.default-logo {
+		display: none;
+
+		.shifted & {
+			display: block;
+		}
+
+	}
+
 	img {
 		max-width: 87.5%;
+		max-height: 29px;
 	}
 
 	.close {
