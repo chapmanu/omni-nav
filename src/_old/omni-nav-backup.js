@@ -30,9 +30,6 @@ this.jQuery && (function ($) {
 
 			CU_search.enableAjaxSearches();
 
-			// CU_search.resumeHistoryState();
-			// $(window).on('popstate', CU_search.resumeHistoryState);
-
 		},
 
 		/***************************************************
@@ -100,15 +97,6 @@ this.jQuery && (function ($) {
 				if (e.which == 27) CU_search.hide();
 			});
 
-		},
-
-		resumeHistoryState : function() {
-			if (window.location.hash.indexOf('gsc.q') > -1) {
-				CU_search.enableAjaxSearches();
-				CU_search.show();
-			} else {
-				CU_search.hide();
-			}
 		},
 
 		cleanHash : function() {
@@ -191,301 +179,6 @@ this.jQuery && (function ($) {
 		}
 	}
 
-
-	var CU_user = {
-
-		cookie_name  : "cu_auth",
-		userinfo     : null,
-
-		initialize : function() {
-
-			this.$container = $("#cu_login_container");
-
-			// Check for cookie
-			CU_user.loadData();
-
-			// Display logged in or out based on cookie
-			CU_user.updateDisplay();
-			CU_user.checkStatus();
-
-			// Bind show login
-			// $("#login_button").on('click', function(e) {
-			// 	$("#cu_nav").toggleClass("show-login");
-			// 	$(CU_user.login_form).find(".username").val('CU Username');
-			// 	$(CU_user.login_form).find(".password").val('Password');
-			// 	e.preventDefault();
-			// 	return false;
-			// });
-
-			// Bind logout link
-			// $("#cu_logout").on('click', function(e) {
-			// 	CU_user.doLogout();
-			// 	e.preventDefault();
-			// 	return false;
-			// });
-
-			// Bind login submit
-			// $(CU_user.login_form).on("submit", function(e) {
-			// 	CU_user.doLogin();
-			// 	e.preventDefault();
-			// 	return false;
-			// });
-		},
-
-		/***************************************************
-		* Checks with the server for the logged in status of the user.
-		***************************************************/
-		checkStatus : function() {
-			$.ajax( "http://localhost:3000/users/status" )
-			.done(function(data) {
-
-				// Only update if the data has changed
-				if (!data.user_name) {
-					CU_user.removeData();
-					CU_user.updateDisplay();
-					// console.log("User not logged in. Killing user.");
-
-				} else if (JSON.stringify(data) !== JSON.stringify(CU_user.userinfo)) {
-					CU_user.userinfo = data;
-					CU_user.saveData();
-					CU_user.updateDisplay();
-
-					// console.log("Cookie data differed. Updating from server!");
-
-				} else {
-					// console.log("No change. Doing nothing.");
-				}
-
-			});
-		},
-
-		/***************************************************
-		* Loads stored user data from the cookie saved in the browser
-		***************************************************/
-		loadData : function() {
-
-			var cookie = CU_user.docCookies.getItem(CU_user.cookie_name);
-
-			if (cookie) {
-				var data = jQuery.parseJSON(cookie);
-				CU_user.userinfo = data;
-			}
-
-			return data || false;
-		},
-
-		/***************************************************
-		* Writes current user data to a cookie in the browser.
-		***************************************************/
-		saveData : function() {
-
-			// Save the cookie
-			CU_user.docCookies.setItem(CU_user.cookie_name, JSON.stringify(CU_user.userinfo), 1200, '', null, false);
-
-		},
-
-		/***************************************************
-		* Erase stored user data from the browser
-		***************************************************/
-		removeData : function() {
-			// Remove the cookie
-			CU_user.userinfo = undefined;
-			CU_user.docCookies.removeItem(CU_user.cookie_name);
-
-			// Ajax to the server to log this person out.
-		},
-
-		/***************************************************
-		* Update navbar UI to display logged in/out state
-		***************************************************/
-		updateDisplay : function() {
-			if (CU_user.userinfo) {
-				CU_user.displayLoggedIn();
-			} else {
-				CU_user.displayLoggedOut();
-			}
-		},
-
-		/***************************************************
-		* Show logged in
-		***************************************************/
-		displayLoggedIn : function() {
-
-
-			// Set UI display info
-			$('.cu_name').html(CU_user.userinfo.display_name);
-			$('.cu_first_name').html(CU_user.userinfo.first_name);
-
-			// Set Avatar
-			$(CU_user.login_container).find(".avatar").attr('src', CU_user.userinfo.avatar);
-
-			CU_navbar.$container.removeClass("login-pending");
-			CU_navbar.$container.removeClass("logged-out");
-			CU_navbar.$container.addClass("logged-in");
-
-			// Add classes for roles
-			if (CU_user.userinfo.role) {
-				for (var i = 0; i < CU_user.userinfo.role.length; i++) {
-				    $("#cu_nav").addClass("is-"+CU_user.userinfo.role[i]);
-				}
-			}
-
-
-		},
-
-		/***************************************************
-		* Show logged out
-		***************************************************/
-		displayLoggedOut : function() {
-
-			CU_navbar.$container.addClass('logged-out').removeClass('logged-in');
-
-			// Add classes for roles
-			if (CU_user.userinfo) {
-				for (var i = 0; i < CU_user.userinfo.role.length; i++) {
-				    $("#cu_nav").removeClass("is-"+CU_user.userinfo.role[i]);
-				}
-			}
-
-			// remove UI display info
-			$(CU_user.login_container).find(".cu_display_name").html("Login");
-			$("#cu_nav").find(".cu_display_name").html("Login");
-
-			$("#cu_nav").removeClass("login-pending");
-			$("#cu_nav").removeClass("logged-in");
-			$("#cu_nav").addClass("logged-out");
-
-
-			setTimeout(function() {
-				// $("#cu_nav").removeClass("show-login");
-			}, 500);
-		},
-
-		/***************************************************
-		* Log the user out.
-		***************************************************/
-		doLogout : function() {
-			// cookie and display
-			CU_user.removeData();
-			CU_user.displayLoggedOut();
-
-			// connect to server and invalidate cookie?
-		},
-
-		/***************************************************
-		* Check the credentials and attempt to log the user in.
-		***************************************************/
-		doLogin : function() {
-
-			var form_action = $(CU_user.login_form).attr("action");
-			var user_pass 	= $(CU_user.login_form).find(".password").val();
-			var user_name 	= $(CU_user.login_form).find(".username").val();
-
-			// Update UI
-			$("#cu_nav").removeClass("logged-in");
-			$("#cu_nav").removeClass("logged-out");
-			$("#cu_nav").addClass("login-pending");
-			$(CU_user.login_container).find(".status_msg").html("Authorizing...");
-
-			// Do AJAX request
-			var request = $.ajax({
-				url: form_action,
-				type: "POST",
-				data: {
-					username : user_name,
-					password : user_pass
-				},
-				dataType: "json"
-			});
-
-			// ON SUCCESS
-			request.done(function( data ) {
-
-				if (data.authenticated) {
-					// Authentication successful
-					CU_user.userinfo = data.userinfo;
-					CU_user.saveData();
-					CU_user.displayLoggedIn();
-
-				} else {
-					// Authentication failed
-					$(CU_user.login_container).find(".status_msg").html(data.error_msg + ' <a href="#" onClick="CU_user.displayLoggedOut();">Try again</a>');
-				}
-
-				// Clear password field
-				user_pass = '';
-				$(CU_user.login_form).find(".password").val('');
-			});
-
-			// ON FAILURE
-			request.fail(function( jqXHR, textStatus ) {
-
-				// Display error message
-				$(CU_user.login_container).find(".status_msg").html("Something went wrong while connecting..." + ' <a href="#" onClick="CU_user.displayLoggedOut();">Try again</a>');
-
-				// Clear password field
-				user_pass = '';
-				$(CU_user.login_form).find(".password").val('');
-			});
-
-		},
-
-
-		/*\
-		|*|  A complete cookies reader/writer framework with full unicode support.
-		|*|
-		|*|  https://developer.mozilla.org/en-US/docs/DOM/document.cookie
-		|*|
-		|*|  This framework is released under the GNU Public License, version 3 or later.
-		|*|  http://www.gnu.org/licenses/gpl-3.0-standalone.html
-		|*|
-		|*|  Syntaxes:
-		|*|  * docCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
-		|*|  * docCookies.getItem(name)
-		|*|  * docCookies.removeItem(name[, path], domain)
-		|*|  * docCookies.hasItem(name)
-		|*|  * docCookies.keys()
-		\*/
-		docCookies : {
-			getItem: function (sKey) {
-			return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
-			},
-			setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-			if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
-			var sExpires = "";
-			if (vEnd) {
-			  switch (vEnd.constructor) {
-			    case Number:
-			      sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
-			      break;
-			    case String:
-			      sExpires = "; expires=" + vEnd;
-			      break;
-			    case Date:
-			      sExpires = "; expires=" + vEnd.toUTCString();
-			      break;
-			  }
-			}
-			document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
-			return true;
-			},
-
-			removeItem: function (sKey, sPath, sDomain) {
-			if (!sKey || !this.hasItem(sKey)) { return false; }
-			document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ( sDomain ? "; domain=" + sDomain : "") + ( sPath ? "; path=" + sPath : "");
-			return true;
-			},
-			hasItem: function (sKey) {
-			return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
-			},
-			keys: /* optional method: you can safely remove it! */ function () {
-			var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
-			for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
-			return aKeys;
-			}
-		} // end docCookies
-	};
-
 	// CU_navbar is made available to the global scope
 	CU_navbar = {
 
@@ -554,11 +247,13 @@ this.jQuery && (function ($) {
 				window.attachEvent('onscroll', CU_navbar.scroller);
 			}
 
-			setInterval(function() {
-				if (!CU_navbar.did_scroll) return;
-				CU_navbar.checkNavBar();
-				CU_navbar.did_scroll = false;
-			}, 250);
+			if (CU_navbar.autohide_companion_bar) {
+				setInterval(function() {
+					if (!CU_navbar.did_scroll) return;
+					CU_navbar.checkNavBar();
+					CU_navbar.did_scroll = false;
+				}, 250);
+			}
 
 			CU_navbar.resizer();
 
