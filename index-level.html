@@ -61,6 +61,7 @@
 
 	<div id="content">
 		<h1>Welcome to the ChapmanU Omni-Nav page!</h1>
+		<h2>This version of the off canvas menu is for level pages.</h2>
 
 		<p>This page demonstrates how the OmniBar functions, and provides some useful information about what is needed to implement it on a website.</p>
 
@@ -160,6 +161,7 @@
 
 		<!-- <ul class="cu_dropdown_menu">
 			<li><a class="cu_nav_button" href="https://blackboard.chapman.edu/"><svg viewbox="0 0 512 512"><use xlink:href="dist/omni-nav.svg#blackboard" /></svg>Blackboard</a></li>
+			<li><a class="cu_nav_button" href="https://ariel.chapman.edu/WebAdvisor/WebAdvisor"><svg viewbox="0 0 512 512"><use xlink:href="dist/omni-nav.svg#cu_monogram" /></svg>WebAdvisor</a></li>
 			<li><a class="cu_nav_button" href="http://panthermail.chapman.edu/"><svg viewbox="0 0 512 512"><use xlink:href="dist/omni-nav.svg#email" /></svg>PantherMail</a></li>
 			<li><a class="cu_nav_button" href="https://exchange.chapman.edu/"><svg viewbox="0 0 512 512"><use xlink:href="dist/omni-nav.svg#email" /></svg>Staff &amp; Faculty Email</a></li>
 			<li><a class="cu_nav_button" href="https://mywindow.chapman.edu/"><svg viewbox="0 0 512 512"><use xlink:href="dist/omni-nav.svg#cu_window" /></svg>MyWindow</a></li>
@@ -226,13 +228,15 @@
 	<div id="js-cu-off-canvas-nav-container" class="cu-off-canvas-nav-container">
 	    
 	    <div class="cu-off-canvas-header">
-	    	<a href="#" title="Chapman University">
-		        <img src="/img/off-canvas-header-default.png" alt="Chapman University">
-		    </a>
+	    	<a href="#" title="School/College title goes here">
+	        	<img src="/img/off-canvas-header-wilkinson.png" alt="School/College title goes here">
+	        </a>
 	        <span id="js-cu-close-off-canvas-nav" class="close">X</span>
 	        <div class="cu-off-canvas-links clearfix">
-	            <span id="js-main-menu" class="main-menu">Main Menu</span>
-	        </div>
+                <span id="js-main-menu" class="main-menu">Main Menu</span>
+                <a id="js-level-2-link" href="#" class="level-2-link">&#8592; Back to <span class="accent">Main Menu</span></a>
+                <a id="js-level-1-link" href="#" class="level-1-link">Back to <span class="accent">ASBE Menu</span> &#8594;</a>
+            </div>
 	    </div>
 
 	    <div id="js-cu-off-canvas-nav" class="cu-off-canvas-nav clearfix">
@@ -366,6 +370,75 @@
 	            </li>
 
 	        </ul>
+
+	        <ul class="level-2">
+                
+                <li>
+                    <a href="#" title="About">About</a>
+                    <span class="toggle"><span>+</span></span>
+                    <ul>
+                        <li><a href="#" title="More Links">More Links</a></li>
+                        <li><a href="#" title="Go In Here">Go In Here</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" title="Faculty &amp; Research">Faculty &amp; Research</a>
+                    <span class="toggle"><span>+</span></span>
+                    <ul>
+                        <li><a href="#" title="More Links">More Links</a></li>
+                        <li><a href="#" title="Go In Here">Go In Here</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" title="Undergraduate Programs">Undergraduate Programs</a>
+                    <span class="toggle"><span>+</span></span>
+                    <ul>
+                        <li><a href="#" title="More Links">More Links</a></li>
+                        <li><a href="#" title="Go In Here">Go In Here</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" title="Graduate Programs">Graduate Programs</a>
+                    <span class="toggle"><span>+</span></span>
+                    <ul>
+                        <li><a href="#" title="More Links">More Links</a></li>
+                        <li><a href="#" title="Go In Here">Go In Here</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" title="Advising">Advising</a>
+                    <span class="toggle"><span>+</span></span>
+                    <ul>
+                        <li><a href="#" title="More Links">More Links</a></li>
+                        <li><a href="#" title="Go In Here">Go In Here</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" title="Career Services">Career Services</a>
+                    <span class="toggle"><span>+</span></span>
+                    <ul>
+                        <li><a href="#" title="More Links">More Links</a></li>
+                        <li><a href="#" title="Go In Here">Go In Here</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" title="Student Organizations">Student Organizations</a>
+                    <span class="toggle"><span>+</span></span>
+                    <ul>
+                        <li><a href="#" title="More Links">More Links</a></li>
+                        <li><a href="#" title="Go In Here">Go In Here</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" title="Alumni">Alumni</a>
+                    <span class="toggle"><span>+</span></span>
+                    <ul>
+                        <li><a href="#" title="More Links">More Links</a></li>
+                        <li><a href="#" title="Go In Here">Go In Here</a></li>
+                    </ul>
+                </li>
+
+            </ul>
 
 	    </div>
 
