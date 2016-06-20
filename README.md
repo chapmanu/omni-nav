@@ -34,8 +34,8 @@ To add a companion bar to your site, use this HTML code anywhere on the page:
 Modify the files located in the `/src/` directory:
 
 ```
-src/omni-nav.js
-src/omni-nav.scss
+src/js/omni-nav.js
+src/sass/omni-nav.scss
 src/omni-nav.svg
 src/omni-nav.html
 ```
