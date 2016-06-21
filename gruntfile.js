@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
 		uglify: {
 			build: {
-				src: 'src/js/omni-nav.js',
+				src: 'src/omni-nav.js',
 				dest: 'dist/omni-nav.min.js'
 			}
 		},
@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'dist/omni-nav.min.css': 'src/sass/omni-nav.scss'
+					'dist/omni-nav.min.css': 'src/omni-nav.scss'
 				}
 			}
 		},
@@ -25,19 +25,7 @@ module.exports = function(grunt) {
 		copy: {
 			main: {
 			files: [
-				{
-					expand: true,
-					cwd: 'src/',
-					src: 'omni-nav.svg',
-					dest: 'dist/'
-				}
-				// {
-				// 	expand: true,
-				// 	dot: true,
-				// 	cwd: 'fonts/',
-				// 	src: ['icomoon/*.*'],
-				// 	dest: 'dist/fonts/'
-				// }
+				{expand: true, cwd: 'src/', src: 'omni-nav.svg',  dest: 'dist/'}
 		    ]
 		  }
 		},
@@ -53,17 +41,6 @@ module.exports = function(grunt) {
 				},
 				src: 'src/index.html',
 				dest: 'index.html'
-			},
-			readme2: {
-				options: {
-					suffix: ';',
-					globals: {
-						base_url: 'dist/omni-nav.svg',
-						timestamp: Math.round(new Date().getTime() / 1000)
-					}
-				},
-				src: 'src/index-level.html',
-				dest: 'index-level.html'
 			},
 			dist_blogs: {
 				options: {
@@ -102,11 +79,11 @@ module.exports = function(grunt) {
 				livereload: true,
 			},
 			scripts: {
-				files: ['src/**/*.js'],
+				files: ['src/*.js'],
 				tasks: ['uglify', 'includereplace']
 			},
 			css: {
-				files: ['src/**/*.scss'],
+				files: ['src/*.scss'],
 				tasks: ['sass', 'includereplace']
 			},
 			svg: {
@@ -114,7 +91,7 @@ module.exports = function(grunt) {
 				tasks: ['copy']
 			},
 			html: {
-				files: ['src/index.html', 'src/omni-nav.html', 'src/index-level.html', 'src/omni-nav-level.html'],
+				files: ['src/index.html', 'src/omni-nav.html'],
 				tasks: ['copy', 'includereplace']
 			}
 		},
