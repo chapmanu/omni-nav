@@ -1,0 +1,362 @@
+.cu-off-canvas-nav {
+	width: 200%;
+	position: relative;
+	left: 0;
+	@include transition(all, 0.375s, ease-in-out);
+
+	.shifted & {
+		left: -100%;
+	}
+
+	li {
+		border-top: 1px solid darken($cu-light-grey, 10%);
+		list-style: none;
+		margin: 0;
+	}
+
+	a {
+		color: $grey2;
+		font-weight: normal; /* Fallback */
+		font-weight: 400;
+		position: relative;
+		left: 0px;
+		@include transition(all, 0.175s, ease-in-out);
+
+		&:hover {
+			left: 5px;
+		}
+
+	}
+
+	> ul {
+		width: 50%;
+		float: left;
+		border-bottom: 1px solid darken($cu-light-grey, 10%);
+		@include vendorize(box-sizing, border-box);
+		
+		&.level-1 {
+			border-right: 1px solid darken($cu-light-grey, 10%);
+		}
+
+		&.level-2 {
+			position: relative;
+			left: -1px;
+			border-left: 1px solid darken($cu-light-grey, 10%);
+		}
+
+		> li {
+			display: block;
+			position: relative;
+			width: 100%;
+
+			> ul {
+				display: none;
+
+				&:empty {
+					display: none;
+				}
+
+				> li {
+					background-color: lighten($cu-light-grey, 5%);
+					
+					a {
+						display: block;
+						font-size: 16px;
+						padding: 0.5em 1.325em;
+						color: $grey2-hover;
+
+						&:hover {
+							color: $chapman-link-hover;
+						}
+
+					}
+
+				}
+
+			}
+
+			&.open {
+
+				&:empty {
+					display: none;
+				}
+
+				> a {
+					color: $grey;
+
+					&:before {
+						color: $cu-red;
+					}
+
+					svg {
+						fill: $cu-red;
+					}
+				}
+
+				.toggle > span {
+					@include vendorize(transform, rotate(45deg));
+				}
+
+			}
+
+			> a, .toggle {
+				height: 60px;
+			}
+
+			> a {
+				display: table-cell;
+				vertical-align: middle;
+				padding: 0 70px 0 1.25em;
+				position: relative;
+				font-size: 18px;
+				font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
+
+				&.has-icon {
+					padding: 0 70px 0 2.75em;
+					text-indent: -28px;
+				}
+
+				&.the-university {
+					pointer-events: none;
+				}
+
+				&:before, svg {
+					// vertical-align: top;
+					position: relative;
+					top: 2px;
+					@include transition(all, 0.175s, ease-in-out);
+				}
+
+				&:before {
+					margin-right: 10px;
+				}
+
+				&:hover {
+					color: $grey;
+
+					&:before {
+						color: $cu-red;
+					}
+
+					svg {
+						fill: $cu-red;
+					}
+
+				}
+
+				svg {
+					fill: $grey2;
+					display: inline-block;
+					margin-right: 10px;
+					width: 18px;
+				}
+
+			}
+
+			.toggle {
+				width: 60px;
+				line-height: 60px;
+				font-size: 18px;
+				text-align: center;
+				position: absolute;
+				top: 0;
+				right: 0;
+				background-color: lighten($cu-light-grey, 5%);
+				color: $grey;
+				font-weight: normal; /* Fallback */
+				font-weight: 400;
+				cursor: pointer;
+
+				> span {
+					display: block;
+					font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+					@include transition(all, 0.175s, ease-in-out);
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+.cu-off-canvas-nav-container {
+	position: fixed;
+	top: 0;
+	left: -($cu-off-canvas-nav-mobile-width);
+	width: $cu-off-canvas-nav-mobile-width;
+	height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	z-index: 99999;
+	background-color: $white;
+	@include transition(all, 0.375s, ease-in-out);
+
+	* {
+		@include vendorize(user-select, none);
+	}
+
+	&.open {
+		left: 0;
+
+		// Use if off canvas nav is hidden on desktop
+		// @include bp(m) {
+		// 	left: -($cu-off-canvas-nav-desktop-width);
+		// 	width: $cu-off-canvas-nav-desktop-width;
+		// 	@include transition(all, 0s, ease-in-out);
+		// }
+
+	}
+
+	ul, ol {
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		text-decoration: none;
+		&:hover, &:focus {
+			text-decoration: none;
+		}
+	}
+
+	@include bp(m) {
+		left: -($cu-off-canvas-nav-desktop-width);
+		width: $cu-off-canvas-nav-desktop-width;
+	}
+
+}
+
+.cu-off-canvas-overlay {
+	background-color: $black;
+	z-index: 99998;
+	position: fixed;
+	visibility: hidden;
+	opacity: 0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	@include transition(all, 0.375s, ease-in-out);
+
+	&.active {
+		visibility: visible;
+		opacity: 0.5;
+
+		// Use if off canvas nav is hidden on desktop
+		// @include bp(m) {
+		// 	display: none;
+		// }
+
+	}
+
+	// Use if off canvas nav is hidden on desktop
+	// @include bp(m) {
+	// 	display: none;
+	// }
+
+}
+
+.cu-off-canvas-header {
+	position: relative;
+	background-color: $cu-light-grey;
+	padding: 1.5em 1.25em 0.5em;
+
+	.sc-logo {
+		display: block;
+
+		.shifted & {
+			display: none;
+		}
+
+	}
+
+	.default-logo {
+		display: none;
+
+		.shifted & {
+			display: block;
+		}
+
+	}
+
+	img {
+		max-width: 87.5%;
+		max-height: 29px;
+	}
+
+	.close {
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 1.75em 1.25em;
+	}
+
+	.cu-off-canvas-links {
+		min-height: 1em;
+		margin-top: 2em;
+		position: relative;
+		height: 30px;
+
+		.shifted & {
+
+			.level-1-link, .main-menu {
+				opacity: 0;
+				z-index: 1;
+			}
+
+			.level-2-link {
+				opacity: 1;
+				z-index: 2;
+			}
+
+		}
+
+		.level-1-link, .main-menu {
+			opacity: 1;
+			z-index: 2;
+		}
+
+		.level-1-link, .level-2-link, .main-menu {
+			font-size: 13px;
+			text-transform: uppercase;
+			color: $grey2;
+			position: absolute;
+			height: 30px;
+			line-height: 30px;
+			@include transition(opacity, 0.375s, ease-in-out);
+
+			.accent {
+				color: $theme-blue;
+			}
+
+			&.hidden {
+				display: none;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+
+		}
+
+		.level-1-link, .level-2-link {
+			right: 0;
+		}
+
+		.main-menu {
+			left: 0;
+		}
+
+		.level-2-link {
+			opacity: 0;
+			z-index: 1;
+		}
+
+	}
+
+}
