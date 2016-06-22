@@ -116,7 +116,7 @@ $red-hover: #c42b43;
 $grey: #353430;
 $grey-hover: #4c4b45;
 
-$grey2: #6e6e66;
+$grey2: #313131;
 $grey2-hover: #918e87;
 
 /* These are colors of common elements or states. */
@@ -184,6 +184,8 @@ $wilkinson-secondary: #007299;
 
 $cu-off-canvas-nav-mobile-width: 85%;
 $cu-off-canvas-nav-desktop-width: 400px;
+$cu-off-canvas-nav-border-color: #CFCFCF;
+$cu-off-canvas-nav-background: #EAEAEA;
 
 // Helper Classes
 .clearfix:before, .clearfix:after { content: ""; display: table; }

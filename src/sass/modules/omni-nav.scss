@@ -19,7 +19,7 @@ $cu-login-width:          220px;
 $cu-secondary-width:      435px;
 $cu-search-results-width: 560px;
 
-$cu-button-padding: ($cu-nav-height / 3);
+$cu-button-padding: 21px;
 
 // Viewport sizes
 $cu-viewport-xs:  400px;
@@ -873,7 +873,8 @@ a.cu_nav_button {
 
 .cu-off-canvas-nav-trigger, .cu-logo {
 	display: block;
-	float: left;
+	position: absolute;
+	top: 0;
 
 	img, svg {
 		display: block;
@@ -884,7 +885,8 @@ a.cu_nav_button {
 .cu-off-canvas-nav-trigger {
 	outline: none;
 	border: 0;
-	padding: ($cu-button-padding + 3px) $cu-button-padding;
+	padding: ($cu-button-padding + 3px) ($cu-button-padding - 1px);
+	left: 0;
 
 	img, svg {
 		cursor: pointer;
@@ -893,6 +895,8 @@ a.cu_nav_button {
 }
 
 .cu-logo {
+	z-index: 99091;
+	left: 62px;
 
 	img, svg {
 		margin: 18px 0;
@@ -908,9 +912,9 @@ a.cu_nav_button {
 }
 
 .cu-search-open-trigger {
-	padding: $cu-button-padding;
+	padding: $cu-button-padding 15px;
 	position: absolute;
-	right: 40px;
+	right: 42px;
 	top: 0;
 	z-index: 99996;
 	
