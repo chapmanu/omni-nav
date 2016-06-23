@@ -9,7 +9,7 @@
 	}
 
 	li {
-		border-top: 1px solid darken($cu-light-grey, 10%);
+		border-top: 1px solid $cu-off-canvas-nav-border-color;
 		list-style: none;
 		margin: 0;
 	}
@@ -31,17 +31,17 @@
 	> ul {
 		width: 50%;
 		float: left;
-		border-bottom: 1px solid darken($cu-light-grey, 10%);
+		border-bottom: 1px solid $cu-off-canvas-nav-border-color;
 		@include vendorize(box-sizing, border-box);
 		
 		&.level-1 {
-			border-right: 1px solid darken($cu-light-grey, 10%);
+			border-right: 1px solid $cu-off-canvas-nav-border-color;
 		}
 
 		&.level-2 {
 			position: relative;
 			left: -1px;
-			border-left: 1px solid darken($cu-light-grey, 10%);
+			border-left: 1px solid $cu-off-canvas-nav-border-color;
 		}
 
 		> li {
@@ -161,7 +161,7 @@
 				position: absolute;
 				top: 0;
 				right: 0;
-				background-color: lighten($cu-light-grey, 5%);
+				background-color: $cu-off-canvas-nav-background;
 				color: $grey;
 				font-weight: normal; /* Fallback */
 				font-weight: 400;
@@ -262,7 +262,7 @@
 
 .cu-off-canvas-header {
 	position: relative;
-	background-color: $cu-light-grey;
+	background-color: $cu-off-canvas-nav-background;
 	padding: 1.5em 1.25em 0.5em;
 
 	.sc-logo {
@@ -319,6 +319,7 @@
 		.level-1-link, .main-menu {
 			opacity: 1;
 			z-index: 2;
+			max-width: 49%;
 		}
 
 		.level-1-link, .level-2-link, .main-menu {
@@ -328,6 +329,9 @@
 			position: absolute;
 			height: 30px;
 			line-height: 30px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 			@include transition(opacity, 0.375s, ease-in-out);
 
 			.accent {
@@ -355,6 +359,7 @@
 		.level-2-link {
 			opacity: 0;
 			z-index: 1;
+			max-width: 100%;
 		}
 
 	}
