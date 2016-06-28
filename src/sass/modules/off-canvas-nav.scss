@@ -271,7 +271,8 @@
 .cu-off-canvas-header {
 	position: relative;
 	background-color: $cu-off-canvas-nav-background;
-	padding: 1.5em 1.25em 0.5em;
+	// padding: 1.5em 1.25em 0.5em;
+	padding: 1.5em 1.8em 0.5em 1.5em; // Client request - BarkleyREI
 
 	.sc-logo {
 		display: block;
@@ -302,7 +303,7 @@
 		top: 0;
 		right: 0;
 		// padding: 1.75em 1.25em;
-		padding: 1.75em 1.85em 1.75em 1.25em; // Client request - BarkleyREI
+		padding: 1.75em 1.8em 1.75em 1.25em; // Client request - BarkleyREI
 	}
 
 	.cu-off-canvas-links {
