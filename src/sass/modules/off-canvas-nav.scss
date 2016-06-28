@@ -15,7 +15,8 @@
 	}
 
 	a {
-		color: $grey2;
+		// color: $grey2;
+		color: #444444; // Client request - BarkleyREI
 		font-weight: normal; /* Fallback */
 		font-weight: 400;
 		position: relative;
@@ -57,7 +58,8 @@
 				}
 
 				> li {
-					background-color: lighten($cu-light-grey, 5%);
+					// background-color: lighten($cu-light-grey, 5%);
+					background-color: #f5f5f5; // Client request - BarkleyREI
 					
 					a {
 						display: block;
@@ -67,6 +69,11 @@
 
 						&:hover {
 							color: $chapman-link-hover;
+						}
+
+						// Client request - BarkleyREI
+						&:active {
+							color: $cu-red;
 						}
 
 					}
@@ -82,7 +89,8 @@
 				}
 
 				> a {
-					color: $grey;
+					// color: $grey;
+					color: $cu-red; // Client request - BarkleyREI
 
 					&:before {
 						color: $cu-red;
@@ -263,7 +271,8 @@
 .cu-off-canvas-header {
 	position: relative;
 	background-color: $cu-off-canvas-nav-background;
-	padding: 1.5em 1.25em 0.5em;
+	// padding: 1.5em 1.25em 0.5em;
+	padding: 1.5em 1.8em 0.5em 1.5em; // Client request - BarkleyREI
 
 	.sc-logo {
 		display: block;
@@ -293,7 +302,8 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		padding: 1.75em 1.25em;
+		// padding: 1.75em 1.25em;
+		padding: 1.75em 1.8em 1.75em 1.25em; // Client request - BarkleyREI
 	}
 
 	.cu-off-canvas-links {
