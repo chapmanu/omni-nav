@@ -124,9 +124,9 @@
 					text-indent: -28px;
 				}
 
-				&.the-university {
-					pointer-events: none;
-				}
+				// &.the-university {
+				// 	pointer-events: none;
+				// }
 
 				&:before, svg {
 					// vertical-align: top;
@@ -157,6 +157,7 @@
 					display: inline-block;
 					margin-right: 10px;
 					width: 18px;
+					height: 18px;
 				}
 
 			}
