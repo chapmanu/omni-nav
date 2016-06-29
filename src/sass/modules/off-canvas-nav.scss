@@ -67,13 +67,14 @@
 						padding: 0.5em 1.325em;
 						color: $grey2-hover;
 
+						// Client request - BarkleyREI
 						&:hover {
-							color: $chapman-link-hover;
+							color: $cu-red;
 						}
 
 						// Client request - BarkleyREI
 						&:active {
-							color: $cu-red;
+							color: #7f0026;
 						}
 
 					}
