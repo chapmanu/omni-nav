@@ -329,7 +329,7 @@ a.cu_nav_button {
         font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
         box-shadow: none;
         @include vendorize(appearance, none);
-        
+
         &::-webkit-input-placeholder {
         	line-height: 16px;
         	font-size: 16px;
@@ -917,7 +917,7 @@ a.cu_nav_button {
 	right: 42px;
 	top: 0;
 	z-index: 99996;
-	
+
 	span {
 		text-indent: -9999px;
 		display: block;
