@@ -3,7 +3,7 @@
 **Omni-Nav** is a navigation bar that provides access to all content and services across our Chapman University websites. It offers universal **navigation** of our core services; it offers an in-page **search box** powered by Google; and it offers quick access to **log in** to other Chapman services.
 
 
-# Adding Omni-Nav to a web page
+## Adding Omni-Nav to a web page
 
 Copy and paste the following HTML tags into the `<head>` of your page.
 
@@ -29,7 +29,16 @@ To add a companion bar to your site, use this HTML code anywhere on the page:
 ```
 
 
-# Developing Omni-Nav
+## Developing Omni-Nav
+
+### Install Grunt
+
+    npm install -g grunt-cli
+    npm install grunt --save-dev
+
+For more information, see the [Grunt docs](https://gruntjs.com/getting-started) or [this tutorial]((http://24ways.org/2013/grunt-is-not-weird-and-hard/)).
+
+### Making Code Changes
 
 Modify the files located in the `/src/` directory:
 
@@ -40,12 +49,10 @@ src/omni-nav.svg
 src/omni-nav.html
 ```
 
-Use **grunt** or **grunt watch** in the terminal to compile assets into the `/dist/` directory. 
+Use **grunt** or **grunt watch** in the terminal to compile assets into the `/dist/` directory.
 
-[Click here to learn how to set up grunt on your machine](http://24ways.org/2013/grunt-is-not-weird-and-hard/)
-
-You can then open `/index.html` in your browser and with **grunt watch** and [**live reload**](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) you will see your changes live on your development machine as you save assets in the `/src/` directory. 
+You can then open `/index.html` in your browser and with **grunt watch** and [**live reload**](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) you will see your changes live on your development machine as you save assets in the `/src/` directory.
 
 ### Deploying
 
-Assets should be published to: **//www2.chapman.edu/omni-nav/** and all servers should reference these files. This ensures that all versions of the nav bar are updated across all of our web assets in real-time. 
+Assets should be published to: **//www2.chapman.edu/omni-nav/** and all servers should reference these files. This ensures that all versions of the nav bar are updated across all of our web assets in real-time.
