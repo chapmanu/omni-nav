@@ -1,11 +1,11 @@
 module.exports = {
-  entry: './js/index.js',
+  entry: __dirname + '/js/index.js',
   output: {
-    path: './build',
+    path: __dirname + '/build',
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
       loader: "babel-loader"
