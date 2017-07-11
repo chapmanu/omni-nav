@@ -1,13 +1,13 @@
 {
   "name": "omni-nav",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "**Omni-Nav** is a navigation bar that provides access to all content and services across our Chapman University websites. It offers universal **navigation** of our core services; it offers an in-page **search box** powered by Google; and it offers quick access to **log in** to other Chapman services.",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "babel": "babel --presets es2015 js/index.js -o build/index.bundle.js",
     "start": "http-server -p 5000",
-    "test": "mocha --compilers js:babel-core/register ./test/test*.js --reporter spec"
+    "test": "mocha --compilers js:babel-core/register ./test/test*.js"
   },
   "repository": {
     "type": "git",

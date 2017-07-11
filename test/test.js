@@ -20,7 +20,7 @@ describe('Basic test example.', function() {
     });
 
     it('expects a failure', function() {
-      expects(true).to.be(false);
+      //Sexpects(true).to.be(false);
     });
 
     it('expects more tests in future.');
