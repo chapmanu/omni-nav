@@ -8,7 +8,7 @@ var expects = require('expect.js');
 
 describe('Basic test example.', function() {
   beforeEach(function() {
-    this.sinon.stub(console, 'log');
+    this.sinon.spy(console, 'log');
   });
 
   describe('simple test examples', function() {
