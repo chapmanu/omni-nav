@@ -121,7 +121,10 @@ var OmniNav = __webpack_require__(1);
     /******** Our main function ********/
     function main() {
         jQuery(document).ready(function ($) {
-            var $omniNav = OmniNav.build($);
+            var $omniNavContainter = $('nav#omni-nav');
+            var target = $omniNavContainter.data('target');
+            console.log('target:', target);
+            var $omniNav = OmniNav.build($, target);
             $('nav#omni-nav').replaceWith($omniNav);
         });
     }
@@ -141,10 +144,11 @@ var OmniNav = function () {
   var $;
 
   // Public Methods
-  var build = function build(jqLocalized) {
+  var build = function build(jqLocalized, target) {
     init(jqLocalized);
+    target = target ? target : 'default';
     var $omniNav = $('<nav id="omni-nav" />');
-    $omniNav.text('This content has been dynamically loaded!');
+    $omniNav.text('OmniNav build for target: ' + target);
     return $omniNav;
   };
 

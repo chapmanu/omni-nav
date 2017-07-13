@@ -48,7 +48,10 @@ function scriptLoadHandler() {
 /******** Our main function ********/
 function main() {
     jQuery(document).ready(function($) {
-      var $omniNav = OmniNav.build($);
+      var $omniNavContainter = $('nav#omni-nav');
+      var target = $omniNavContainter.data('target');
+      console.log('target:', target);
+      var $omniNav = OmniNav.build($, target);
       $('nav#omni-nav').replaceWith($omniNav);
     });
 }
