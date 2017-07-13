@@ -1,5 +1,5 @@
 module.exports = {
-  entry: __dirname + '/js/index.js',
+  entry: __dirname + '/js/app.js',
   output: {
     path: __dirname + '/build',
     filename: 'omni-nav.bundle.js'
