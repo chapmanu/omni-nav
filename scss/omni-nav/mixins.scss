@@ -1,0 +1,26 @@
+// Copied from Cascade Assets OmniNav.
+@mixin reset-box-model($display: block) {
+    display: $display;
+    margin: 0;
+    padding: 0;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+@mixin vendorize($property, $value) {
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
+	-o-#{$property}: $value;
+	#{$property}: $value;
+}
+
+@mixin transition($sel: all, $time: 1s, $ease: linear) {
+	-webkit-transition: $sel $time $ease;
+	-moz-transition: $sel $time $ease;
+	-o-transition: $sel $time $ease;
+	-ms-transition: $sel $time $ease;
+	transition: $sel $time $ease;
+}

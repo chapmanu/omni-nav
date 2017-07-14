@@ -1,0 +1,33 @@
+// TODO: Update these settings. These were copied from Cascade Assets version.
+/***************************************************
+* Make room for our nav bar
+***************************************************/
+html { padding-top: $cu-nav-height !important; }
+html.cu-companion-bar { padding-top: $cu-nav-height + $cu-companion-height !important;}
+html, body { margin:0; padding: 0;}
+
+/***************************************************
+* Universal Nav structure
+***************************************************/
+nav#omni-nav {
+  @include reset-box-model();
+
+  font-family: "futura-pt", Arial, Verdana, "Sans Serif";
+
+  width: 100%;
+  height: $cu-nav-height;
+  position: fixed;
+  top: 0;
+
+  z-index: 99100;
+
+  background-color: $cu-nav-background;
+  border-bottom: 1px solid $cu-nav-border;
+
+  * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+  }
+}
