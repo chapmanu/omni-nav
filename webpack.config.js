@@ -1,13 +1,15 @@
+var webpack = require("webpack");
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: [
-    __dirname + '/js/app.js',
-    __dirname + '/scss/app.scss'
-  ],
+  entry: {
+    'omni-nav.bundle.js': __dirname + '/js/app.js',
+    'omni-nav.bundle.min.js': __dirname + '/js/app.js',
+    'omni-nav.bundle.css': __dirname + '/scss/app.scss'
+  },
   output: {
     path: __dirname + '/build',
-    filename: 'omni-nav.bundle.js'
+    filename: "[name]"
   },
   module: {
     rules: [
@@ -24,8 +26,12 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({ // define where to save the file
-      filename: 'omni-nav.bundle.css',
+      filename: "[name]",
       allChunks: true,
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.min\.js$/,
+      minimize: true
+    })
   ],
 };

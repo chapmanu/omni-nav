@@ -67,14 +67,6 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-module.exports = __webpack_require__(3);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -82,7 +74,7 @@ module.exports = __webpack_require__(3);
  * Web Widget Pattern
  * Based on http://alexmarandon.com/articles/web_widget_jquery/
  */
-var OmniNav = __webpack_require__(2);
+var OmniNav = __webpack_require__(1);
 
 (function () {
 
@@ -138,7 +130,7 @@ var OmniNav = __webpack_require__(2);
 })(); // We call our anonymous function immediately
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -191,12 +183,6 @@ var OmniNav = function () {
 }();
 
 module.exports = OmniNav;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
