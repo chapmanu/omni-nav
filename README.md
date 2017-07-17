@@ -1,58 +1,55 @@
 # Overview
 
-**Omni-Nav** is a navigation bar that provides access to all content and services across our Chapman University websites. It offers universal **navigation** of our core services; it offers an in-page **search box** powered by Google; and it offers quick access to **log in** to other Chapman services.
+**OmniNav** is the navigation bar designed to work across all our Chapman University websites. It is currently being redesigned to function as an independent remote service (Navbar-as-a-Service) that offers identically styled versions tailored to our different web applications and updated in real-time.
 
 
-## Adding Omni-Nav to a web page
+## Adding OmniNav to a web page
 
-Copy and paste the following HTML tags into the `<head>` of your page.
-
-```html
-<link href="//www2.chapman.edu/omni-nav/dist/omni-nav.min.css" rel="stylesheet">
-<script src="//www2.chapman.edu/omni-nav/dist/omni-nav.min.js"></script>
-```
-
-Use a server-side include* to pull in this HTML file right before the closing `<body>` tag:
+Copy and paste the following HTML tags into your page:
 
 ```
-//www2.chapman.edu/omni-nav/dist/omni-nav.html (5kb)
-```
+<!-- Stylesheet in head -->
+<link rel="stylesheet" href="https://cdn.chapman.edu/omni-nav/omni-nav.bundle.css">
 
-*It is highly recommended to use server-side caching when including this file in order to increase performance. If the file is unreachable, the server should be configured to serve the cached asset indefinitely.*
+<!-- Navbar in body -->
+<nav id="omni-nav" class="pre-build" data-target="static"></nav>
 
-### Companion Bar
-To add a companion bar to your site, use this HTML code anywhere on the page:
-```html
-<div id="cu_companion_bar">
-    Loyal Companion Bar
-</div>
+<!-- Javascript tag near end of body -->
+<script src="https://cdn.chapman.edu/omni-nav/omni-nav.bundle.min.js"></script>
 ```
 
 
-## Developing Omni-Nav
+## Development
 
-### Install Grunt
+OmniNav is developed using [Webpack](https://webpack.js.org/) to build and bundle assets. It includes [Babel](https://babeljs.io/) to support next-generation Javascript.
 
-    npm install -g grunt-cli
-    npm install grunt --save-dev
+To install:
 
-For more information, see the [Grunt docs](https://gruntjs.com/getting-started) or [this tutorial]((http://24ways.org/2013/grunt-is-not-weird-and-hard/)).
+    npm install
 
-### Making Code Changes
+### Local Server
 
-Modify the files located in the `/src/` directory:
+To run the local server:
 
-```
-src/js/omni-nav.js
-src/sass/omni-nav.scss
-src/omni-nav.svg
-src/omni-nav.html
-```
+    npm start
 
-Use **grunt** or **grunt watch** in the terminal to compile assets into the `/dist/` directory.
+To see changes, you'll need to run build:
 
-You can then open `/index.html` in your browser and with **grunt watch** and [**live reload**](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) you will see your changes live on your development machine as you save assets in the `/src/` directory.
+    npm run build
 
-### Deploying
+### Tests
 
-Assets should be published to: **//www2.chapman.edu/omni-nav/** and all servers should reference these files. This ensures that all versions of the nav bar are updated across all of our web assets in real-time.
+    npm test
+
+
+## Deployment
+
+To build the latest version of the javascript and stylesheets:
+
+    npm run build
+
+Assets should be published to a Chapman site accessible to any Chapman web application. Currently, assets are hosted at https://www2.chapman.edu/omni-nav.
+
+Ideally, it will eventually be hosted at CDN endpoint like:
+
+- https://cdn.chapman.edu/omni-nav/
