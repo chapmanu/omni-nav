@@ -131,7 +131,6 @@ var OmniNav = __webpack_require__(2);
         jQuery(document).ready(function ($) {
             var $omniNavContainter = $('nav#omni-nav');
             var target = $omniNavContainter.data('target');
-            console.log('target:', target);
             var $omniNav = OmniNav.build($, target);
             $('nav#omni-nav').replaceWith($omniNav);
         });
@@ -149,21 +148,40 @@ var OmniNav = __webpack_require__(2);
  * OmniNav Module
  */
 var OmniNav = function () {
+  // Constants
+  var HOME_PAGE_URL = 'https://www.chapman.edu/';
+  var LOGO_URL = 'https://www.chapman.edu/_assets/chapman_logo_horizontal_color-899d76a351f8eb188ab8100081a3640f5c4bb1ed26e0999f72922d290f9cae5e.png';
+
+  // Globals
   var $;
 
   // Public Methods
   var build = function build(jqLocalized, target) {
     init(jqLocalized);
     target = target ? target : 'default';
-    var $omniNav = $('<nav id="omni-nav" />');
-    $omniNav.text('OmniNav build for target: ' + target);
+
+    var $omniNav = buildNav(target);
     return $omniNav;
   };
 
   // Private Methods
   var init = function init(jqLocalized) {
     $ = jqLocalized;
-    console.log("OmniNav initialized.");
+  };
+
+  var buildNav = function buildNav(target) {
+    console.log("Building OmniNav for target: " + target);
+    var $omniNav = $('<nav id="omni-nav" class="post-build" />');
+    var $logo = buildLogoLink();
+    $omniNav.append($logo);
+    return $omniNav;
+  };
+
+  var buildLogoLink = function buildLogoLink() {
+    var $a = $('<a />').attr('id', 'omni-nav-logo').attr('href', HOME_PAGE_URL).attr('title', 'Chapman University Website Home Page');
+    var $img = $('<img />').attr('src', LOGO_URL);
+    $a.append($img);
+    return $a;
   };
 
   // Public API

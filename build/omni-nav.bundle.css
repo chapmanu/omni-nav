@@ -29,11 +29,22 @@ nav#omni-nav {
   z-index: 99100;
   background-color: #FFFFFF;
   border-bottom: 1px solid #D6D5CF; }
+  nav#omni-nav.pre-build {
+    background-color: #ccc;
+    background-image: url("https://www.chapman.edu/_assets/chapman_logo_horizontal_color-899d76a351f8eb188ab8100081a3640f5c4bb1ed26e0999f72922d290f9cae5e.png");
+    background-repeat: no-repeat;
+    background-position: center center; }
   nav#omni-nav * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased; }
+  nav#omni-nav a#omni-nav-logo {
+    height: 28px;
+    width: 273px;
+    margin: 18px 0 0 55px;
+    position: absolute;
+    top: 0; }
 
 .cu-off-canvas-nav-trigger svg {
   width: 24px;

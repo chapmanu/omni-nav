@@ -13,21 +13,35 @@ nav#omni-nav {
   @include reset-box-model();
 
   font-family: "futura-pt", Arial, Verdana, "Sans Serif";
-
   width: 100%;
   height: $cu-nav-height;
   position: fixed;
   top: 0;
-
   z-index: 99100;
-
   background-color: $cu-nav-background;
   border-bottom: 1px solid $cu-nav-border;
+
+  // TODO: This is just for spike to signal remote nav not yet loaded. Should be
+  // update to display logo.
+  &.pre-build {
+    background-color: #ccc;
+    background-image: url('https://www.chapman.edu/_assets/chapman_logo_horizontal_color-899d76a351f8eb188ab8100081a3640f5c4bb1ed26e0999f72922d290f9cae5e.png');
+    background-repeat:no-repeat;
+    background-position: center center;
+  }
 
   * {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
+  }
+
+  a#omni-nav-logo {
+    height: 28px;
+    width: 273px;
+    margin: 18px 0 0 55px;
+    position: absolute;
+    top: 0;
   }
 }
