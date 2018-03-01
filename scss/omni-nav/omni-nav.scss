@@ -1,0 +1,803 @@
+@import "variables";
+
+/* BODY
+---------------------------------------- */
+//make room at top of page for omni-nav
+html.omni-nav-v2 {
+  padding-top: 60px;
+
+  @include media($medium-screen) {
+    padding-top: 120px;
+  }
+
+  @include media($xl-screen) {
+    padding-top: 60px;
+  }
+
+  &.utility-nav-open {
+    @include media($medium-screen) {
+      padding-top: 180px;
+    }
+
+    @include media($xl-screen) {
+      padding-top: 120px;
+    }
+  }
+}
+
+#omni-nav-v2 {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  font-family: "futura-pt", verdana, sans-serif;
+
+  // Needs to be high enough to put off-canvas-nav on top of anything else on page.
+  z-index: 1000;
+
+  div#primary-nav div.global-nav {
+    @include media($xl-screen) {
+      display: inline-block;
+      float: right;
+      width: auto;
+      border-top: none;
+      margin: 14px $base-spacing;
+      padding: 0;
+    }
+  }
+
+  #search-results-overlay {
+    display: none;
+    position: fixed;
+    background: rgba(0,0,0,0.4);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 666;
+  }
+
+  &.search-results-open #search-results-overlay { display: block; }
+
+  // These elements are dynamically created by google cusom search API
+  // Needed to override googles default styling
+  table.gsc-search-box {
+    margin-bottom: 0;
+
+    td.gsc-input {
+       padding-right: 0;
+    }
+  }
+
+  .cu-search-box form.gsc-search-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
+
+    input.gsc-input  {
+      padding-right: 0;
+      height: $gcs-search-box-height;
+      width: 100%;
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      font-weight: 800;
+      color: $utility-nav-background-color;
+      @include vendorize(appearance, none);
+    }
+
+    input.gsc-search-button {
+      display: inline-block;
+      width: $square-icon-size;
+      height: $gcs-search-box-height;
+      margin: auto;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      outline: none;
+      background-color: white;
+      background-image: image-url('search.svg');
+      background-size: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-indent: -9999px;
+    }
+  }
+
+  .search-results-container {
+    display: none;
+    position: absolute;
+    top: $primary-nav-height;
+    left: 0;
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+  .cu-search-results {
+    height: 90%;
+    overflow-y: scroll;
+
+    .gsc-control-cse { padding: 18px 23px 15px 20px; }
+    .gsc-selected-option-container { min-width: 95px; }
+    .gsc-cursor-box { display: none; }
+    .gsc-result-info, .gsc-orderby-label { color: #2f2f2f; }
+
+    .gs-snippet {
+      line-height: 16px;
+      color: $black;
+    }
+
+    .gsc-above-wrapper-area {
+      padding-top: 0;
+      margin-bottom: 16px;
+    }
+
+    .gsc-result-info {
+      font-size: 12px;
+    }
+
+    .gs-title {
+      text-decoration: none;
+      padding-bottom: 5px;
+      height: auto;
+
+      a.gs-title, b {
+        font-size: 16px;
+        text-decoration: none;
+        text-decoration-line: none;
+        color: $red;
+
+      }
+      a.gs-title:visited {
+        color: #3b6f87;
+        b { color: #3b6f87; }
+      }
+    }
+
+    .gs-visibleUrl { color: #2f2f2f; }
+
+    .gs-per-result-labels a.gs-label, span {
+      color: $black;
+      font-size: 12px;
+      line-height: 12px;
+      vertical-align: inherit;
+    }
+
+    // Custom more results link
+    .more-results, .utility-nav .more-results {
+        display: block;
+        padding: 14px;
+        margin: 0 auto;
+        background: #eaeaea;
+        border-radius: 3px;
+        font-size: 12px;
+        color: $black;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover { background: #CCCCCC;}
+    }
+  }
+
+
+  /* UTILITY NAV
+  ---------------------------------------- */
+  .utility-nav {
+    display: none;
+    width: 100%;
+    height: $primary-nav-height;
+    background-color: $utility-nav-background-color;
+
+    nav {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .utility-nav-container {
+      display: none;
+      vertical-align: middle;
+
+      &.utility-search {
+        position: relative;
+        z-index: 669; //search bar & search results need to be on top of overlay and primary-nav action icons
+        cursor: auto;
+
+        .utility-cell.search-type {
+          border-right: none;
+          padding-right: 0px;
+        }
+
+        & > .utility-list {
+          li { padding-right: 16px; }
+          & > li:last-child { padding-left: 0px; }
+        }
+
+
+      }
+
+      &.utility-links {
+        //This width is exactly the width of the content
+        //may need to be updated if content changes
+        width: 741px;
+      }
+    }
+
+    &.utility-nav-open {
+      .utility-nav-container {
+
+        //only search container displayed on medium screen
+        @include media($medium-screen) {
+          &.utility-search {
+            width: 100%;
+          }
+        }
+
+        //show all utility sections on large screen
+        @include media($xl-screen) {
+          &.utility-search {
+            width: auto;
+          }
+        }
+      }
+    }
+
+    .utility-list {
+      display: table;
+      height: $primary-nav-height;
+      width: 100%;
+
+      .search-type {
+        width: 136px;
+      }
+    }
+
+    .utility-cell {
+      display: table-cell;
+      vertical-align: middle;
+      border-right: 1px solid $primary-nav-border-color;
+      padding: 0 20px;
+      cursor: pointer;
+
+      &.utility-has-dropdown {
+        position: relative;
+
+        & > a:after{
+          content: '';
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          margin-left: 4px;
+          background: image-url('arrow-down');
+          background-size: cover;
+        }
+
+        &.dropdown-open {
+          background-color: #4d4d4d;
+
+          & > a:after { transform: rotate(-180deg); }
+
+          .utility-dropdown {
+            visibility: visible;
+            opacity: 1;
+            @include vendorize(transition, opacity 0.3s ease-in);
+          }
+        }
+      }
+
+      .utility-dropdown {
+        background-color: #4d4d4d;
+        -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+        visibility: hidden;
+        opacity: 0;
+
+        li:hover { background-color: $utility-nav-background-color; }
+      }
+
+    }
+
+    a {
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: 500;
+      color: $white;
+      vertical-align: middle;
+    }
+  }
+
+  /* PRIMARY NAV
+  ---------------------------------------- */
+  #primary-nav {
+    @include pad(0 $base-spacing);
+    position: relative;
+    background-color: $white;
+    width: 100%;
+    height: $primary-nav-height;
+    line-height: $primary-nav-height;
+    overflow: visible;
+    border-bottom: 1px solid #999999;
+    z-index: 667; //needs to be on top of search results overlay
+
+    @include media($medium-screen) {
+      padding: 0;
+      height: 120px;
+    }
+
+    @include media($xl-screen) {
+      height: $primary-nav-height;
+    }
+
+    #primary-nav-search {
+      display: none;
+
+      .cu-search-box{ margin-right: 8px; }
+      .search-results-container { line-height: normal; }
+      input.gsc-input, input.gsc-search-button { border: 1px solid #545454;}
+      input.gsc-input { border-right: none; }
+      
+      input.gsc-search-button { 
+        border-left: none; 
+        float: right; //new to fix search box
+      }
+
+      .gs-visibleUrl {
+        font-size: 12px;
+        line-height: 16px;
+        margin: 4px 0;
+      }
+    }
+
+    &.search-open {
+      #primary-nav-search {
+        display: block;
+        overflow: hidden;
+        float: none;
+
+        // search is in utility-nav container for screen width > 768px
+        @include media($medium-screen) {
+          display: none;
+        }
+      }
+
+      // logo should stay unless screen width < 768px
+      @include bp(wildcard-max, $medium-screen) {
+        .logo-container {
+          display: none;
+        }
+      }
+    }
+
+    .nav-container {
+      display: inline-block;
+      float: left;
+
+      // Used by hamburger, search, and user icons
+      .primary-nav-icon {
+        cursor: pointer;
+        height: 60px;
+
+        svg {
+          vertical-align: middle;
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      &.left-nav-container {
+        @include media($medium-screen) {
+          padding-left: $base-spacing;
+        }
+        padding-right: $base-spacing;
+
+        // Hamburger nav icon
+        a.off-canvas-trigger {
+          display: inline-table;
+
+          svg.hamburger-icon {
+            vertical-align: text-bottom;
+          }
+        }
+      }
+
+      &.right-nav-container {
+        font-size: 0; //to prevent div separation
+        float: right;
+        display: table;
+        height: 60px;
+
+        .primary-nav-action {
+          // without z-index, global nav dropdown overlaps primary icons
+          z-index: 668;
+          display: table-cell;
+          position: relative;
+          text-align: center;
+          vertical-align: middle;
+          height: 60px;
+          cursor: pointer;
+
+          svg {
+            &.icon-open-search.hide,
+            &.icon-close-search.hide {
+              display: none;
+            }
+          }
+
+          @include media($medium-screen) {
+            background-color: #2f2f2f;
+            margin: 0 auto;
+            width: 60px;
+
+            .nav-icon-text {
+              display: none;
+            }
+
+            // Text shows up for both login and search icons on hover
+            // Also stays for search while utility nav is open
+            &:hover .nav-icon-text,
+            &.utility-open .nav-icon-text.search {
+              display: block;
+              bottom: 5px;
+              color: $white;
+              position: absolute;
+              width: 60px;
+
+              // Text-related CSS
+              line-height: normal;
+              font-size: 10px;
+              font-family: "futura-pt", verdana, sans-serif;
+              font-weight: 800;
+              text-transform: uppercase;
+            }
+
+            a.primary-nav-icon {
+              display: inline-block;
+              position: relative;
+
+              svg {
+                // On mobile, fill is black
+                fill: $white;
+              }
+            }
+          }
+        }
+      }
+
+      &.logo-container {
+        svg.chapman-logo {
+          width: 190px;
+          height: 32px;
+
+          @include media($medium-screen) {
+            width: 256px;
+          }
+        }
+
+        @include media($medium-screen) {
+          margin: 13px 0px;
+          padding: 0px;
+
+          .cu-logo-wrapper {
+            height: 32px;
+            line-height:32px;
+          }
+        }
+      }
+
+      .off-canvas-nav-trigger {
+        padding-right: 12px;
+        height: $primary-nav-height;
+        line-height: $primary-nav-height;
+        cursor: pointer;
+
+        &.primary-nav-icon {
+          svg {
+            padding-bottom: 4px;
+          }
+        }
+      }
+
+      /* GLOBAL NAV
+      ---------------------------------------- */
+      &.global-nav {
+        display: none;
+        padding: 14px $base-spacing;
+        background-color: $white;
+        border-top: 1px solid $primary-nav-border-color;
+
+        @include media($medium-screen) {
+          display: block;
+          width: 100%;
+          border-bottom: 1px solid #8a8a8a;
+        }
+
+        @include media($xl-screen) {
+          border-bottom-width: 0px;
+        }
+
+        .global-nav-links {
+          display: table;
+          height: 32px;
+        }
+
+        .primary-link {
+          display: table-cell;
+          position: relative;
+          vertical-align: middle;
+          padding: 0 9px;
+          border-right: 1px solid $primary-nav-border-color;
+          cursor: pointer;
+
+          &:first-of-type {
+            padding-left: 0;
+          }
+
+          &:last-of-type {
+            padding-right: 0;
+            border-right: none;
+          }
+
+          & > a {
+            text-transform: uppercase;
+            font-size: 16px;
+            white-space: nowrap;
+          }
+
+          &:hover {
+            .global-nav-dropdown {
+              visibility: visible;
+              opacity: 1;
+              @include vendorize(transition, opacity 0.3s ease-in);
+            }
+          }
+
+          .global-nav-dropdown {
+            visibility: hidden;
+            position: absolute;
+            width: $primary-nav-dropdown-width;
+            left: 0;
+            padding-top: 20px;
+            background-color: $white;
+            -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+
+            li {
+              border-bottom: 1px solid $primary-nav-border-color;
+              font-size: 14px;
+              margin-bottom: 0;
+
+              a {
+                padding: 10px $base-spacing;
+                display: block;
+              }
+
+              a:before {
+                padding: 0.1em;
+                display: block;
+                margin: 3px 10px 10px 0;
+                float: left;
+              }
+
+              &:last-of-type { border-bottom: none; }
+
+              &:hover {
+                background-color: #eaeaea;
+
+                a { color: $red; }
+              }
+            }
+
+            .icon-california:before {
+              font-size: 1.2em;
+            }
+
+            .icon-cu-monogram:before {
+              font-size: 1.3em;
+            }
+
+            .icon-cu-window:before {
+              font-size: 1.25em;
+            }
+          }
+        }
+        a { color: $black; }
+      }
+    }
+  }
+
+  /* GENERAL DROPDOWN STYLES
+  ---------------------------------------- */
+  .dropdown {
+    visibility: hidden;
+    position: absolute;
+    top: 60px; left: 0px;
+    width: $primary-nav-dropdown-width;
+    z-index: 668; //needs to be on top of primary-nav
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      border-top: 1px solid $white;
+      margin-bottom: 0;
+      cursor: pointer;
+
+      &:first-of-type {
+        border-top: none;
+      }
+
+      a {
+        font-size: 14px;
+        line-height: 14px;
+        color: $white;
+        padding: 10px $base-spacing;
+        display: block;
+      }
+    }
+
+    svg {
+      width: $square-icon-size;
+      height: $square-icon-size;
+      vertical-align: middle;
+      fill: $white;
+    }
+
+    &.social-dropdown {
+      width: 120px;
+
+      li {
+        padding: 0;
+        text-align: center;
+      }
+
+      ul.social-list {
+        text-align: center;
+        padding: 10px;
+
+        li {
+          display: inline-block;
+          width: 26px;
+          height: 26px;
+          border: none;
+          padding: 0;
+
+          a {
+            display: block;
+            font-size: 0px;
+            line-height: 26px;
+            padding: 0px;
+
+            &:hover {
+              border: 1px solid $white;
+            }
+          }
+        }
+      }
+
+      a.social-link {
+        display: block;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  /* CU LOGOS
+  ---------------------------------------- */
+  .cu-logo-wrapper {
+    display: table;
+    height: $primary-nav-height;
+  }
+
+  .primary-logo {
+    display: table-cell;
+    vertical-align: middle;
+
+    a {
+      display: block;
+      border: 0;
+      text-indent: -998em;
+      margin: 0;
+    }
+
+    svg {
+      display: block;
+    }
+  }
+
+  /* NAV TRIGGERS
+  ---------------------------------------- */
+
+  .utility-nav-trigger{
+    @include media($medium-screen) {
+      border-right: 1px solid $primary-nav-border-color;
+    }
+
+    .primary-nav-icon {
+      // Spacing between search and login icons on mobile
+      margin-right: 13px;
+
+      @include media($medium-screen) {
+        margin-right: 0px;
+      }
+    }
+  }
+
+  .login-trigger {
+    position: relative;
+
+    &:hover {
+      .login-menu {
+        visibility: visible;
+        opacity: 1;
+        @include vendorize(transition, opacity 0.3s ease-in);
+      }
+    }
+
+    .login-menu {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      top: 60px;
+      right: -20px;
+      width: 175px;
+      background-color: #2f2f2f;
+      text-align: left;
+      z-index: 667;
+      -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+
+      @include media($medium-screen) {
+        right: 0px;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      li {
+        border-top: 1px solid $white;
+        margin-bottom: 0;
+        cursor: pointer;
+
+        &:first-of-type {
+          border-top: none;
+        }
+
+        &:hover {
+          background-color: #4d4d4d;
+        }
+
+        a {
+          font-size: 14px;
+          line-height: 14px;
+          color: $white;
+          padding: 10px $base-spacing;
+          display: block;
+        }
+      }
+
+      svg {
+        width: $square-icon-size;
+        height: $square-icon-size;
+        vertical-align: middle;
+        fill: $white;
+        margin-right: 9px;
+      }
+    }
+  }
+}
+
+/*
+ * For OmniNav v2, #theme header should have no bottom padding.
+ * Unfortunately, there is no css parent selector. So this will need to be done
+ * with js in omni-nav-v2.js.
+ * See https://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector
+ */
+#theme header div#omni-nav-v2 {
+  /* Make header padding-bottom: 0px */
+}
