@@ -1,5 +1,305 @@
+@font-face {
+  font-family: 'icomoon';
+  src: font-url("icomoon.eot");
+  src: font-url("icomoon.eot?#iefix") format("embedded-opentype"), font-url("icomoon.woff") format("woff"), font-url("icomoon.ttf") format("truetype"), font-url("icomoon.svg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'icomoon-ultimate';
+  src: font-url("icomoon-ultimate.eot");
+  src: font-url("icomoon-ultimate.eot?#iefix") format("embedded-opentype"), font-url("icomoon-ultimate.woff") format("woff"), font-url("icomoon-ultimate.ttf") format("truetype"), font-url("icomoon-ultimate.svg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-circle-right:before, .icon-circle-left:before, .icon-leaf:before, .icon-earth:before, .icon-file-text:before, .icon-google-plus:before, .icon-facebook:before, .icon-instagram:before, .icon-twitter:before, .icon-youtube:before, .icon-linkedin2:before, .icon-pinterest:before, .icon-newspaper:before, .icon-arrows_up:before, .icon-lab3:before, .icon-hand:before, .icon-bed:before, .icon-bathroom:before, .icon-arrows_down:before, .icon-aid:before, .icon-accessibility2:before, .icon-ladder:before, .icon-books:before, .icon-graduation:before, .icon-book2:before, .icon-direction:before, .icon-library2:before, .icon-smiley:before, .icon-heart:before, .icon-bookmark:before, .icon-list:before, .icon-location:before, .icon-link:before, .icon-earth:before, .icon-envelop:before, .icon-pencil:before, .icon-users:before, .icon-address-book:before, .icon-tree:before, .icon-steps:before, .icon-office:before, .icon-star3:before, .icon-pencil-2:before, .icon-heart3:before, .icon-square:before, .icon-calculate2:before, .icon-search3:before, .icon-location-2:before, .icon-print:before, .icon-books-2:before, .icon-pin:before, .icon-calendar4:before, .icon-mic3:before, .icon-cu-window:before, .icon-home2:before, .icon-cu-monogram:before, .icon-graduation-2:before, .icon-california:before, .icon-food3:before, .icon-toilets_unisex:before, .icon-dumbbell:before, .icon-calculate:before, .icon-coin:before, .icon-bookmark2:before, .icon-checkmark3:before, .icon-pencil5:before, .icon-car:before, .icon-paw:before, .icon-camera:before, .icon-ladder-2:before, .icon-bus:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased; }
+
+.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before, .icon-certificate:before, .icon-medal:before, .icon-clipboard5:before, .icon-library4:before, .icon-lamp8:before, .icon-microscope:before {
+  font-family: 'icomoon-ultimate';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased; }
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+  font-family: 'icomoon', 'icomoon-ultimate';
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-circle-right:before {
+  content: "\EA42"; }
+
+.icon-circle-left:before {
+  content: "\EA44"; }
+
+.icon-leaf:before {
+  content: "\E9A4"; }
+
+.icon-earth:before {
+  content: "\E003"; }
+
+.icon-file-text:before {
+  content: "\E922"; }
+
+.icon-google-plus:before {
+  content: "\EA8B"; }
+
+.icon-facebook:before {
+  content: "\EA90"; }
+
+.icon-instagram:before {
+  content: "\EA92"; }
+
+.icon-twitter:before {
+  content: "\EA96"; }
+
+.icon-youtube:before {
+  content: "\EA9D"; }
+
+.icon-linkedin2:before {
+  content: "\EACA"; }
+
+.icon-pinterest:before {
+  content: "\EAD1"; }
+
+.icon-newspaper:before {
+  content: "\E904"; }
+
+.icon-arrows_up:before {
+  content: "\E01A"; }
+
+.icon-lab3:before {
+  content: "\E009"; }
+
+.icon-hand:before {
+  content: "\E022"; }
+
+.icon-bed:before {
+  content: "\E018"; }
+
+.icon-bathroom:before {
+  content: "\E019"; }
+
+.icon-arrows_down:before {
+  content: "\E01B"; }
+
+.icon-aid:before {
+  content: "\E01C"; }
+
+.icon-accessibility2:before {
+  content: "\E01D"; }
+
+.icon-ladder:before {
+  content: "\E001"; }
+
+.icon-books:before {
+  content: "\E000"; }
+
+.icon-graduation:before {
+  content: "\E01E"; }
+
+.icon-book2:before {
+  content: "\E024"; }
+
+.icon-direction:before {
+  content: "\E023"; }
+
+.icon-library2:before {
+  content: "\E010"; }
+
+.icon-smiley:before {
+  content: "\E00F"; }
+
+.icon-heart:before {
+  content: "\E00E"; }
+
+.icon-bookmark:before {
+  content: "\E00D"; }
+
+.icon-list:before {
+  content: "\E00C"; }
+
+.icon-location:before {
+  content: "\E00B"; }
+
+.icon-link:before {
+  content: "\E002"; }
+
+.icon-earth:before {
+  content: "\E003"; }
+
+.icon-envelop:before {
+  content: "\E00A"; }
+
+.icon-pencil:before {
+  content: "\E008"; }
+
+.icon-users:before {
+  content: "\E004"; }
+
+.icon-addressbook:before {
+  content: "\E005"; }
+
+.icon-tree:before {
+  content: "\E006"; }
+
+.icon-steps:before {
+  content: "\E007"; }
+
+.icon-office:before {
+  content: "\E011"; }
+
+.icon-star3:before {
+  content: "\E012"; }
+
+.icon-pencil2:before {
+  content: "\E013"; }
+
+.icon-heart3:before {
+  content: "\E014"; }
+
+.icon-square:before {
+  content: "\E015"; }
+
+.icon-calculate2:before {
+  content: "\E016"; }
+
+.icon-search3:before {
+  content: "\E017"; }
+
+.icon-location2:before {
+  content: "\E01F"; }
+
+.icon-print:before {
+  content: "\E020"; }
+
+.icon-books2:before {
+  content: "\E021"; }
+
+.icon-pin:before {
+  content: "\E025"; }
+
+.icon-calendar4:before {
+  content: "\E026"; }
+
+.icon-mic3:before {
+  content: "\E027"; }
+
+.icon-cu-window:before {
+  content: "\E031"; }
+
+.icon-home2:before {
+  content: "\E028"; }
+
+.icon-cu-monogram:before {
+  content: "\E032"; }
+
+.icon-graduation2:before {
+  content: "\E029"; }
+
+.icon-california:before {
+  content: "\E033"; }
+
+.icon-food3:before {
+  content: "\E02A"; }
+
+.icon-toilets_unisex:before {
+  content: "\E034"; }
+
+.icon-dumbbell:before {
+  content: "\E02B"; }
+
+.icon-calculate:before {
+  content: "\E02D"; }
+
+.icon-coin:before {
+  content: "\E02C"; }
+
+.icon-bookmark2:before {
+  content: "\E02E"; }
+
+.icon-checkmark3:before {
+  content: "\E02F"; }
+
+.icon-pencil5:before {
+  content: "\E030"; }
+
+.icon-car:before {
+  content: "\E035"; }
+
+.icon-paw:before {
+  content: "\E036"; }
+
+.icon-camera:before {
+  content: "\E037"; }
+
+.icon-ladder2:before {
+  content: "\E038"; }
+
+.icon-bus:before {
+  content: "\E039"; }
+
+.icon-menu7:before {
+  content: "\EC71"; }
+
+.icon-arrow-down2:before {
+  content: "\EDC0"; }
+
+.icon-search:before {
+  content: "\EB30"; }
+
+.icon-user3:before {
+  content: "\EB08"; }
+
+.icon-certificate:before {
+  content: "\E9EB"; }
+
+.icon-medal:before {
+  content: "\EBA0"; }
+
+.icon-clipboard5:before {
+  content: "\EC54"; }
+
+.icon-library4:before {
+  content: "\E999"; }
+
+.icon-lamp8:before {
+  content: "\EBFA"; }
+
+.icon-microscope:before {
+  content: "\EB2D"; }
+
 html {
   padding-top: 60px; }
+  @media (min-width: 768px) {
+    html {
+      padding-top: 120px; } }
+  @media (min-width: 1190px) {
+    html {
+      padding-top: 60px; } }
 
 /* BODY
 ---------------------------------------- */
@@ -7,7 +307,7 @@ html {
   position: fixed;
   width: 100%;
   top: 0;
-  font-family: "futura-pt", verdana, sans-serif;
+  font-family: "futura-pt", arial, sans-serif;
   z-index: 1000;
   /* PRIMARY NAV
   ---------------------------------------- */ }
@@ -114,6 +414,20 @@ html {
                 border-right: 1px solid #8a8a8a; }
                 #omni-nav-v2 #primary-nav .nav-container.right-nav-container .primary-nav-action.utility-nav-trigger .primary-nav-icon {
                   margin-right: 0; }
+              #omni-nav-v2 #primary-nav .nav-container.right-nav-container .primary-nav-action .nav-icon-text {
+                display: none; }
+              #omni-nav-v2 #primary-nav .nav-container.right-nav-container .primary-nav-action:hover .nav-icon-text,
+              #omni-nav-v2 #primary-nav .nav-container.right-nav-container .primary-nav-action.utility-open .nav-icon-text.search {
+                display: block;
+                bottom: 5px;
+                color: #ffffff;
+                position: absolute;
+                width: 60px;
+                line-height: normal;
+                font-size: 10px;
+                font-family: "futura-pt", arial, sans-serif;
+                font-weight: 800;
+                text-transform: uppercase; }
               #omni-nav-v2 #primary-nav .nav-container.right-nav-container .primary-nav-action a.primary-nav-icon {
                 display: inline-block;
                 position: relative; }
@@ -168,20 +482,20 @@ html {
         border-top: 1px solid #8a8a8a; }
         #omni-nav-v2 #primary-nav .nav-container.global-nav a {
           color: #2f2f2f; }
-        #omni-nav-v2 #primary-nav .nav-container.global-nav .contact-us {
-          display: none; }
-          @media (min-width: 1024px) {
-            #omni-nav-v2 #primary-nav .nav-container.global-nav .contact-us {
-              display: block;
-              float: right;
-              line-height: 32px; }
-              #omni-nav-v2 #primary-nav .nav-container.global-nav .contact-us a {
-                color: #A50034; } }
         @media (min-width: 768px) {
           #omni-nav-v2 #primary-nav .nav-container.global-nav {
             display: block;
             width: 100%;
             border-bottom: 1px solid #8a8a8a; } }
+        @media (min-width: 1190px) {
+          #omni-nav-v2 #primary-nav .nav-container.global-nav {
+            display: inline-block;
+            float: right;
+            width: auto;
+            border-top: none;
+            border-bottom: none;
+            margin: 14px 16px;
+            padding: 0; } }
         #omni-nav-v2 #primary-nav .nav-container.global-nav .global-nav-links {
           display: table;
           height: 32px; }
@@ -205,3 +519,32 @@ html {
 
 /* OFF CANVAS NAV
 ----------------------------------------------*/
+body {
+  line-height: initial;
+  margin: 0;
+  padding: 0;
+  color: #2f2f2f;
+  font-family: arial, sans-serif; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+a {
+  color: #A50034;
+  text-decoration: none; }
+  a:visited {
+    color: #A50034;
+    border-bottom: none; }
+  a:hover {
+    color: #C8003F;
+    border-bottom: none;
+    text-decoration: underline; }
+  a:focus {
+    outline: thin dotted; }
+  a:hover, a:active {
+    outline: 0;
+    text-decoration: none; }
+
+* {
+  box-sizing: inherit; }

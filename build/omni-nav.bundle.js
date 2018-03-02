@@ -142,10 +142,10 @@ var OmniNav = __webpack_require__(1);
 var OmniNav = function () {
   // Constants
   var HOME_PAGE_URL = 'https://www.chapman.edu/';
-  var LOGO_URL = 'https://www.chapman.edu/_assets/chapman_logo_horizontal_color-899d76a351f8eb188ab8100081a3640f5c4bb1ed26e0999f72922d290f9cae5e.png';
 
   // Globals
   var $;
+  var PRIMARY_LINKS = ["About", "Academics", "Admission", "Arts", "Campus Life", "Research", "Support"];
 
   // Public Methods
   var build = function build(jqLocalized, target) {
@@ -169,20 +169,28 @@ var OmniNav = function () {
     return $omniNav;
   };
 
-  var buildLogoLink = function buildLogoLink() {
-    var $a = $('<a />').attr({
-      class: 'primary-logo',
-      href: HOME_PAGE_URL,
-      title: 'Chapman University Website Home Page'
-    });
-    var $img = $('<img />').attr('src', LOGO_URL);
-    $a.append($img);
-    return $a;
-  };
-
+  /* PRIMARY NAV */
   var buildPrimaryNav = function buildPrimaryNav() {
     var $primary = $('<div />').attr('id', 'primary-nav');
-    var $offCanvas = $('<div />').attr('class', 'nav-container left-nav-container');
+
+    // Left Container
+    var $leftContainer = buildLeftNavContainer();
+
+    // Logo Container
+    var $logo = buildLogoContainer();
+
+    //Right Container
+    var $rightContainer = buildRightNavContainer();
+
+    //Global Nav Container
+    var $globalNav = buildGlobalNav();
+
+    $primary.append($leftContainer, $logo, $rightContainer, $globalNav);
+    return $primary;
+  };
+
+  var buildLeftNavContainer = function buildLeftNavContainer() {
+    var $leftContainer = $('<div />').attr('class', 'nav-container left-nav-container');
     var $offCanvasTrigger = $('<a />').attr({
       class: 'off-canvas-trigger primary-nav-icon',
       href: '#',
@@ -194,10 +202,8 @@ var OmniNav = function () {
 
     var $offCanvasIcon = buildOffCanvasSVG();
     $offCanvasTrigger.append($offCanvasIcon);
-    $offCanvas.append($offCanvasTrigger);
-    var $logo = buildLogoContainer();
-    $primary.append($offCanvas, $logo);
-    return $primary;
+    $leftContainer.append($offCanvasTrigger);
+    return $leftContainer;
   };
 
   var buildLogoContainer = function buildLogoContainer() {
@@ -215,8 +221,103 @@ var OmniNav = function () {
     return $logoContainer.append(wrapper);
   };
 
+  // Contains search icon (utility nav trigger) and login icon (login menu dropdown)
+  var buildRightNavContainer = function buildRightNavContainer() {
+    var $rightContainer = $('<div />').attr('class', 'nav-container right-nav-container');
+
+    // Login Menu Dropdown
+    var loginTrigger = $('<div />').attr('class', 'primary-nav-action login-trigger');
+    var loginIconText = $('<div />').attr('class', 'nav-icon-text');
+    loginIconText.append("Log In");
+    loginTrigger.append(buildLoginTrigger(), loginIconText, buildLoginDropdownMenu());
+
+    // Utility nav search icon
+    var utilityTrigger = $('<div />').attr('class', 'primary-nav-action utility-nav-trigger');
+    var utilityIconText = $('<div />').attr('class', 'nav-icon-text');
+    utilityIconText.append("Find");
+    utilityTrigger.append(buildUtilityNavTrigger(), utilityIconText);
+
+    return $rightContainer.append(utilityTrigger, loginTrigger);
+  };
+
+  var buildUtilityNavTrigger = function buildUtilityNavTrigger() {
+    var $a = $('<a />').attr('class', 'primary-nav-icon');
+    var searchOpenIcon = buildOpenSearchIcon();
+    var searchCloseIcon = buildCloseSearchIcon();
+    return $a.append(searchOpenIcon, searchCloseIcon);
+  };
+
+  var buildLoginTrigger = function buildLoginTrigger() {
+    var $a = $('<a />').attr('class', 'primary-nav-icon').attr('role', 'button');
+    var loginSVG = buildLoginIcon();
+    return $a.append(loginSVG);
+  };
+
+  var buildLoginDropdownMenu = function buildLoginDropdownMenu() {
+    // SVGs for different icons on dropdown menu
+    var blackboard = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M50.4 174.2C47.2 112.2 1 139.3 0 118.1c-0.5-8.2 4.5-6.7 7.7-7 1.7 0 5 1.2 26.2 0.2 39.1-2.2 76.5-5.7 113.9-7.7 110.9-6 114.4 60.8 114.9 70.6 1.5 29.4-13.5 54.6-45.4 66.3v1.7c56.1 10 73.8 33.7 76 74.3 3.2 60.3-35.4 100-108.7 104 -66.8 3.7-89.8 3.2-112.4 4.5 -11.5 0.5-22.7 3-32.4 3.5s-14.7 0.7-15-5.7c-0.7-14.7 38.9-5.5 36.7-49.4L50.4 174.2 50.4 174.2zM108.5 220.1c1.2 21.2 6.2 24.2 32.4 24.4l26.2-1.5c34.2-1.7 46.4-20.4 44.6-53.1 -2.5-42.4-36.6-68.3-77.3-66.1 -29.4 1.5-30.2 18-28.7 44.1L108.5 220.1 108.5 220.1zM115.5 350.5c2.2 42.4 14.5 54.9 58.3 52.4 44.1-2.5 65.3-32.9 62.8-77 -1.5-26.2-16.7-66.1-98.2-61.6 -26.2 1.5-27.2 13-25.9 35.7L115.5 350.5 115.5 350.5z"/><path d="M321.9 138.1c-1.7-32.7-28.4-11.5-29.4-27.9 -0.5-11.5 20.9-6 61.8-34.4 3.2-1.7 4.7-3.5 8-3.7 5-0.2 3.7 9.7 4 13l9.7 177.8c17-17.2 35.9-32.9 58.6-34.2 52.1-2.7 74.3 41.6 75.8 72.8C514.1 370.1 477 408 421.6 411c-40.6 2.2-54.9-15-61.3-14.7 -8.2 0.5-12 18.7-21.9 19.2 -3.2 0.2-5-1.2-5.2-4.7 -0.2-3.2 2.5-13.2 1.2-36.2L321.9 138.1 321.9 138.1zM380.7 350.8c2 37.4 36.6 43.9 49.9 43.1 37.4-2 43.6-38.4 42.1-67.6 -1.7-34.2-19.9-65.8-62.3-63.6 -13 0.7-33.7 10-32.9 26.4L380.7 350.8 380.7 350.8z"/></svg>';
+    var fenestra = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1"><style type="text/css">.st0{fill:#ffffff;}</style><polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/><polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/><polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/><polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/><polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/><polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/><polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/><polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/></svg>';
+    var mail = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 448 448"><path d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z"/></svg>';
+
+    var $loginMenu = $('<div />').attr('class', 'login-menu');
+    var list = $('<ul />');
+    list.append(buildLoginMenuItem(blackboard, "Blackboard", "https://blackboard.chapman.edu/"));
+    list.append(buildLoginMenuItem(fenestra, "My Chapman", "https://my.chapman.edu/"));
+    list.append(buildLoginMenuItem(mail, "Staff &amp; Faculty Email", "https://exchange.chapman.edu/"));
+    list.append(buildLoginMenuItem(mail, "PantherMail", "https://www.chapman.edu/panthermail"));
+    list.append(buildLoginMenuItem(fenestra, "My Window", "https://mywindow.chapman.edu/"));
+    return $loginMenu.append(list);
+  };
+
+  var buildLoginMenuItem = function buildLoginMenuItem(svgIcon, label, linkHref) {
+    var $listItem = $('<li />');
+    var itemLink = $('<a />').attr('href', linkHref);
+    itemLink.append(svgIcon, label);
+    return $listItem.append(itemLink);
+  };
+
+  /* GLOBAL NAV */
+  var buildGlobalNav = function buildGlobalNav() {
+    var $globalNavContainer = $('<div />').attr('class', 'nav-container global-nav');
+    var globalDiv = $('<div />').attr('id', 'cu-global-nav');
+    var globalNavTag = $('<nav />').attr('aria-label', 'global navigation menu');
+    var globalNavList = $('<ul />').attr('class', 'global-nav-links');
+
+    for (var i = 0; i < PRIMARY_LINKS.length; i++) {
+      globalNavList.append(buildPrimaryLink(PRIMARY_LINKS[i]));
+    }
+    globalNavTag.append(globalNavList);
+    globalDiv.append(globalNavTag);
+    return $globalNavContainer.append(globalDiv);
+  };
+
+  var buildPrimaryLink = function buildPrimaryLink(label) {
+    var $listItem = $('<li />').attr('class', 'primary-link');
+    var a = '<a>' + label + '</a>';
+    return $listItem.append(a);
+  };
+
+  /* SVG ICONS */
+  // For some reason, document.createElementNS("http://www.w3.org/2000/svg", "svg") doesn't work to create inline SVGs
+  var buildOpenSearchIcon = function buildOpenSearchIcon() {
+    var paths = '<g><path d="M16 13.5l-4.695-4.695c0.444-0.837 0.695-1.792 0.695-2.805 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.013 0 1.968-0.252 2.805-0.695l4.695 4.695 2.5-2.5zM2 6c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z"></path><path d="M9 5h-2v-2h-2v2h-2v2h2v2h2v-2h2z"></path></g>';
+    var $svg = '<svg viewBox="0 0 16 16" class="icon-open-search">' + paths + '</svg>';
+    return $svg;
+  };
+
+  var buildCloseSearchIcon = function buildCloseSearchIcon() {
+    var paths = '<g><path d="M16 13.5l-4.695-4.695c0.444-0.837 0.695-1.792 0.695-2.805 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.013 0 1.968-0.252 2.805-0.695l4.695 4.695 2.5-2.5zM2 6c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z"></path><path d="M3 5h6v2h-6v-2z"></path></g>';
+    var $svg = '<svg viewBox="0 0 16 16" class="icon-close-search hide">' + paths + '</svg>';
+    return $svg;
+  };
+
+  var buildLoginIcon = function buildLoginIcon() {
+    var path = '<g><path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"/></g>';
+    var $svg = '<svg viewBox="0 0 16 16">' + path + '</svg>';
+    return $svg;
+  };
+
   var buildOffCanvasSVG = function buildOffCanvasSVG() {
-    // Using document.createElementNS("http://www.w3.org/2000/svg", "svg") didn't work here to create inline SVGs
     var paths = '<path d="M1 3h14v2h-14v-2z"></path><path d="M1 7h14v2h-14v-2z"></path><path d="M1 11h14v2h-14v-2z"></path>';
     var $svg = '<svg xmlns="http://www.w3.org/2000/svg" class="hamburger-icon" viewBox="0 0 16 16">' + paths + '</svg>';
     return $svg;
