@@ -4,9 +4,6 @@
 var OmniNav = (function() {
   // Constants
   var HOME_PAGE_URL = 'https://www.chapman.edu/';
-
-  // Globals
-  var $;
   var PRIMARY_LINKS = [
     "About",
     "Academics",
@@ -30,12 +27,56 @@ var OmniNav = (function() {
     ["Contact Us", "https://www.chapman.edu/about/contact-us.aspx", "icon-envelop"]
   ];
 
-  var ACADEMICS_MENU = [[]];
-  var ADMISSION_MENU = [[]];
-  var ARTS_MENU = [[]];
-  var CAMPUS_LIFE_MENU = [[]];
-  var RESEARCH_MENU = [[]];
-  var SUPPORT_MENU = [[]];
+  var ACADEMICS_MENU = [
+    ["Overview", "https://www.chapman.edu/academics/index.aspx", "icon-file-text"],
+    ["Degrees &amp; Programs", "https://www.chapman.edu/academics/degrees-and-programs.aspx", "icon-graduation"],
+    ["Schools &amp; Colleges", "https://www.chapman.edu/academics/schools-colleges.aspx", "icon-library2"],
+    ["Academic Calendar", "https://www.chapman.edu/academics/academic-calendar.aspx", "icon-calendar4"],
+    ["Libraries", "https://www.chapman.edu/academics/libraries/index.aspx", "icon-books"],
+    ["Course Catalogs", "https://www.chapman.edu/academics/course-catalogs/index.aspx", "icon-book2"],
+    ["International Study", "https://www.chapman.edu/international-studies/index.aspx", "icon-earth"]
+  ];
+
+  var ADMISSION_MENU = [
+    ["Overview", "https://www.chapman.edu/admission/index.aspx", "icon-file-text"],
+    ["Undergraduate Admission", "https://www.chapman.edu/admission/undergraduate/index.aspx", "icon-bookmark"],
+    ["Undergraduate Application", "https://www.chapman.edu/admission/undergraduate/applynow.aspx", "icon-pencil5"],
+    ["Graduate Admission", "https://www.chapman.edu/admission/graduate/index.aspx", "icon-bookmark2"],
+    ["Graduate Application", "https://www.chapman.edu/admission/graduate/applynow.aspx", "icon-pencil5"],
+    ["Affordability", "https://www.chapman.edu/admission/undergraduate/afford.aspx", "icon-calculate2"],
+    ["Financial Aid Calculator", "https://www.chapman.edu/students/tuition-and-aid/financial-aid/net-cost-calculator/index.aspx", "icon-calculate"],
+    ["Campus Tours", "https://www.chapman.edu/admission/undergraduate/visit.aspx", "icon-office"]
+  ];
+
+  var ARTS_MENU = [[]]; // Currently no dropdown for Arts
+
+  var CAMPUS_LIFE_MENU = [
+    ["Overview", "https://www.chapman.edu/campus-life/index.aspx", "icon-file-text"],
+    ["Athletics", "http://www.chapmanathletics.com/landing/index", "icon-paw"],
+    ["Diversity and Inclusion", "https://www.chapman.edu/diversity/index.aspx", "icon-hand"],
+    ["Events", "https://events.chapman.edu/", "icon-calendar4"],
+    ["Fish Interfaith Center", "https://www.chapman.edu/about/fish-interfaith-center/index.aspx", "icon-earth"],
+    ["Health and Safety", "https://www.chapman.edu/students/health-and-safety/index.aspx", "icon-heart3"],
+    ["Residence Life", "https://www.chapman.edu/students/services/housing-and-residence/index.aspx", "icon-home2"],
+    ["Student Life", "https://www.chapman.edu/students/life/index.aspx", "icon-smiley"]
+  ];
+
+  var RESEARCH_MENU = [
+    ["Overview", "https://www.chapman.edu/research/index.aspx", "icon-file-text"],
+    ["Sponsored Projects Services", "https://www.chapman.edu/research/sponsored-projects-services/index.aspx", "icon-medal"],
+    ["Research Integrity", "https://www.chapman.edu/research/integrity/index.aspx", "icon-clipboard5"],
+    ["Institutes and Centers", "https://www.chapman.edu/research/institutes-and-centers/index.aspx", "icon-library4"],
+    ["Undergraduate Research and Creative Activity", "https://www.chapman.edu/research/office-undergraduate-research-creative-activity/index.aspx", "icon-lamp8"],
+    ["Graduate Research Support", "https://www.chapman.edu/research/graduate-research/index.aspx", "icon-microscope"]
+  ];
+
+  var SUPPORT_MENU = [
+    ["Overview", "https://www.chapman.edu/support-chapman/index.aspx", "icon-file-text"],
+    ["Contact Development", "https://www.chapman.edu/support-chapman/contact-us.aspx", "icon-envelop"],
+    ["Get Involved", "https://www.chapman.edu/support-chapman/get-involved.aspx", "icon-hand"],
+    ["Areas to Support", "https://www.chapman.edu/support-chapman/ways-to-give/areas-to-support.aspx", "icon-cu-monogram"],
+    ["Alumni", "https://www.chapman.edu/alumni/index.aspx", "icon-paw"]
+  ];
 
   var PRIMARY_DROPDOWN_MENUS = [
     ABOUT_MENU,
@@ -46,6 +87,9 @@ var OmniNav = (function() {
     RESEARCH_MENU,
     SUPPORT_MENU
   ];
+
+  // Globals
+  var $;
 
   // Public Methods
   var build = function(jqLocalized, target) {
@@ -188,6 +232,7 @@ var OmniNav = (function() {
       if (label != "Arts") {
         globalNavList.append(buildPrimaryLink(label, PRIMARY_DROPDOWN_MENUS[i]));
       }
+      // Arts is the only primary link that currently has no dropdown
       else {
         var artListItem = $('<li />').attr('class', 'primary-link');
         var artLink = '<a href="https://www.chapman.edu/arts/index.aspx">Arts</a>';
