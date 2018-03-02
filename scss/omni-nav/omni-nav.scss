@@ -314,6 +314,14 @@ html {
           cursor: pointer;
           line-height: 20px;
 
+          &:hover {
+            .global-nav-dropdown {
+              visibility: visible;
+              opacity: 1;
+              @include vendorize(transition, opacity 0.3s ease-in);
+            }
+          }
+
           &:first-of-type {
             padding-left: 0;
           }
@@ -327,6 +335,58 @@ html {
             text-transform: uppercase;
             font-size: 16px;
             white-space: nowrap;
+          }
+
+          ul { list-style-type: none; }
+
+          .global-nav-dropdown {
+            visibility: hidden;
+            position: absolute;
+            width: $primary-nav-dropdown-width;
+            left: 0;
+            padding-top: 20px;
+            background-color: $white;
+            -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+
+            li {
+              border-bottom: 1px solid $primary-nav-border-color;
+              font-size: 14px;
+              margin-bottom: 0;
+
+              a {
+                padding: 10px $base-spacing;
+                display: block;
+              }
+
+              a:before {
+                padding: 0.1em;
+                display: block;
+                margin: 3px 10px 10px 0;
+                float: left;
+              }
+
+              &:last-of-type { border-bottom: none; }
+
+              &:hover {
+                background-color: #eaeaea;
+
+                a { color: $chapman-red; }
+              }
+            }
+
+            .icon-california:before {
+              font-size: 1.2em;
+            }
+
+            .icon-cu-monogram:before {
+              font-size: 1.3em;
+            }
+
+            .icon-cu-window:before {
+              font-size: 1.25em;
+            }
           }
         }
       }
