@@ -4,6 +4,17 @@
 @import "./omni-nav/omni-nav.scss";
 @import "./omni-nav/off-canvas.scss";
 
+html {
+  margin: 0;
+  font-size: 100%;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-family: $default-font-stack;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
   line-height: initial;
   margin: 0;

@@ -282,7 +282,6 @@ html {
         display: none;
         padding: 14px $base-spacing;
         background-color: $white;
-        border-top: 1px solid $primary-nav-border-color;
 
         a { color: $black; }
 
@@ -296,7 +295,6 @@ html {
           display: inline-block;
           float: right;
           width: auto;
-          border-top: none;
           border-bottom: none;
           margin: 14px $base-spacing;
           padding: 0;
