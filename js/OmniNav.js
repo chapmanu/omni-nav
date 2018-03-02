@@ -184,8 +184,16 @@ var OmniNav = (function() {
     var globalNavList = $('<ul />').attr('class', 'global-nav-links');
 
     for (var i = 0; i < PRIMARY_LINKS.length; i++) {
-      console.log(PRIMARY_DROPDOWN_MENUS[i]);
-      globalNavList.append(buildPrimaryLink(PRIMARY_LINKS[i], PRIMARY_DROPDOWN_MENUS[i]));
+      var label = PRIMARY_LINKS[i];
+      if (label != "Arts") {
+        globalNavList.append(buildPrimaryLink(label, PRIMARY_DROPDOWN_MENUS[i]));
+      }
+      else {
+        var artListItem = $('<li />').attr('class', 'primary-link');
+        var artLink = '<a href="https://www.chapman.edu/arts/index.aspx">Arts</a>';
+        artListItem.append(artLink);
+        globalNavList.append(artListItem);
+      }
     }
     globalNavTag.append(globalNavList);
     globalDiv.append(globalNavTag);
