@@ -1,0 +1,16 @@
+@import "variables";
+
+@mixin breakpoint($size) {
+  @if $size == $bp-mobile {
+    @media (min-width: $bp-mobile) { @content; }
+  }
+  @else if $size == $bp-tablet {
+    @media (min-width: $bp-tablet) { @content; }
+  }
+  @else if $size == $bp-desktop {
+    @media (min-width: $bp-desktop) { @content; }
+  }
+  @else if $size == $bp-large-desktop {
+    @media (min-width: $bp-large-desktop) { @content; }
+  }
+}
