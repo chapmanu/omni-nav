@@ -3,3 +3,33 @@
 @import "./omni-nav/mixins.scss";
 @import "./omni-nav/omni-nav.scss";
 @import "./omni-nav/off-canvas.scss";
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: $chapman-red;
+  text-decoration: none;
+  &:visited {
+    color: $chapman-red;
+    border-bottom: none;
+  }
+  &:hover {
+    color: #C8003F;
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  &:focus {
+    outline: thin dotted;
+  }
+  &:hover, &:active {
+    outline: 0;
+    text-decoration: none;
+  }
+}
+
+* {
+  box-sizing: inherit;
+}

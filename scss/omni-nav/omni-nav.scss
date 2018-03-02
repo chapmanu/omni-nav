@@ -168,6 +168,28 @@ html {
               }
             }
 
+            .nav-icon-text {
+              display: none;
+            }
+
+            // Text shows up for both login and search icons on hover
+            // Also stays for search while utility nav is open
+            &:hover .nav-icon-text,
+            &.utility-open .nav-icon-text.search {
+              display: block;
+              bottom: 5px;
+              color: $white;
+              position: absolute;
+              width: 60px;
+
+              // Text-related CSS
+              line-height: normal;
+              font-size: 10px;
+              font-family: "futura-pt", verdana, sans-serif;
+              font-weight: 800;
+              text-transform: uppercase;
+            }
+
             a.primary-nav-icon {
               display: inline-block;
               position: relative;

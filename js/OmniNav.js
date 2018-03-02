@@ -81,11 +81,15 @@ var OmniNav = (function() {
 
     // Login Menu Dropdown
     var loginTrigger = $('<div />').attr('class', 'primary-nav-action login-trigger');
-    loginTrigger.append(buildLoginTrigger(), buildLoginDropdownMenu());
+    var loginIconText = $('<div />').attr('class', 'nav-icon-text');
+    loginIconText.append("Log In");
+    loginTrigger.append(buildLoginTrigger(), loginIconText, buildLoginDropdownMenu());
 
     // Utility nav search icon
     var utilityTrigger = $('<div />').attr('class', 'primary-nav-action utility-nav-trigger');
-    utilityTrigger.append(buildUtilityNavTrigger());
+    var utilityIconText = $('<div />').attr('class', 'nav-icon-text');
+    utilityIconText.append("Find");
+    utilityTrigger.append(buildUtilityNavTrigger(), utilityIconText);
 
     return $rightContainer.append(utilityTrigger, loginTrigger);
   }
