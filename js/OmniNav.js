@@ -33,20 +33,9 @@ var OmniNav = (function() {
   /* PRIMARY NAV */
   var buildPrimaryNav = function() {
     var $primary = $('<div />').attr('id', 'primary-nav');
-    var $offCanvas = $('<div />').attr('class', 'nav-container left-nav-container');
-    var $offCanvasTrigger = $('<a />').attr({
-        class: 'off-canvas-trigger primary-nav-icon',
-        href: '#',
-        id: 'js-off-canvas-trigger',
-        role: 'button',
-        title: 'Access links to the pages within this section of the website and to other sections of the website',
-        'aria-label': 'Access links to the pages within this section of the website and to other sections of the website'
-    });
 
     // Left Container
-    var $offCanvasIcon = buildOffCanvasSVG();
-    $offCanvasTrigger.append($offCanvasIcon);
-    $offCanvas.append($offCanvasTrigger);
+    var $leftContainer = buildLeftNavContainer();
 
     // Logo Container
     var $logo = buildLogoContainer();
@@ -56,8 +45,25 @@ var OmniNav = (function() {
 
     //Global Nav Container
 
-    $primary.append($offCanvas, $logo, $rightContainer);
+    $primary.append($leftContainer, $logo, $rightContainer);
     return $primary;
+  }
+
+  var buildLeftNavContainer = function() {
+    var $leftContainer = $('<div />').attr('class', 'nav-container left-nav-container');
+    var $offCanvasTrigger = $('<a />').attr({
+        class: 'off-canvas-trigger primary-nav-icon',
+        href: '#',
+        id: 'js-off-canvas-trigger',
+        role: 'button',
+        title: 'Access links to the pages within this section of the website and to other sections of the website',
+        'aria-label': 'Access links to the pages within this section of the website and to other sections of the website'
+    });
+
+    var $offCanvasIcon = buildOffCanvasSVG();
+    $offCanvasTrigger.append($offCanvasIcon);
+    $leftContainer.append($offCanvasTrigger);
+    return $leftContainer;
   }
 
   var buildLogoContainer = function() {
