@@ -478,8 +478,7 @@ html {
       #omni-nav-v2 #primary-nav .nav-container.global-nav {
         display: none;
         padding: 14px 16px;
-        background-color: #ffffff;
-        border-top: 1px solid #8a8a8a; }
+        background-color: #ffffff; }
         #omni-nav-v2 #primary-nav .nav-container.global-nav a {
           color: #2f2f2f; }
         @media (min-width: 768px) {
@@ -492,7 +491,6 @@ html {
             display: inline-block;
             float: right;
             width: auto;
-            border-top: none;
             border-bottom: none;
             margin: 14px 16px;
             padding: 0; } }
@@ -507,6 +505,14 @@ html {
           border-right: 1px solid #8a8a8a;
           cursor: pointer;
           line-height: 20px; }
+          #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link:hover .global-nav-dropdown {
+            visibility: visible;
+            opacity: 1;
+            -webkit-transition: opacity 0.3s ease-in;
+            -moz-transition: opacity 0.3s ease-in;
+            -ms-transition: opacity 0.3s ease-in;
+            -o-transition: opacity 0.3s ease-in;
+            transition: opacity 0.3s ease-in; }
           #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link:first-of-type {
             padding-left: 0; }
           #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link:last-of-type {
@@ -516,9 +522,55 @@ html {
             text-transform: uppercase;
             font-size: 16px;
             white-space: nowrap; }
+          #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link ul {
+            list-style-type: none; }
+          #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown {
+            visibility: hidden;
+            position: absolute;
+            width: 200px;
+            left: 0;
+            padding-top: 20px;
+            background-color: #ffffff;
+            -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            opacity: 0; }
+            #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown li {
+              border-bottom: 1px solid #8a8a8a;
+              font-size: 14px;
+              margin-bottom: 0; }
+              #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown li a {
+                padding: 10px 16px;
+                display: block; }
+              #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown li a:before {
+                padding: 0.1em;
+                display: block;
+                margin: 3px 10px 10px 0;
+                float: left; }
+              #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown li:last-of-type {
+                border-bottom: none; }
+              #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown li:hover {
+                background-color: #eaeaea; }
+                #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown li:hover a {
+                  color: #A50034; }
+            #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown .icon-california:before {
+              font-size: 1.2em; }
+            #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown .icon-cu-monogram:before {
+              font-size: 1.3em; }
+            #omni-nav-v2 #primary-nav .nav-container.global-nav .primary-link .global-nav-dropdown .icon-cu-window:before {
+              font-size: 1.25em; }
 
 /* OFF CANVAS NAV
 ----------------------------------------------*/
+html {
+  margin: 0;
+  font-size: 100%;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-family: arial, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; }
+
 body {
   line-height: initial;
   margin: 0;

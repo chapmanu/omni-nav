@@ -17,6 +17,36 @@ var OmniNav = (function() {
     "Support"
   ];
 
+  // Array formats:
+  // [list item label, href, icomoon icon class]
+  var ABOUT_MENU = [
+    ["Overview", "https://www.chapman.edu/about/index.aspx", "icon-file-text"],
+    ["Maps and Directions", "https://www.chapman.edu/about/maps-directions/index.aspx", "icon-location"],
+    ["Visit Chapman", "https://www.chapman.edu/about/visit-chapman/index.aspx", "icon-california"],
+    ["Discover Chapman", "https://www.chapman.edu/discover/index.html", "icon-cu-monogram"],
+    ["Our Campus", "https://www.chapman.edu/about/campus/index.aspx", "icon-office"],
+    ["Facts and History", "https://www.chapman.edu/about/facts-history/index.aspx", "icon-cu-monogram"],
+    ["Administration", "https://www.chapman.edu/about/administration/index.aspx", "icon-cu-window"],
+    ["Contact Us", "https://www.chapman.edu/about/contact-us.aspx", "icon-envelop"]
+  ];
+
+  var ACADEMICS_MENU = [[]];
+  var ADMISSION_MENU = [[]];
+  var ARTS_MENU = [[]];
+  var CAMPUS_LIFE_MENU = [[]];
+  var RESEARCH_MENU = [[]];
+  var SUPPORT_MENU = [[]];
+
+  var PRIMARY_DROPDOWN_MENUS = [
+    ABOUT_MENU,
+    ACADEMICS_MENU,
+    ADMISSION_MENU,
+    ARTS_MENU,
+    CAMPUS_LIFE_MENU,
+    RESEARCH_MENU,
+    SUPPORT_MENU
+  ];
+
   // Public Methods
   var build = function(jqLocalized, target) {
     init(jqLocalized);
@@ -154,17 +184,43 @@ var OmniNav = (function() {
     var globalNavList = $('<ul />').attr('class', 'global-nav-links');
 
     for (var i = 0; i < PRIMARY_LINKS.length; i++) {
-      globalNavList.append(buildPrimaryLink(PRIMARY_LINKS[i]));
+      console.log(PRIMARY_DROPDOWN_MENUS[i]);
+      globalNavList.append(buildPrimaryLink(PRIMARY_LINKS[i], PRIMARY_DROPDOWN_MENUS[i]));
     }
     globalNavTag.append(globalNavList);
     globalDiv.append(globalNavTag);
     return $globalNavContainer.append(globalDiv);
   }
 
-  var buildPrimaryLink = function(label) {
+  var buildPrimaryLink = function(label, dropdownMenu) {
     var $listItem = $('<li />').attr('class', 'primary-link');
     var a = '<a>' + label + '</a>';
-    return $listItem.append(a);
+    $listItem.append(a);
+    return $listItem.append(buildGlobalDropdown(dropdownMenu));
+  }
+
+  var buildGlobalDropdown = function(listItems) {
+    var $dropdownDiv = $('<div />').attr('class', 'global-nav-dropdown');
+    var list = $('<ul />');
+
+    for ( var x = 0; x < listItems.length; x++) {
+      // listItems[x] => ["Overview", "https://www.chapman.edu/about/index.aspx", "icon-file-text"]
+      list.append(buildGlobalDropdownItem(listItems[x]));
+    }
+    return $dropdownDiv.append(list);
+  }
+
+  var buildGlobalDropdownItem = function(listItem) {
+    // listItem[0] => title/label
+    // listItem[1] => href
+    // listItem[2] => class name (icon)
+    var $li = $('<li />');
+    var a = $('<a />').attr({
+      href: listItem[1],
+      class: 'icon ' + listItem[2]
+    });
+    a.append(listItem[0]);
+    return $li.append(a);
   }
 
   /* SVG ICONS */
