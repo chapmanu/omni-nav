@@ -1,0 +1,307 @@
+@font-face {
+  font-family: 'icomoon';
+  src:font-url('icomoon.eot');
+  src:font-url('icomoon.eot?#iefix') format('embedded-opentype'),
+  font-url('icomoon.woff') format('woff'),
+  font-url('icomoon.ttf') format('truetype'),
+  font-url('icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'icomoon-ultimate';
+  src:font-url('icomoon-ultimate.eot');
+  src:font-url('icomoon-ultimate.eot?#iefix') format('embedded-opentype'),
+  font-url('icomoon-ultimate.woff') format('woff'),
+  font-url('icomoon-ultimate.ttf') format('truetype'),
+  font-url('icomoon-ultimate.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-circle-right:before,.icon-circle-left:before,.icon-leaf:before,.icon-earth:before,.icon-file-text:before,.icon-google-plus:before,.icon-facebook:before,.icon-instagram:before,.icon-twitter:before,.icon-youtube:before,.icon-linkedin2:before,.icon-pinterest:before,.icon-newspaper:before,.icon-arrows_up:before,.icon-lab3:before,.icon-hand:before,.icon-bed:before,.icon-bathroom:before,.icon-arrows_down:before,.icon-aid:before,.icon-accessibility2:before,.icon-ladder:before,.icon-books:before,.icon-graduation:before,.icon-book2:before,.icon-direction:before,.icon-library2:before,.icon-smiley:before,.icon-heart:before,.icon-bookmark:before,.icon-list:before,.icon-location:before,.icon-link:before,.icon-earth:before,.icon-envelop:before,.icon-pencil:before,.icon-users:before,.icon-address-book:before,.icon-tree:before,.icon-steps:before,.icon-office:before,.icon-star3:before,.icon-pencil-2:before,.icon-heart3:before,.icon-square:before,.icon-calculate2:before,.icon-search3:before,.icon-location-2:before,.icon-print:before,.icon-books-2:before,.icon-pin:before,.icon-calendar4:before,.icon-mic3:before,.icon-cu-window:before,.icon-home2:before,.icon-cu-monogram:before,.icon-graduation-2:before,.icon-california:before,.icon-food3:before,.icon-toilets_unisex:before,.icon-dumbbell:before,.icon-calculate:before,.icon-coin:before,.icon-bookmark2:before,.icon-checkmark3:before,.icon-pencil5:before,.icon-car:before,.icon-paw:before,.icon-camera:before,.icon-ladder-2:before,.icon-bus:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before, .icon-certificate:before, .icon-medal:before, .icon-clipboard5:before, .icon-library4:before, .icon-lamp8:before, .icon-microscope:before {
+  font-family: 'icomoon-ultimate';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+  font-family: 'icomoon', 'icomoon-ultimate';
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-circle-right:before {
+content: "\ea42";
+}
+.icon-circle-left:before {
+content: "\ea44";
+}
+.icon-leaf:before {
+content: "\e9a4";
+}
+.icon-earth:before {
+content: "\e003";
+}
+.icon-file-text:before {
+  content: "\e922";
+}
+.icon-google-plus:before {
+  content: "\ea8b";
+}
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.icon-linkedin2:before {
+  content: "\eaca";
+}
+.icon-pinterest:before {
+  content: "\ead1";
+}
+.icon-newspaper:before {
+  content: "\e904";
+}
+.icon-arrows_up:before {
+  content: "\e01a";
+}
+.icon-lab3:before {
+  content: "\e009";
+}
+.icon-hand:before {
+  content: "\e022";
+}
+.icon-bed:before {
+  content: "\e018";
+}
+.icon-bathroom:before {
+  content: "\e019";
+}
+.icon-arrows_down:before {
+  content: "\e01b";
+}
+.icon-aid:before {
+  content: "\e01c";
+}
+.icon-accessibility2:before {
+  content: "\e01d";
+}
+.icon-ladder:before {
+  content: "\e001";
+}
+.icon-books:before {
+  content: "\e000";
+}
+.icon-graduation:before {
+  content: "\e01e";
+}
+.icon-book2:before {
+  content: "\e024";
+}
+.icon-direction:before {
+  content: "\e023";
+}
+.icon-library2:before {
+  content: "\e010";
+}
+.icon-smiley:before {
+  content: "\e00f";
+}
+.icon-heart:before {
+  content: "\e00e";
+}
+.icon-bookmark:before {
+  content: "\e00d";
+}
+.icon-list:before {
+  content: "\e00c";
+}
+.icon-location:before {
+  content: "\e00b";
+}
+.icon-link:before {
+  content: "\e002";
+}
+.icon-earth:before {
+  content: "\e003";
+}
+.icon-envelop:before {
+  content: "\e00a";
+}
+.icon-pencil:before {
+  content: "\e008";
+}
+.icon-users:before {
+  content: "\e004";
+}
+.icon-addressbook:before {
+  content: "\e005";
+}
+.icon-tree:before {
+  content: "\e006";
+}
+.icon-steps:before {
+  content: "\e007";
+}
+.icon-office:before {
+  content: "\e011";
+}
+.icon-star3:before {
+  content: "\e012";
+}
+.icon-pencil2:before {
+  content: "\e013";
+}
+.icon-heart3:before {
+  content: "\e014";
+}
+.icon-square:before {
+  content: "\e015";
+}
+.icon-calculate2:before {
+  content: "\e016";
+}
+.icon-search3:before {
+  content: "\e017";
+}
+.icon-location2:before {
+  content: "\e01f";
+}
+.icon-print:before {
+  content: "\e020";
+}
+.icon-books2:before {
+  content: "\e021";
+}
+.icon-pin:before {
+  content: "\e025";
+}
+.icon-calendar4:before {
+  content: "\e026";
+}
+.icon-mic3:before {
+  content: "\e027";
+}
+.icon-cu-window:before {
+  content: "\e031";
+}
+.icon-home2:before {
+  content: "\e028";
+}
+.icon-cu-monogram:before {
+  content: "\e032";
+}
+.icon-graduation2:before {
+  content: "\e029";
+}
+.icon-california:before {
+  content: "\e033";
+}
+.icon-food3:before {
+  content: "\e02a";
+}
+.icon-toilets_unisex:before {
+  content: "\e034";
+}
+.icon-dumbbell:before {
+  content: "\e02b";
+}
+.icon-calculate:before {
+  content: "\e02d";
+}
+.icon-coin:before {
+  content: "\e02c";
+}
+.icon-bookmark2:before {
+  content: "\e02e";
+}
+.icon-checkmark3:before {
+  content: "\e02f";
+}
+.icon-pencil5:before {
+  content: "\e030";
+}
+.icon-car:before {
+  content: "\e035";
+}
+.icon-paw:before {
+  content: "\e036";
+}
+.icon-camera:before {
+  content: "\e037";
+}
+.icon-ladder2:before {
+  content: "\e038";
+}
+.icon-bus:before {
+  content: "\e039";
+}
+
+//NEW AS OF 2/2017 (ultimate)
+
+.icon-menu7:before {
+  content: "\ec71";
+}
+.icon-arrow-down2:before {
+  content: "\edc0";
+}
+.icon-search:before {
+  content: "\eb30";
+}
+.icon-user3:before {
+  content: "\eb08";
+}
+.icon-certificate:before {
+  content: "\e9eb";
+}
+.icon-medal:before {
+  content: "\eba0";
+}
+.icon-clipboard5:before {
+  content: "\ec54";
+}
+.icon-library4:before {
+  content: "\e999";
+}
+.icon-lamp8:before {
+  content: "\ebfa";
+}
+.icon-microscope:before {
+  content: "\eb2d";
+}
