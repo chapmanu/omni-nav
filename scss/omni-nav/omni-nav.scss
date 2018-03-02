@@ -1,8 +1,18 @@
 @import "variables";
 @import "mixins";
+@import "icomoon";
 
 html {
   padding-top: $primary-nav-height;
+
+  // Global and primary nav are stacked only on tablet
+  @include breakpoint($bp-tablet) {
+    padding-top: 120px;
+  }
+
+  @include breakpoint($bp-large-desktop) {
+    padding-top: $primary-nav-height;
+  }
 }
 
 /* BODY
@@ -280,6 +290,16 @@ html {
           display: block;
           width: 100%;
           border-bottom: 1px solid #8a8a8a;
+        }
+
+        @include breakpoint($bp-large-desktop) {
+          display: inline-block;
+          float: right;
+          width: auto;
+          border-top: none;
+          border-bottom: none;
+          margin: 14px $base-spacing;
+          padding: 0;
         }
 
         .global-nav-links {
