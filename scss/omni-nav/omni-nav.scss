@@ -11,7 +11,7 @@ html {
   position: fixed;
   width: 100%;
   top: 0;
-  font-family: "futura-pt", verdana, sans-serif;
+  font-family: $font-title-stack;
 
   // Needs to be high enough to put off-canvas-nav on top of anything else on page.
   z-index: 1000;
@@ -185,7 +185,7 @@ html {
               // Text-related CSS
               line-height: normal;
               font-size: 10px;
-              font-family: "futura-pt", verdana, sans-serif;
+              font-family: $font-title-stack;
               font-weight: 800;
               text-transform: uppercase;
             }
@@ -275,20 +275,6 @@ html {
         border-top: 1px solid $primary-nav-border-color;
 
         a { color: $black; }
-
-        .contact-us {
-          display: none;
-
-          @include breakpoint($bp-desktop) {
-            display: block;
-            float: right;
-            line-height: $base-line-height;
-
-            a {
-              color: $chapman-red;
-            }
-          }
-        }
 
         @include breakpoint($bp-tablet) {
           display: block;
