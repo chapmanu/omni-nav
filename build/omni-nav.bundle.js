@@ -344,7 +344,7 @@ var OmniNav = function () {
     var $li = $('<li />');
     var a = $('<a />').attr({
       href: listItem[1],
-      class: 'icon ' + listItem[2]
+      class: listItem[2]
     });
     a.append(listItem[0]);
     return $li.append(a);
