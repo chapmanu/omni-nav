@@ -118,7 +118,7 @@ html {
               color: $black;
             }
           }
-        }    
+        }
       }
 
       &.left-nav-container {
@@ -213,7 +213,7 @@ html {
 
           &.login-trigger {
             &:hover {
-              .login-menu { 
+              .login-menu {
                 visibility: visible;
                 opacity: 1;
                 transition: opacity 0.3s ease-in;
@@ -282,6 +282,7 @@ html {
         display: none;
         padding: 14px $base-spacing;
         background-color: $white;
+        border: none;
 
         a { color: $black; }
 
@@ -289,6 +290,7 @@ html {
           display: block;
           width: 100%;
           border-bottom: 1px solid #8a8a8a;
+          border-top: none;
         }
 
         @include breakpoint($bp-large-desktop) {

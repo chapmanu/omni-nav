@@ -478,14 +478,16 @@ html {
       #omni-nav-v2 #primary-nav .nav-container.global-nav {
         display: none;
         padding: 14px 16px;
-        background-color: #ffffff; }
+        background-color: #ffffff;
+        border: none; }
         #omni-nav-v2 #primary-nav .nav-container.global-nav a {
           color: #2f2f2f; }
         @media (min-width: 768px) {
           #omni-nav-v2 #primary-nav .nav-container.global-nav {
             display: block;
             width: 100%;
-            border-bottom: 1px solid #8a8a8a; } }
+            border-bottom: 1px solid #8a8a8a;
+            border-top: none; } }
         @media (min-width: 1190px) {
           #omni-nav-v2 #primary-nav .nav-container.global-nav {
             display: inline-block;
