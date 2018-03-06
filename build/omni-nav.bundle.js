@@ -71,62 +71,62 @@
 
 
 /*
- * Web Widget Pattern
- * Based on http://alexmarandon.com/articles/web_widget_jquery/
- */
+* Web Widget Pattern
+* Based on http://alexmarandon.com/articles/web_widget_jquery/
+*/
 var OmniNav = __webpack_require__(1);
 
 (function () {
 
-    // Localize jQuery variable
-    var jQuery;
-    var jqSource = 'https://code.jquery.com/jquery-2.2.4.min.js';
-    var jqHash = 'sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=';
+  // Localize jQuery variable
+  var jQuery;
+  var jqSource = 'https://code.jquery.com/jquery-2.2.4.min.js';
+  var jqHash = 'sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=';
 
-    /******** Load jQuery if not present *********/
-    if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
-        var script_tag = document.createElement('script');
-        script_tag.setAttribute("src", jqSource);
-        script_tag.setAttribute("integrity", jqHash);
-        script_tag.setAttribute("crossorigin", "anonymous");
+  /******** Load jQuery if not present *********/
+  if (window.jQuery === undefined || window.jQuery.fn.jquery !== '1.4.2') {
+    var script_tag = document.createElement('script');
+    script_tag.setAttribute("src", jqSource);
+    script_tag.setAttribute("integrity", jqHash);
+    script_tag.setAttribute("crossorigin", "anonymous");
 
-        if (script_tag.readyState) {
-            script_tag.onreadystatechange = function () {
-                // For old versions of IE
-                if (this.readyState == 'complete' || this.readyState == 'loaded') {
-                    scriptLoadHandler();
-                }
-            };
-        } else {
-            // Other browsers
-            script_tag.onload = scriptLoadHandler;
+    if (script_tag.readyState) {
+      script_tag.onreadystatechange = function () {
+        // For old versions of IE
+        if (this.readyState == 'complete' || this.readyState == 'loaded') {
+          scriptLoadHandler();
         }
-        // Try to find the head, otherwise default to the documentElement
-        (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+      };
     } else {
-        // The jQuery version on the window is the one we want to use
-        jQuery = window.jQuery;
-        main();
+      // Other browsers
+      script_tag.onload = scriptLoadHandler;
     }
+    // Try to find the head, otherwise default to the documentElement
+    (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+  } else {
+    // The jQuery version on the window is the one we want to use
+    jQuery = window.jQuery;
+    main();
+  }
 
-    /******** Called once jQuery has loaded ******/
-    function scriptLoadHandler() {
-        // Restore $ and window.jQuery to their previous values and store the
-        // new jQuery in our local jQuery variable
-        jQuery = window.jQuery.noConflict(true);
-        // Call our main function
-        main();
-    }
+  /******** Called once jQuery has loaded ******/
+  function scriptLoadHandler() {
+    // Restore $ and window.jQuery to their previous values and store the
+    // new jQuery in our local jQuery variable
+    jQuery = window.jQuery.noConflict(true);
+    // Call our main function
+    main();
+  }
 
-    /******** Our main function ********/
-    function main() {
-        jQuery(document).ready(function ($) {
-            var $omniNavContainter = $('nav#omni-nav');
-            var target = $omniNavContainter.data('target');
-            var $omniNav = OmniNav.build($, target);
-            $('nav#omni-nav').replaceWith($omniNav);
-        });
-    }
+  /******** Our main function ********/
+  function main() {
+    jQuery(document).ready(function ($) {
+      var $omniNavContainter = $('nav#omni-nav');
+      var target = $omniNavContainter.data('target');
+      var $omniNav = OmniNav.build($, target);
+      $('nav#omni-nav').replaceWith($omniNav);
+    });
+  }
 })(); // We call our anonymous function immediately
 
 /***/ }),
@@ -142,23 +142,28 @@ var OmniNav = __webpack_require__(1);
 var OmniNav = function () {
   // Constants
   var HOME_PAGE_URL = 'https://www.chapman.edu/';
-
-  // Globals
-  var $;
   var PRIMARY_LINKS = ["About", "Academics", "Admission", "Arts", "Campus Life", "Research", "Support"];
 
   // Array formats:
   // [list item label, href, icomoon icon class]
   var ABOUT_MENU = [["Overview", "https://www.chapman.edu/about/index.aspx", "icon-file-text"], ["Maps and Directions", "https://www.chapman.edu/about/maps-directions/index.aspx", "icon-location"], ["Visit Chapman", "https://www.chapman.edu/about/visit-chapman/index.aspx", "icon-california"], ["Discover Chapman", "https://www.chapman.edu/discover/index.html", "icon-cu-monogram"], ["Our Campus", "https://www.chapman.edu/about/campus/index.aspx", "icon-office"], ["Facts and History", "https://www.chapman.edu/about/facts-history/index.aspx", "icon-cu-monogram"], ["Administration", "https://www.chapman.edu/about/administration/index.aspx", "icon-cu-window"], ["Contact Us", "https://www.chapman.edu/about/contact-us.aspx", "icon-envelop"]];
 
-  var ACADEMICS_MENU = [[]];
-  var ADMISSION_MENU = [[]];
-  var ARTS_MENU = [[]];
-  var CAMPUS_LIFE_MENU = [[]];
-  var RESEARCH_MENU = [[]];
-  var SUPPORT_MENU = [[]];
+  var ACADEMICS_MENU = [["Overview", "https://www.chapman.edu/academics/index.aspx", "icon-file-text"], ["Degrees &amp; Programs", "https://www.chapman.edu/academics/degrees-and-programs.aspx", "icon-graduation"], ["Schools &amp; Colleges", "https://www.chapman.edu/academics/schools-colleges.aspx", "icon-library2"], ["Academic Calendar", "https://www.chapman.edu/academics/academic-calendar.aspx", "icon-calendar4"], ["Libraries", "https://www.chapman.edu/academics/libraries/index.aspx", "icon-books"], ["Course Catalogs", "https://www.chapman.edu/academics/course-catalogs/index.aspx", "icon-book2"], ["International Study", "https://www.chapman.edu/international-studies/index.aspx", "icon-earth"]];
+
+  var ADMISSION_MENU = [["Overview", "https://www.chapman.edu/admission/index.aspx", "icon-file-text"], ["Undergraduate Admission", "https://www.chapman.edu/admission/undergraduate/index.aspx", "icon-bookmark"], ["Undergraduate Application", "https://www.chapman.edu/admission/undergraduate/applynow.aspx", "icon-pencil5"], ["Graduate Admission", "https://www.chapman.edu/admission/graduate/index.aspx", "icon-bookmark2"], ["Graduate Application", "https://www.chapman.edu/admission/graduate/applynow.aspx", "icon-pencil5"], ["Affordability", "https://www.chapman.edu/admission/undergraduate/afford.aspx", "icon-calculate2"], ["Financial Aid Calculator", "https://www.chapman.edu/students/tuition-and-aid/financial-aid/net-cost-calculator/index.aspx", "icon-calculate"], ["Campus Tours", "https://www.chapman.edu/admission/undergraduate/visit.aspx", "icon-office"]];
+
+  var ARTS_MENU = [[]]; // Currently no dropdown for Arts
+
+  var CAMPUS_LIFE_MENU = [["Overview", "https://www.chapman.edu/campus-life/index.aspx", "icon-file-text"], ["Athletics", "http://www.chapmanathletics.com/landing/index", "icon-paw"], ["Diversity and Inclusion", "https://www.chapman.edu/diversity/index.aspx", "icon-hand"], ["Events", "https://events.chapman.edu/", "icon-calendar4"], ["Fish Interfaith Center", "https://www.chapman.edu/about/fish-interfaith-center/index.aspx", "icon-earth"], ["Health and Safety", "https://www.chapman.edu/students/health-and-safety/index.aspx", "icon-heart3"], ["Residence Life", "https://www.chapman.edu/students/services/housing-and-residence/index.aspx", "icon-home2"], ["Student Life", "https://www.chapman.edu/students/life/index.aspx", "icon-smiley"]];
+
+  var RESEARCH_MENU = [["Overview", "https://www.chapman.edu/research/index.aspx", "icon-file-text"], ["Sponsored Projects Services", "https://www.chapman.edu/research/sponsored-projects-services/index.aspx", "icon-medal"], ["Research Integrity", "https://www.chapman.edu/research/integrity/index.aspx", "icon-clipboard5"], ["Institutes and Centers", "https://www.chapman.edu/research/institutes-and-centers/index.aspx", "icon-library4"], ["Undergraduate Research and Creative Activity", "https://www.chapman.edu/research/office-undergraduate-research-creative-activity/index.aspx", "icon-lamp8"], ["Graduate Research Support", "https://www.chapman.edu/research/graduate-research/index.aspx", "icon-microscope"]];
+
+  var SUPPORT_MENU = [["Overview", "https://www.chapman.edu/support-chapman/index.aspx", "icon-file-text"], ["Contact Development", "https://www.chapman.edu/support-chapman/contact-us.aspx", "icon-envelop"], ["Get Involved", "https://www.chapman.edu/support-chapman/get-involved.aspx", "icon-hand"], ["Areas to Support", "https://www.chapman.edu/support-chapman/ways-to-give/areas-to-support.aspx", "icon-cu-monogram"], ["Alumni", "https://www.chapman.edu/alumni/index.aspx", "icon-paw"]];
 
   var PRIMARY_DROPDOWN_MENUS = [ABOUT_MENU, ACADEMICS_MENU, ADMISSION_MENU, ARTS_MENU, CAMPUS_LIFE_MENU, RESEARCH_MENU, SUPPORT_MENU];
+
+  // Globals
+  var $;
 
   // Public Methods
   var build = function build(jqLocalized, target) {
@@ -297,8 +302,17 @@ var OmniNav = function () {
     var globalNavList = $('<ul />').attr('class', 'global-nav-links');
 
     for (var i = 0; i < PRIMARY_LINKS.length; i++) {
-      console.log(PRIMARY_DROPDOWN_MENUS[i]);
-      globalNavList.append(buildPrimaryLink(PRIMARY_LINKS[i], PRIMARY_DROPDOWN_MENUS[i]));
+      var label = PRIMARY_LINKS[i];
+      if (label != "Arts") {
+        globalNavList.append(buildPrimaryLink(label, PRIMARY_DROPDOWN_MENUS[i]));
+      }
+      // Arts is the only primary link that currently has no dropdown
+      else {
+          var artListItem = $('<li />').attr('class', 'primary-link');
+          var artLink = '<a href="https://www.chapman.edu/arts/index.aspx">Arts</a>';
+          artListItem.append(artLink);
+          globalNavList.append(artListItem);
+        }
     }
     globalNavTag.append(globalNavList);
     globalDiv.append(globalNavTag);
