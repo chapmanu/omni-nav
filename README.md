@@ -9,13 +9,13 @@ Copy and paste the following HTML tags into your page:
 
 ```
 <!-- Stylesheet in head -->
-<link rel="stylesheet" href="https://cdn.chapman.edu/omni-nav/omni-nav.bundle.css">
+<link rel="stylesheet" href="https://rawgit.com/chapmanu/omni-nav/development/build/omni-nav.bundle.css">
 
 <!-- Navbar in body -->
 <nav id="omni-nav" class="pre-build" data-target="static"></nav>
 
 <!-- Javascript tag near end of body -->
-<script src="https://cdn.chapman.edu/omni-nav/omni-nav.bundle.min.js"></script>
+<script src="https://rawgit.com/chapmanu/omni-nav/development/build/omni-nav.bundle.min.js"></script>
 ```
 
 
