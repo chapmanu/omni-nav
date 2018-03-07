@@ -48,8 +48,6 @@ To build the latest version of the javascript and stylesheets:
 
     npm run build
 
-Assets should be published to a Chapman site accessible to any Chapman web application. Currently, assets are hosted at https://www2.chapman.edu/omni-nav.
-
-Ideally, it will eventually be hosted at CDN endpoint like:
+Assets should be published to a Chapman site accessible to any Chapman web application. Currently, assets are hosted on [RawGit](https://rawgit.com/). Icomoon fonts live at https://www.chapman.edu/_files/fonts. Ideally, it will eventually be hosted at CDN endpoint like:
 
 - https://cdn.chapman.edu/omni-nav/
