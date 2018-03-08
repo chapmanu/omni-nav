@@ -2,7 +2,7 @@
 * Web Widget Pattern
 * Based on http://alexmarandon.com/articles/web_widget_jquery/
 */
-var OmniNav = require('./OmniNav.js');
+var OmniNav = require('./omni-nav.js');
 
 (function() {
 
