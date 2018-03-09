@@ -11,8 +11,8 @@ Copy and paste the following HTML tags into your page:
 <!-- Stylesheet in head -->
 <link rel="stylesheet" href="https://rawgit.com/chapmanu/omni-nav/development/build/omni-nav.bundle.css">
 
-<!-- Navbar in body -->
-<nav id="omni-nav" class="pre-build" data-target="static"></nav>
+<!-- OmniNav Div in body -->
+<div id="omni-nav-v2" class="pre-build" data-target="static"></div>
 
 <!-- Javascript tag near end of body -->
 <script src="https://rawgit.com/chapmanu/omni-nav/development/build/omni-nav.bundle.min.js"></script>
