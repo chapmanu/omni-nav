@@ -66,7 +66,7 @@ var OmniNav = (function() {
     ["Sponsored Projects Services", "https://www.chapman.edu/research/sponsored-projects-services/index.aspx", "icon-medal"],
     ["Research Integrity", "https://www.chapman.edu/research/integrity/index.aspx", "icon-clipboard5"],
     ["Institutes and Centers", "https://www.chapman.edu/research/institutes-and-centers/index.aspx", "icon-library4"],
-    ["Undergraduate Research and Creative Activity", "https://www.chapman.edu/research/office-undergraduate-research-creative-activity/index.aspx", "icon-lamp8"],
+    ["Center for Undergraduate Excellence", "https://www.chapman.edu/research/office-undergraduate-research-creative-activity/index.aspx", "icon-lamp8"],
     ["Graduate Research Support", "https://www.chapman.edu/research/graduate-research/index.aspx", "icon-microscope"]
   ];
 
