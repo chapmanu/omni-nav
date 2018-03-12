@@ -1,26 +1,24 @@
-// Copied from Cascade Assets OmniNav.
-@mixin reset-box-model($display: block) {
-  display: $display;
-  margin: 0;
-  padding: 0;
+@import "variables";
 
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+@mixin breakpoint($size) {
+  @if $size == $bp-mobile {
+    @media (min-width: $bp-mobile) { @content; }
+  }
+  @else if $size == $bp-tablet {
+    @media (min-width: $bp-tablet) { @content; }
+  }
+  @else if $size == $bp-desktop {
+    @media (min-width: $bp-desktop) { @content; }
+  }
+  @else if $size == $bp-large-desktop {
+    @media (min-width: $bp-large-desktop) { @content; }
+  }
 }
 
 @mixin vendorize($property, $value) {
-	-webkit-#{$property}: $value;
-	-moz-#{$property}: $value;
-	-ms-#{$property}: $value;
-	-o-#{$property}: $value;
-	#{$property}: $value;
-}
-
-@mixin transition($sel: all, $time: 1s, $ease: linear) {
-	-webkit-transition: $sel $time $ease;
-	-moz-transition: $sel $time $ease;
-	-o-transition: $sel $time $ease;
-	-ms-transition: $sel $time $ease;
-	transition: $sel $time $ease;
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
 }

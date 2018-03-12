@@ -1,0 +1,397 @@
+@import "variables";
+@import "mixins";
+@import "icomoon";
+
+html {
+  padding-top: $primary-nav-height;
+
+  // Global and primary nav are stacked only on tablet
+  @include breakpoint($bp-tablet) {
+    padding-top: 120px;
+  }
+
+  @include breakpoint($bp-large-desktop) {
+    padding-top: $primary-nav-height;
+  }
+}
+
+/* BODY
+---------------------------------------- */
+#omni-nav-v2 {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  font-family: $font-title-stack;
+
+  // Needs to be high enough to put off-canvas-nav on top of anything else on page.
+  z-index: 1000;
+
+  /* PRIMARY NAV
+  ---------------------------------------- */
+  #primary-nav {
+    padding: 0px $base-spacing;
+    position: relative;
+    background-color: $white;
+    width: 100%;
+    height: $primary-nav-height;
+    line-height: $primary-nav-height;
+    overflow: visible;
+    border-bottom: 1px solid #999999;
+    z-index: 667; //needs to be on top of search results overlay
+
+    @include breakpoint($bp-tablet) {
+      padding: 0;
+    }
+
+    .primary-logo {
+      display: table-cell;
+      vertical-align: middle;
+
+      a {
+        display: block;
+        border: 0;
+        text-indent: -998em;
+        margin: 0;
+      }
+
+      // Default Chapman logo
+      svg { display: block; }
+
+      @include breakpoint($bp-tablet) {
+        padding-right: 20px;
+      }
+    }
+
+    .nav-container {
+      display: inline-block;
+      float: left;
+
+      // Hamburger, search icon, login icon
+      .primary-nav-icon {
+        cursor: pointer;
+        height: $primary-nav-height;
+
+        svg {
+          vertical-align: middle;
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      &.logo-container {
+        svg.chapman-logo {
+          width: 190px;
+          height: $base-line-height;
+
+          @include breakpoint($bp-tablet) {
+            width: 256px;
+          }
+        }
+
+        .cu-logo-wrapper {
+          height: $primary-nav-height;
+          display: table;
+
+          a.branded-logo { display: none; }
+
+          @include breakpoint($bp-tablet) {
+            height: $base-line-height;
+            line-height: $base-line-height;
+          }
+        }
+
+        @include breakpoint($bp-tablet) {
+          margin: 13px 0px;
+          padding: 0px;
+
+          .cu-logo-wrapper {
+            a.branded-logo {
+              display: table-cell;
+              vertical-align: baseline;
+              white-space: nowrap;
+              vertical-align: middle;
+              padding: 1px 0 0 20px;
+              border-left: 1px solid $black;
+              font-size: 18px;
+              font-family: 'minion-pro', serif;
+              font-style: italic;
+              color: $black;
+            }
+          }
+        }
+      }
+
+      &.left-nav-container {
+        padding-right: $base-spacing;
+
+        a.off-canvas-trigger {
+          display: inline-table;
+
+          svg.hamburger-icon {
+            vertical-align: text-bottom;
+          }
+        }
+
+        @include breakpoint($bp-tablet) {
+          padding-left: $base-spacing;
+        }
+      }
+
+      &.right-nav-container {
+        font-size: 0; //to prevent div separation
+        float: right;
+        display: table;
+        height: $primary-nav-height;
+
+        .primary-nav-action {
+          // without z-index, global nav dropdown overlaps primary icons
+          z-index: 668;
+          display: table-cell;
+          position: relative;
+          text-align: center;
+          vertical-align: middle;
+          height: $primary-nav-height;
+          cursor: pointer;
+
+          // Spacing between search and login icons on mobile
+          &.utility-nav-trigger .primary-nav-icon {
+            margin-right: 13px;
+          }
+
+          svg {
+            &.icon-open-search.hide,
+            &.icon-close-search.hide {
+              display: none;
+            }
+          }
+
+          @include breakpoint($bp-tablet) {
+            background-color: $black;
+            margin: 0 auto;
+            width: 60px;
+
+            &.utility-nav-trigger {
+              border-right: 1px solid $primary-nav-border-color;
+
+              .primary-nav-icon {
+                margin-right: 0;
+              }
+            }
+
+            .nav-icon-text {
+              display: none;
+            }
+
+            // Text shows up for both login and search icons on hover
+            // Also stays for search while utility nav is open
+            &:hover .nav-icon-text,
+            &.utility-open .nav-icon-text.search {
+              display: block;
+              bottom: 5px;
+              color: $white;
+              position: absolute;
+              width: 60px;
+
+              // Text-related CSS
+              line-height: normal;
+              font-size: 10px;
+              font-family: $font-title-stack;
+              font-weight: 800;
+              text-transform: uppercase;
+            }
+
+            a.primary-nav-icon {
+              display: inline-block;
+              position: relative;
+
+              svg {
+                // On mobile, fill is black
+                fill: $white;
+              }
+            }
+          }
+
+          &.login-trigger {
+            &:hover {
+              .login-menu {
+                visibility: visible;
+                opacity: 1;
+                transition: opacity 0.3s ease-in;
+                -webkit-transition: opacity 0.3s ease-in;
+              }
+            }
+
+            .login-menu {
+              visibility: hidden;
+              opacity: 0;
+              position: absolute;
+              top: $primary-nav-height;
+              right: -20px;
+              width: 175px;
+              background-color: $black;
+              text-align: left;
+              z-index: 667;
+              -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+              box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+
+              @include breakpoint($bp-tablet) {
+                right: 0px;
+              }
+
+              ul {
+                list-style-type: none;
+              }
+
+              li {
+                border-top: 1px solid $white;
+                margin-bottom: 0;
+                cursor: pointer;
+
+                &:first-of-type {
+                  border-top: none;
+                }
+
+                &:hover {
+                  background-color: #4d4d4d;
+                }
+
+                a {
+                  font-size: 14px;
+                  line-height: 14px;
+                  color: $white;
+                  padding: 10px $base-spacing;
+                  display: block;
+                }
+              }
+
+              svg {
+                width: $square-icon-size;
+                height: $square-icon-size;
+                vertical-align: middle;
+                fill: $white;
+                margin-right: 9px;
+              }
+            }
+          }
+        }
+      }
+
+      /* GLOBAL NAV
+      ---------------------------------------- */
+      &.global-nav {
+        display: none;
+        padding: 14px $base-spacing;
+        background-color: $white;
+        border: none;
+
+        a { color: $black; }
+
+        @include breakpoint($bp-tablet) {
+          display: block;
+          width: 100%;
+          border-bottom: 1px solid #8a8a8a;
+          border-top: none;
+        }
+
+        @include breakpoint($bp-large-desktop) {
+          display: inline-block;
+          float: right;
+          width: auto;
+          border-bottom: none;
+          margin: 14px $base-spacing;
+          padding: 0;
+        }
+
+        .global-nav-links {
+          display: table;
+          height: $base-line-height;
+        }
+
+        .primary-link {
+          display: table-cell;
+          position: relative;
+          vertical-align: middle;
+          padding: 0 9px;
+          border-right: 1px solid $primary-nav-border-color;
+          cursor: pointer;
+          line-height: 20px;
+
+          &:hover {
+            .global-nav-dropdown {
+              visibility: visible;
+              opacity: 1;
+              @include vendorize(transition, opacity 0.3s ease-in);
+            }
+          }
+
+          &:first-of-type {
+            padding-left: 0;
+          }
+
+          &:last-of-type {
+            padding-right: 0;
+            border-right: none;
+          }
+
+          & > a {
+            text-transform: uppercase;
+            font-size: 16px;
+            white-space: nowrap;
+          }
+
+          ul { list-style-type: none; }
+
+          .global-nav-dropdown {
+            visibility: hidden;
+            position: absolute;
+            width: $primary-nav-dropdown-width;
+            left: 0;
+            padding-top: 20px;
+            background-color: $white;
+            -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+
+            li {
+              border-bottom: 1px solid $primary-nav-border-color;
+              font-size: 14px;
+              margin-bottom: 0;
+
+              a {
+                padding: 10px $base-spacing;
+                display: block;
+              }
+
+              a:before {
+                padding: 0.1em;
+                display: block;
+                margin: 3px 10px 10px 0;
+                float: left;
+              }
+
+              &:last-of-type { border-bottom: none; }
+
+              &:hover {
+                background-color: #eaeaea;
+
+                a { color: $chapman-red; }
+              }
+            }
+
+            .icon-california:before {
+              font-size: 1.2em;
+            }
+
+            .icon-cu-monogram:before {
+              font-size: 1.3em;
+            }
+
+            .icon-cu-window:before {
+              font-size: 1.25em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

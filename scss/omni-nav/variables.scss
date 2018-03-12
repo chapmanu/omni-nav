@@ -1,37 +1,20 @@
-// TODO: Rename. These are copied from existing OmniNav settings.
-// Dimensions
-$cu-nav-height:            64px;
-$cu-companion-height:      30px;
+// Breakpoints
+$bp-mobile: 320px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-large-desktop: 1190px;
 
-$cu-domain-width:         175px;
-$cu-login-width:          220px;
-$cu-secondary-width:      435px;
-$cu-search-results-width: 560px;
+// Header
+$primary-nav-border-color: #8a8a8a;
+$primary-nav-dropdown-width: 200px;
+$primary-nav-height: 60px;
+$square-icon-size: 16px;
+$base-spacing: 16px;
+$base-line-height: 32px;
 
-$cu-button-padding: 21px;
-
-// Viewport sizes
-$cu-viewport-xs:  400px;
-$cu-viewport-s:   540px;
-$cu-viewport-m:   700px;
-$cu-viewport-ml:  800px;
-$cu-viewport-l:   980px;
-$cu-viewport-xl: 1200px;
-
-// Colors
-$cu-nav-text:         #404040;
-$cu-nav-border:       #D6D5CF;
-$cu-nav-background:   #FFFFFF;
-$cu-nav-border-color: #CCCCCC;
-$cu-red:              #98002e;
-$chapman-link-hover:  #407892;
-$grey:                #353430;
-$grey2:               #313131;
-$grey2-hover:         #676767;
-$white:               #ffffff;
-
-// Off Canvas Nav
-$cu-off-canvas-nav-mobile-width: 85%;
-$cu-off-canvas-nav-desktop-width: 400px;
-$cu-off-canvas-nav-border-color: #CFCFCF;
-$cu-off-canvas-nav-background: #EAEAEA;
+// Default styles
+$black: #2f2f2f;
+$white: #ffffff;
+$chapman-red: #A50034;
+$default-font-stack: arial, sans-serif;
+$font-title-stack: "futura-pt", arial, sans-serif;

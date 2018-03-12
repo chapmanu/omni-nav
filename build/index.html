@@ -7,24 +7,31 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>OmniNav-as-a-Service</title>
 
+    <script src="//use.typekit.net/eyn5jyy.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    try {
+      Typekit.load();
+    } catch (e) {}
+    </script>
+
     <!-- Bootstrap -->
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous">
     <link rel="stylesheet"
-          href="build/omni-nav.bundle.css">
+          href="omni-nav.bundle.css">
   </head>
   <body>
-    <nav id="omni-nav" class="pre-build" data-target="blogs"></nav>
+    <div id="omni-nav-v2" class="pre-build" data-target="static"></div>
 
     <header>
-        <h1>OmniNav</h1>
-        <h4>as a Service</h4>
+      <h1>OmniNav</h1>
+      <h4>as a Service</h4>
     </header>
 
     <div class="content">
-        This page provide a local version of OmniNav for development.
+      This page provides a local version of OmniNav for development.
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -35,6 +42,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <script src="build/omni-nav.bundle.js"></script>
+    <script src="omni-nav.bundle.js"></script>
   </body>
 </html>

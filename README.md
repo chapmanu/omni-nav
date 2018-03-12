@@ -9,13 +9,13 @@ Copy and paste the following HTML tags into your page:
 
 ```
 <!-- Stylesheet in head -->
-<link rel="stylesheet" href="https://cdn.chapman.edu/omni-nav/omni-nav.bundle.css">
+<link rel="stylesheet" href="https://rawgit.com/chapmanu/omni-nav/development/build/omni-nav.bundle.css">
 
-<!-- Navbar in body -->
-<nav id="omni-nav" class="pre-build" data-target="static"></nav>
+<!-- OmniNav Div in body -->
+<div id="omni-nav-v2" class="pre-build" data-target="static"></div>
 
 <!-- Javascript tag near end of body -->
-<script src="https://cdn.chapman.edu/omni-nav/omni-nav.bundle.min.js"></script>
+<script src="https://rawgit.com/chapmanu/omni-nav/development/build/omni-nav.bundle.min.js"></script>
 ```
 
 
@@ -48,8 +48,6 @@ To build the latest version of the javascript and stylesheets:
 
     npm run build
 
-Assets should be published to a Chapman site accessible to any Chapman web application. Currently, assets are hosted at https://www2.chapman.edu/omni-nav.
-
-Ideally, it will eventually be hosted at CDN endpoint like:
+Assets should be published to a Chapman site accessible to any Chapman web application. Currently, assets are hosted on [RawGit](https://rawgit.com/). Icomoon fonts live at https://www.chapman.edu/_files/fonts. Ideally, it will eventually be hosted at CDN endpoint like:
 
 - https://cdn.chapman.edu/omni-nav/

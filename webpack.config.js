@@ -28,10 +28,13 @@ module.exports = {
     new ExtractTextPlugin({ // define where to save the file
       filename: "[name]",
       allChunks: true,
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-      minimize: true
     })
-  ],
+	],
+	devServer: {
+		contentBase: __dirname + '/build',
+		compress: true,
+		port: 5000,
+		watchContentBase: true
+	},
+	mode: 'development',
 };
