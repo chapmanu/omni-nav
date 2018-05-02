@@ -22,7 +22,7 @@ var OmniNav = (function() {
     ["Visit Chapman", "https://www.chapman.edu/about/visit-chapman/index.aspx", "icon-california"],
     ["Discover Chapman", "https://www.chapman.edu/discover/index.html", "icon-cu-window"],
     ["Our Campus", "https://www.chapman.edu/about/campus/index.aspx", "icon-office"],
-    ["Facts and History", "https://www.chapman.edu/about/facts-history/index.aspx", "icon-cu-window"],
+    ["Facts and History", "https://www.chapman.edu/about/facts-history/index.aspx", "icon-library4"],
     ["Administration", "https://www.chapman.edu/about/administration/index.aspx", "icon-cu-window"],
     ["Contact Us", "https://www.chapman.edu/about/contact-us.aspx", "icon-envelop"]
   ];
