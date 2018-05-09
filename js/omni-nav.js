@@ -32,6 +32,7 @@ var OmniNav = (function() {
     ["Degrees &amp; Programs", "https://www.chapman.edu/academics/degrees-and-programs.aspx", "icon-graduation"],
     ["Schools &amp; Colleges", "https://www.chapman.edu/academics/schools-colleges.aspx", "icon-library2"],
     ["Academic Calendar", "https://www.chapman.edu/academics/academic-calendar.aspx", "icon-calendar4"],
+    ["Faculty", "https://www.chapman.edu/our-faculty/index.aspx", "icon-profile"],
     ["Libraries", "https://www.chapman.edu/academics/libraries/index.aspx", "icon-books"],
     ["Course Catalogs", "https://www.chapman.edu/academics/course-catalogs/index.aspx", "icon-book2"],
     ["International Study", "https://www.chapman.edu/international-studies/index.aspx", "icon-earth"]
