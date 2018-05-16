@@ -36,7 +36,8 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before, .icon-certificate:before, .icon-medal:before, .icon-clipboard5:before, .icon-library4:before, .icon-lamp8:before, .icon-microscope:before {
+.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before, .icon-certificate:before, .icon-medal:before, .icon-clipboard5:before, .icon-library4:before, .icon-lamp8:before, .icon-microscope:before,
+.icon-profile:before {
   font-family: 'icomoon-ultimate';
   speak: none;
   font-style: normal;
@@ -304,4 +305,7 @@ content: "\e003";
 }
 .icon-microscope:before {
   content: "\eb2d";
+}
+.icon-profile:before {
+  content: "\e99c";
 }
